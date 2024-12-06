@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing icons from react-icons
+
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -20,18 +24,26 @@ const SignUp = () => {
   };
 
   return (
-    <div style={styles.background}>
-      <div style={styles.card}>
-        <h2 style={styles.header}>Create Your Account</h2>
-        <p style={styles.subHeader}>Join us and start your journey!</p>
-        <form style={styles.form} onSubmit={handleSignUp}>
+    <div
+      className="h-screen flex items-center justify-center"
+      style={{ background: "linear-gradient(135deg, #6a11cb, #2575fc)" }}
+    >
+      <div className="w-[400px] bg-white rounded-xl shadow-lg p-6">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+          Create Your Account
+        </h2>
+        <p className="text-sm text-gray-500 mb-4 text-center">
+          Join us and start your journey!
+        </p>
+
+        <form className="flex flex-col space-y-4" onSubmit={handleSignUp}>
           {/* Name Field */}
-          <div style={styles.inputGroup}>
-            <label style={styles.label} htmlFor="name">
+          <div>
+            <label className="block text-sm text-gray-700 mb-2" htmlFor="name">
               Name
             </label>
             <input
-              style={styles.input}
+              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
               type="text"
               id="name"
               placeholder="Enter your name"
@@ -40,13 +52,14 @@ const SignUp = () => {
               required
             />
           </div>
+
           {/* Email Field */}
-          <div style={styles.inputGroup}>
-            <label style={styles.label} htmlFor="email">
+          <div>
+            <label className="block text-sm text-gray-700 mb-2" htmlFor="email">
               Email
             </label>
             <input
-              style={styles.input}
+              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
               type="email"
               id="email"
               placeholder="Enter your email"
@@ -55,125 +68,90 @@ const SignUp = () => {
               required
             />
           </div>
+
           {/* Password Field */}
-          <div style={styles.inputGroup}>
-            <label style={styles.label} htmlFor="password">
+          <div className="relative">
+            <label
+              className="block text-sm text-gray-700 mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
-              style={styles.input}
-              type="password"
+              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+              type={showPassword ? "text" : "password"} // Toggle between text and password type
               id="password"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <div
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+            >
+              {showPassword ? (
+                <FaEyeSlash size={20} className="mt-8 text-gray-500" />
+              ) : (
+                <FaEye size={20} className="mt-8 text-gray-500" />
+              )}
+            </div>
           </div>
+
           {/* Confirm Password Field */}
-          <div style={styles.inputGroup}>
-            <label style={styles.label} htmlFor="confirmPassword">
+          <div className="relative">
+            <label
+              className="block text-sm text-gray-700 mb-2"
+              htmlFor="confirmPassword"
+            >
               Confirm Password
             </label>
             <input
-              style={styles.input}
-              type="password"
+              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+              type={showConfirmPassword ? "text" : "password"} // Toggle between text and password type for confirm password
               id="confirmPassword"
               placeholder="Re-enter your password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+            <div
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)} // Toggle confirm password visibility
+            >
+              {showConfirmPassword ? (
+                <FaEyeSlash size={20} className="mt-8 text-gray-500" />
+              ) : (
+                <FaEye size={20} className="mt-8  text-gray-500" />
+              )}
+            </div>
           </div>
+
           {/* Submit Button */}
-          <button style={styles.button} type="submit">
+          <button
+            className="w-full py-3 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 ease-in-out transform hover:scale-105"
+            type="submit"
+            style={{
+              background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+              border: "none",
+            }}
+          >
             Sign Up
           </button>
         </form>
-        <p style={styles.signup}>
+
+        <p className="mt-4 text-sm text-gray-700 text-center">
           Already have an account?{" "}
-          <Link to="/signin" style={styles.link}>
+          <Link
+            to="/signin"
+            className="text-purple-600 hover:text-indigo-600 transition-all duration-300 ease-in-out"
+          >
             Sign In
           </Link>
         </p>
       </div>
     </div>
   );
-};
-
-const styles = {
-  background: {
-    height: "100vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "linear-gradient(135deg, #6a11cb, #2575fc)", // Updated to Sign-In gradient
-    fontFamily: "'Roboto', sans-serif",
-  },
-  card: {
-    width: "400px",
-    background: "#fff",
-    borderRadius: "15px",
-    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-    padding: "30px",
-    textAlign: "center",
-  },
-  header: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    marginBottom: "10px",
-    color: "#333",
-  },
-  subHeader: {
-    fontSize: "14px",
-    color: "#777",
-    marginBottom: "30px",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  inputGroup: {
-    marginBottom: "20px",
-  },
-  label: {
-    display: "block",
-    fontSize: "14px",
-    color: "#555",
-    marginBottom: "5px",
-    textAlign: "left",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    fontSize: "16px",
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    outline: "none",
-    transition: "border-color 0.2s",
-  },
-  button: {
-    padding: "12px",
-    fontSize: "16px",
-    fontWeight: "bold",
-    color: "#fff",
-    background: "linear-gradient(135deg, #6a11cb, #2575fc)", // Updated to Sign-In gradient
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    transition: "background 0.3s",
-  },
-  signup: {
-    marginTop: "20px",
-    fontSize: "14px",
-    color: "#555",
-  },
-  link: {
-    color: "#2575fc", // Matches the Sign-In link color
-    textDecoration: "none",
-    fontWeight: "bold",
-    transition: "color 0.3s",
-  },
 };
 
 export default SignUp;

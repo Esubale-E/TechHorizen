@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Use if you're using React Router for navigation
+import { Link, useLocation } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa"; // Use react-icons for better icons
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation(); // Get current location for active link styling
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const isActive = (path) =>
+    location.pathname === path ? "text-blue-400" : "hover:text-gray-400";
+
   return (
-    <nav className="bg-gray-700  text-white p-4 shadow-md fixed w-full z-50">
+    <nav className="bg-gray-700 text-white p-4 shadow-md fixed w-full z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         {/* Logo / Brand Name */}
         <div className="text-2xl font-bold">
@@ -20,37 +25,56 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">
-          <Link to="/" className="hover:text-gray-400">
+          <Link to="/" className={`transition duration-300 ${isActive("/")}`}>
             Home
           </Link>
-          <Link to="/about" className="hover:text-gray-400">
+          <Link
+            to="/about"
+            className={`transition duration-300 ${isActive("/about")}`}
+          >
             About
           </Link>
-          <Link to="/events" className="hover:text-gray-400">
+          <Link
+            to="/events"
+            className={`transition duration-300 ${isActive("/events")}`}
+          >
             Events
           </Link>
-          <Link to="/blog" className="hover:text-gray-400">
+          <Link
+            to="/blog"
+            className={`transition duration-300 ${isActive("/blog")}`}
+          >
             Blog
           </Link>
-          <Link to="/contact" className="hover:text-gray-400">
+          <Link
+            to="/contact"
+            className={`transition duration-300 ${isActive("/contact")}`}
+          >
             Contact
           </Link>
-          <Link to="/signin" className="hover:text-gray-400">
+          <Link
+            to="/signin"
+            className={`transition duration-300 ${isActive("/signin")}`}
+          >
             Sign In
           </Link>
         </div>
 
         {/* Mobile Hamburger Menu */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="text-3xl">
-            <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
+          <button
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            className="text-3xl transition duration-300"
+          >
+            {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-blue-800 p-4 mt-2">
+        <div className="md:hidden bg-gray-700 p-4 mt-2 transition-all duration-300 ease-in-out">
           <Link to="/" className="block text-white py-2 hover:text-gray-400">
             Home
           </Link>
@@ -77,6 +101,12 @@ const Navbar = () => {
             className="block text-white py-2 hover:text-gray-400"
           >
             Contact
+          </Link>
+          <Link
+            to="/signin"
+            className="block text-white py-2 hover:text-gray-400"
+          >
+            Sign In
           </Link>
         </div>
       )}
