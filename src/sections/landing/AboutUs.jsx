@@ -1,11 +1,11 @@
 const AboutUs = () => {
   return (
-    <section className="bg-gray-200 py-16 px-4">
+    <section className="bg-background dark:bg-darkBackground py-16 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-blue-900 mb-6">
+        <h2 className="text-4xl font-bold text-primary dark:text-darkText mb-6">
           About TechHorizon
         </h2>
-        <p className="text-lg text-gray-700 mb-12">
+        <p className="text-lg text-text dark:text-darkText mb-12">
           At TechHorizon, we are more than just a tech community – we are a
           platform where technology enthusiasts, innovators, and learners come
           together to share ideas, collaborate on projects, and build lasting
@@ -23,20 +23,20 @@ const AboutUs = () => {
           </div>
 
           <div className="flex flex-col justify-center text-left">
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4">
+            <h3 className="text-2xl font-semibold text-primary dark:text-darkText mb-4">
               Our Vision
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-text dark:text-darkText mb-6">
               Our vision is to inspire, educate, and empower the next generation
               of tech leaders. By providing resources, hosting events, and
               fostering a collaborative environment, we aim to help members grow
               professionally and personally in the ever-evolving tech world.
             </p>
 
-            <h3 className="text-2xl font-semibold text-blue-900 mb-4">
+            <h3 className="text-2xl font-semibold text-primary dark:text-darkText mb-4">
               Our Values
             </h3>
-            <ul className="list-disc pl-6 text-gray-600">
+            <ul className="list-disc pl-6 text-text dark:text-darkText">
               <li>
                 Inclusivity – We believe in creating a welcoming space for all
                 backgrounds and skill levels.
