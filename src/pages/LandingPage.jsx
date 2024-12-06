@@ -1,10 +1,17 @@
-import NavBar from "../components/NavBar";
+import AboutUs from "../sections/landing/AboutUs";
+import Features from "../sections/landing/Features";
+import Hero from "../sections/landing/Hero";
+import UpcomingEvent from "../sections/landing/UpcomingEvent";
+import Footer from "./../sections/landing/Footer";
 
 const LandingPage = () => {
   return (
     <div>
-      <NavBar />
-      <h1>LandingPage</h1>
+      <Hero />
+      <AboutUs />
+      <Features />
+      <UpcomingEvent />
+      <Footer />
     </div>
   );
 };
