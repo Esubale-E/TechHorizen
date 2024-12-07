@@ -1,14 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from "../components/Students/Layout";
 import Events from "../components/Students/Events";
 import Courses from "../components/Students/Cources";
-import Topbar from "./../components/Students/Topbar";
+import Topbar from "../components/Students/Topbar";
 import Blog from "../components/Students/Blog";
 import Resources from "../components/Students/Resources";
+import { useEffect } from "react";
 
-function App() {
+// eslint-disable-next-line react/prop-types
+function StudentDashboard({ changeNav }) {
+  useEffect(() => {
+    changeNav();
+  });
   return (
-    <Router>
+    <>
       <Topbar />
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -20,14 +25,14 @@ function App() {
               </h2>
             }
           />
-          <Route path="events" element={<Events />} />
-          <Route path="courses" element={<Courses />} />
-          <Route path="resource" element={<Resources />} />
-          <Route path="blog" element={<Blog />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/resource" element={<Resources />} />
+          <Route path="/blog" element={<Blog />} />
         </Route>
       </Routes>
-    </Router>
+    </>
   );
 }
 
-export default App;
+export default StudentDashboard;

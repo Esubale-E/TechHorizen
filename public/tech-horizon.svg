@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-12 h-12">
+	<!-- Outer Circle -->
+	<circle cx="100" cy="100" r="95" fill="#003366" stroke="#00B0FF" stroke-width="4" />
+	<!-- Inner Circle -->
+	<circle cx="100" cy="100" r="65" fill="#F7FAFC" stroke="#00B8D4" stroke-width="3" />
+	<!-- Horizon Arc -->
+	<path d="M40 120c30-50 90-50 120 0" fill="none" stroke="#00FF7F" stroke-width="4" stroke-linecap="round" />
+	<!-- Central Tech Symbol -->
+	<circle cx="100" cy="100" r="15" fill="#003366" stroke="#00B0FF" stroke-width="3" />
+	<line x1="100" y1="70" x2="100" y2="85" stroke="#00B8D4" stroke-width="2" />
+	<line x1="100" y1="115" x2="100" y2="130" stroke="#00B8D4" stroke-width="2" />
+	<line x1="70" y1="100" x2="85" y2="100" stroke="#00B8D4" stroke-width="2" />
+	<line x1="115" y1="100" x2="130" y2="100" stroke="#00B8D4" stroke-width="2" />
+	<circle cx="100" cy="70" r="5" fill="#00B8D4" />
+	<circle cx="100" cy="130" r="5" fill="#00FF7F" />
+	<circle cx="70" cy="100" r="5" fill="#00FF7F" />
+	<circle cx="130" cy="100" r="5" fill="#00B8D4" />
+	<!-- Small Nodes -->
+	<circle cx="100" cy="30" r="5" fill="#00B8D4" />
+	<circle cx="30" cy="100" r="5" fill="#00FF7F" />
+	<circle cx="170" cy="100" r="5" fill="#00FF7F" />
+	<circle cx="100" cy="170" r="5" fill="#00B8D4" />
+	<!-- Connections -->
+	<line x1="100" y1="35" x2="100" y2="85" stroke="#00B8D4" stroke-width="2" />
+	<line x1="35" y1="100" x2="85" y2="100" stroke="#00FF7F" stroke-width="2" />
+	<line x1="165" y1="100" x2="115" y2="100" stroke="#00FF7F" stroke-width="2" />
+	<line x1="100" y1="115" x2="100" y2="165" stroke="#00B8D4" stroke-width="2" />
+	<!-- Text -->
+	<text x="100" y="190" fill="#00B0FF" font-size="14" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle">
+		TechHorizon
+	</text>
+</svg>

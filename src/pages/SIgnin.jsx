@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiEye, FiEyeOff } from "react-icons/fi"; // Import the Eye icons from React Icons
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -8,9 +8,11 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
+  // TODO: will be clear
+  const [isValidAccount, setIsValidAccount] = useState(false);
+
   const handleSignIn = (e) => {
     e.preventDefault();
-    // Clear previous error messages
     setError("");
 
     // Add sign-in logic here (e.g., API call)
@@ -19,6 +21,7 @@ const SignIn = () => {
       return;
     }
 
+    setIsValidAccount(true);
     console.log("Email:", email);
     console.log("Password:", password);
   };
@@ -92,7 +95,7 @@ const SignIn = () => {
               border: "none",
             }}
           >
-            Sign In
+            <Link to={isValidAccount ? "/studentdashbord" : ""}>Sign In</Link>
           </button>
 
           <p className="mt-2 text-sm text-gray-600 text-center">

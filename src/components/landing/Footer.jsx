@@ -10,7 +10,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-600 text-white py-12 px-4 animate-fadeIn">
+    <footer id="footer" className="bg-gray-600 text-white py-12 px-4 animate-fadeIn">
       <div className="max-w-6xl mx-auto text-center">
         {/* Footer Navigation Links */}
         <div className="mb-6">

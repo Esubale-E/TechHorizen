@@ -1,9 +1,10 @@
-import AboutUs from "../sections/landing/AboutUs";
-import ContactUs from "../sections/landing/ContactUs";
-import Features from "../sections/landing/Features";
-import Hero from "../sections/landing/Hero";
-import UpcomingEvent from "../sections/landing/UpcomingEvent";
-import Footer from "./../sections/landing/Footer";
+import AboutUs from "../components/landing/About";
+import ContactUs from "../components/landing/ContactUs";
+import Features from "../components/landing/Features";
+import Hero from "../components/landing/Hero";
+import Events from "../components/landing/Events";
+import Footer from "../components/landing/Footer";
+import Blog from "./../components/landing/blog";
 
 const LandingPage = () => {
   return (
@@ -11,8 +12,9 @@ const LandingPage = () => {
       <Hero />
       <AboutUs />
       <Features />
-      <UpcomingEvent />
-      <ContactUs/>
+      <Events />
+      <ContactUs />
+      <Blog />
       <Footer />
     </div>
   );

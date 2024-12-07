@@ -2,7 +2,10 @@ import events from "../../services/events";
 
 const UpcomingEvent = () => {
   return (
-    <section className="bg-background dark:bg-darkBackground py-16 px-4">
+    <section
+      id="events"
+      className="bg-background dark:bg-darkBackground py-16 px-4"
+    >
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-primary dark:text-darkPrimary mb-6">
           Upcoming Events

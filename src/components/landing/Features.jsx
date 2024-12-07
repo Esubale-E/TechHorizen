@@ -7,7 +7,7 @@ import {
 
 const Features = () => {
   return (
-    <section className="bg-background dark:bg-darkBackground py-16 px-4">
+    <section id="features" className="bg-background dark:bg-darkBackground py-16 px-4">
       <div className="text-center max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-primary dark:text-darkPrimary mb-8">
           What We Offer

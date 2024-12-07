@@ -1,27 +1,36 @@
-import LandingPage from "./pages/LandingPage";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Navbar from "./components/NavBar";
-import Dashboard from "./pages/Dashboard";
+import MainLayout from "./layouts/MainLayout";
+import LandingPage from "./pages/LandingPage";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import StudentDashboard from "./pages/StudentDashboard";
+import StudentLayout from "./layouts/StudentLayout";
+import Resources from "./components/Students/Resources";
+import Courses from "./components/Students/Cources";
+import Events from "./components/Students/Events";
+import Blog from "./components/Students/Blog";
 
 const App = () => {
   return (
-    <>
-      <div className="App">
-        <Dashboard />
-      </div>
-      {/* <BrowserRouter>
-        <Navbar />
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        {/* Main Navigation */}
+        <Route element={<MainLayout />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </BrowserRouter>
-      ;
-    */}{" "}
-    </>
+          <Route path="/signin" element={<SignIn />} />
+        </Route>
+
+        {/* Student Dashboard Navigation */}
+        <Route element={<StudentLayout />}>
+          <Route path="/studentDashboard" element={<StudentDashboard />} />
+          <Route path="/studentDashboard/events" element={<Events />} />
+          <Route path="/studentDashboard/courses" element={<Courses />} />
+          <Route path="/studentDashboard/resources" element={<Resources />} />
+          <Route path="/studentDashboard/blog" element={<Blog />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

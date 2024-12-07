@@ -60,14 +60,16 @@ const StudentRegistration = () => {
     formData.append("profilePicture", data.profilePicture[0]);
     formData.append("name", data.name);
     formData.append("email", data.email);
+    // Append other fields as needed
+
     // Example API request
-    fetch("https://api.example.com/upload", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => console.log("Success:", result))
-      .catch((error) => console.error("Error:", error));
+    // fetch("https://api.example.com/upload", {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => console.log("Success:", result))
+    //   .catch((error) => console.error("Error:", error));
     console.log("Form Submitted:", data);
     alert("Student registered successfully!");
   };
