@@ -1,34 +1,64 @@
+import {
+  FaFacebookSquare,
+  FaTwitter,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-600 text-white py-12 px-4">
+    <footer className="bg-gray-600 text-white py-12 px-4 animate-fadeIn">
       <div className="max-w-6xl mx-auto text-center">
         {/* Footer Navigation Links */}
         <div className="mb-6">
           <ul className="flex justify-center space-x-8">
-            <li>
-              <a href="/" className="hover:text-gray-400">
+            <li className="hover:scale-110 transition-transform duration-300">
+              <Link
+                to="/"
+                className="hover:text-gray-400"
+                aria-label="Go to Home Page"
+              >
                 Home
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="/about" className="hover:text-gray-400">
+            <li className="hover:scale-110 transition-transform duration-300">
+              <Link
+                to="/about"
+                className="hover:text-gray-400"
+                aria-label="Learn more About Us"
+              >
                 About
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="/events" className="hover:text-gray-400">
+            <li className="hover:scale-110 transition-transform duration-300">
+              <Link
+                to="/events"
+                className="hover:text-gray-400"
+                aria-label="View Upcoming Events"
+              >
                 Events
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="/blog" className="hover:text-gray-400">
+            <li className="hover:scale-110 transition-transform duration-300">
+              <Link
+                to="/blog"
+                className="hover:text-gray-400"
+                aria-label="Read our Blog"
+              >
                 Blog
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="/contact" className="hover:text-gray-400">
+            <li className="hover:scale-110 transition-transform duration-300">
+              <Link
+                to="/contact"
+                className="hover:text-gray-400"
+                aria-label="Contact Us"
+              >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -36,51 +66,52 @@ const Footer = () => {
         {/* Social Media Links */}
         <div className="mb-6">
           <ul className="flex justify-center space-x-6">
-            <li>
+            <li className="hover:text-gray-400 transition-transform transform hover:scale-125 duration-300">
               <a
                 href="https://www.facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-400"
+                aria-label="Visit Facebook"
               >
-                <i className="fab fa-facebook-square text-2xl"></i>
+                <FaFacebookSquare className="text-2xl" />
               </a>
             </li>
-            <li>
+            <li className="hover:text-gray-400 transition-transform transform hover:scale-125 duration-300">
               <a
                 href="https://www.twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-400"
+                aria-label="Visit Twitter"
               >
-                <i className="fab fa-twitter text-2xl"></i>
+                <FaTwitter className="text-2xl" />
               </a>
             </li>
-            <li>
+            <li className="hover:text-gray-400 transition-transform transform hover:scale-125 duration-300">
               <a
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-400"
+                aria-label="Visit LinkedIn"
               >
-                <i className="fab fa-linkedin text-2xl"></i>
+                <FaLinkedin className="text-2xl" />
               </a>
             </li>
-            <li>
+            <li className="hover:text-gray-400 transition-transform transform hover:scale-125 duration-300">
               <a
                 href="https://www.github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-400"
+                aria-label="Visit GitHub"
               >
-                <i className="fab fa-github text-2xl"></i>
+                <FaGithub className="text-2xl" />
               </a>
             </li>
           </ul>
         </div>
 
+        {/* Footer Copyright */}
         <p className="text-sm text-gray-300">
-          © 2024 TechHorizon. All rights reserved.
+          © {currentYear} Tech Horizon. All rights reserved.
         </p>
       </div>
     </footer>

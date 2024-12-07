@@ -1,4 +1,5 @@
 import events from "../../services/events";
+
 const UpcomingEvent = () => {
   return (
     <section className="bg-background dark:bg-darkBackground py-16 px-4">
@@ -15,9 +16,9 @@ const UpcomingEvent = () => {
           {events.map((event, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-darkBackground rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              className="bg-white dark:bg-darkBackground rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
             >
-              <h3 className="text-2xl font-semibold text-primary dark:text-darkPrimary">
+              <h3 className="text-2xl font-semibold text-primary dark:text-darkPrimary mb-2">
                 {event.title}
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
@@ -28,7 +29,7 @@ const UpcomingEvent = () => {
               </p>
               <a
                 href={event.link}
-                className="text-secondary dark:text-darkSecondary hover:text-accent dark:hover:text-highlight font-semibold"
+                className="text-secondary dark:text-darkSecondary hover:text-accent dark:hover:text-highlight font-semibold transition-colors duration-200"
               >
                 Learn More &rarr;
               </a>

@@ -2,7 +2,7 @@ const AboutUs = () => {
   return (
     <section className="bg-background dark:bg-darkBackground py-16 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-primary dark:text-darkText mb-6">
+        <h2 className="text-4xl font-bold text-primary dark:text-darkPrimary mb-6">
           About TechHorizon
         </h2>
         <p className="text-lg text-text dark:text-darkText mb-12">
@@ -16,14 +16,14 @@ const AboutUs = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="flex justify-center items-center">
             <img
-              src="https://via.placeholder.com/400" // Placeholder image for now
+              src="https://via.placeholder.com/400"
               alt="Tech Community"
-              className="rounded-lg shadow-lg w-full md:w-2/3"
+              className="rounded-lg shadow-lg w-full md:w-2/3 transition-transform duration-300 hover:scale-105"
             />
           </div>
 
           <div className="flex flex-col justify-center text-left">
-            <h3 className="text-2xl font-semibold text-primary dark:text-darkText mb-4">
+            <h3 className="text-2xl font-semibold text-primary dark:text-darkPrimary mb-4">
               Our Vision
             </h3>
             <p className="text-text dark:text-darkText mb-6">
@@ -33,25 +33,25 @@ const AboutUs = () => {
               professionally and personally in the ever-evolving tech world.
             </p>
 
-            <h3 className="text-2xl font-semibold text-primary dark:text-darkText mb-4">
+            <h3 className="text-2xl font-semibold text-primary dark:text-darkPrimary mb-4">
               Our Values
             </h3>
-            <ul className="list-disc pl-6 text-text dark:text-darkText">
+            <ul className="list-disc pl-6 text-text dark:text-darkText space-y-2">
               <li>
-                Inclusivity – We believe in creating a welcoming space for all
-                backgrounds and skill levels.
+                <strong>Inclusivity:</strong> We believe in creating a welcoming
+                space for all backgrounds and skill levels.
               </li>
               <li>
-                Collaboration – We foster a culture of teamwork and mutual
-                growth.
+                <strong>Collaboration:</strong> We foster a culture of teamwork
+                and mutual growth.
               </li>
               <li>
-                Innovation – We embrace new ideas and encourage creative
-                problem-solving.
+                <strong>Innovation:</strong> We embrace new ideas and encourage
+                creative problem-solving.
               </li>
               <li>
-                Learning – We are committed to continuous learning and knowledge
-                sharing.
+                <strong>Learning:</strong> We are committed to continuous
+                learning and knowledge sharing.
               </li>
             </ul>
           </div>
