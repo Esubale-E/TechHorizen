@@ -22,25 +22,17 @@ const Navbar = () => {
           </Link>
         </div>
 
+        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           <Link to="/" className={`transition duration-300 ${isActive("/")}`}>
-          <Link to="/" className="hover:text-accent dark:hover:text-highlight">
             Home
           </Link>
           <Link
             to="/about"
             className={`transition duration-300 ${isActive("/about")}`}
           >
-          <Link
-            to="/about"
-            className="hover:text-accent dark:hover:text-highlight"
-          >
             About
           </Link>
-          <Link
-            to="/events"
-            className="hover:text-accent dark:hover:text-highlight"
-          >
           <Link
             to="/events"
             className={`transition duration-300 ${isActive("/events")}`}
@@ -51,16 +43,8 @@ const Navbar = () => {
             to="/blog"
             className={`transition duration-300 ${isActive("/blog")}`}
           >
-          <Link
-            to="/blog"
-            className="hover:text-accent dark:hover:text-highlight"
-          >
             Blog
           </Link>
-          <Link
-            to="/contact"
-            className="hover:text-accent dark:hover:text-highlight"
-          >
           <Link
             to="/contact"
             className={`transition duration-300 ${isActive("/contact")}`}
@@ -69,28 +53,18 @@ const Navbar = () => {
           </Link>
           <Link
             to="/signin"
-            className="hover:text-accent dark:hover:text-highlight"
-          >
-          <Link
-            to="/signin"
             className={`transition duration-300 ${isActive("/signin")}`}
           >
             Sign In
           </Link>
-          
         </div>
 
         {/* Mobile Hamburger Menu */}
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
-            className="text-3xl text-text dark:text-darkText"
-          >
-            <FaBars />
-          <button
-            onClick={toggleMenu}
             aria-label="Toggle menu"
-            className="text-3xl transition duration-300"
+            className="text-3xl transition duration-300 text-text dark:text-darkText"
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -99,42 +73,46 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-700 p-4 mt-2 transition-all duration-300 ease-in-out">
-          <Link to="/" className="block text-white py-2 hover:text-gray-400">
-        <div className="md:hidden bg-background dark:bg-darkBackground p-4 mt-2">
+        <div className="md:hidden bg-gray-700 dark:bg-darkBackground p-4 mt-2 transition-all duration-300 ease-in-out">
           <Link
             to="/"
             className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             to="/about"
             className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             About
           </Link>
           <Link
             to="/events"
             className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Events
           </Link>
           <Link
             to="/blog"
             className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Blog
           </Link>
           <Link
             to="/contact"
             className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Contact
           </Link>
           <Link
             to="/signin"
-            className="block text-white py-2 hover:text-gray-400"
+            className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Sign In
           </Link>
