@@ -16,14 +16,13 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-700 text-white p-4 shadow-md fixed w-full z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        {/* Logo / Brand Name */}
         <div className="text-2xl font-bold">
-          <Link to="/" className="hover:text-gray-400">
+          <Link to="/" className="hover:text-accent dark:hover:text-highlight">
             TechHorizon
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           <Link to="/" className={`transition duration-300 ${isActive("/")}`}>
             Home
@@ -80,25 +79,29 @@ const Navbar = () => {
           </Link>
           <Link
             to="/about"
-            className="block text-white py-2 hover:text-gray-400"
+            className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             About
           </Link>
           <Link
             to="/events"
-            className="block text-white py-2 hover:text-gray-400"
+            className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Events
           </Link>
           <Link
             to="/blog"
-            className="block text-white py-2 hover:text-gray-400"
+            className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Blog
           </Link>
           <Link
             to="/contact"
-            className="block text-white py-2 hover:text-gray-400"
+            className="block text-text dark:text-darkText py-2 hover:text-accent dark:hover:text-highlight"
+            onClick={() => setIsMenuOpen(false)}
           >
             Contact
           </Link>

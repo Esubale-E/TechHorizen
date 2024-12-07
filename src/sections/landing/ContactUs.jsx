@@ -22,21 +22,26 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-16 px-4" id="contact">
+    <section
+      className="bg-background dark:bg-darkBackground py-16 px-4"
+      id="contact"
+    >
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-blue-900 mb-6">Contact Us</h2>
-        <p className="text-lg text-gray-700 mb-12">
+        <h2 className="text-4xl font-bold text-primary dark:text-darkText mb-6">
+          Contact Us
+        </h2>
+        <p className="text-lg text-text dark:text-darkText mb-12">
           We would love to hear from you! If you have any questions or feedback,
           feel free to reach out to us.
         </p>
 
         {/* Contact Form */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="bg-white dark:bg-darkBackground rounded-lg shadow-lg p-8">
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label
                 htmlFor="name"
-                className="block text-sm font-semibold text-gray-700"
+                className="block text-sm font-semibold text-text dark:text-darkText"
               >
                 Name
               </label>
@@ -46,7 +51,7 @@ const ContactUs = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent"
                 required
               />
             </div>
@@ -54,7 +59,7 @@ const ContactUs = () => {
             <div className="mb-6">
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-700"
+                className="block text-sm font-semibold text-text dark:text-darkText"
               >
                 Email
               </label>
@@ -64,7 +69,7 @@ const ContactUs = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent"
                 required
               />
             </div>
@@ -72,7 +77,7 @@ const ContactUs = () => {
             <div className="mb-6">
               <label
                 htmlFor="message"
-                className="block text-sm font-semibold text-gray-700"
+                className="block text-sm font-semibold text-text dark:text-darkText"
               >
                 Message
               </label>
@@ -82,14 +87,14 @@ const ContactUs = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent"
                 required
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              className="w-full bg-primary text-white py-3 rounded-lg hover:bg-accent transition-colors dark:bg-darkAccent dark:hover:bg-darkAccentHover"
             >
               Send Message
             </button>
@@ -98,13 +103,13 @@ const ContactUs = () => {
 
         {/* Contact Information */}
         <div className="mt-12">
-          <h3 className="text-2xl font-semibold text-blue-900 mb-4">
+          <h3 className="text-2xl font-semibold text-primary dark:text-darkText mb-4">
             Our Contact Information
           </h3>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg text-text dark:text-darkText">
             <strong>Email:</strong> contact@techhorizon.com
           </p>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg text-text dark:text-darkText">
             <strong>Phone:</strong> +1 (555) 123-4567
           </p>
 
@@ -116,7 +121,7 @@ const ContactUs = () => {
                   href="https://www.facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-blue-600 hover:text-blue-800 dark:text-accent dark:hover:text-yellow-400"
                 >
                   <i className="fab fa-facebook-square text-2xl"></i>
                 </a>
@@ -126,7 +131,7 @@ const ContactUs = () => {
                   href="https://www.twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-blue-600 hover:text-blue-800 dark:text-accent dark:hover:text-yellow-400"
                 >
                   <i className="fab fa-twitter text-2xl"></i>
                 </a>
@@ -136,7 +141,7 @@ const ContactUs = () => {
                   href="https://www.linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-blue-600 hover:text-blue-800 dark:text-accent dark:hover:text-yellow-400"
                 >
                   <i className="fab fa-linkedin text-2xl"></i>
                 </a>
@@ -146,7 +151,7 @@ const ContactUs = () => {
                   href="https://www.github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-blue-600 hover:text-blue-800 dark:text-accent dark:hover:text-yellow-400"
                 >
                   <i className="fab fa-github text-2xl"></i>
                 </a>
