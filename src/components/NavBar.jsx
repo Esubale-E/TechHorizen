@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa"; // Use react-icons for better icons
+import ToggleTheme from "./ToggleTheme";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,6 +58,7 @@ const Navbar = () => {
           >
             Sign In
           </Link>
+          <ToggleTheme />
         </div>
 
         {/* Mobile Hamburger Menu */}

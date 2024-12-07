@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaToggleOff, FaToggleOn } from "react-icons/fa";
 
 const ToggleTheme = () => {
   const savedTheme = localStorage.getItem("theme");
@@ -22,17 +23,10 @@ const ToggleTheme = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-4 right-4 p-3 bg-gray-800 text-white rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300"
+      className="flex gap-2 text-center  bg-stale-800 text-white  shadow-lg hover:bg-gray-700 transition-colors duration-300"
     >
-      {theme === "light" ? (
-        <span role="img" aria-label="moon">
-          🌙
-        </span>
-      ) : (
-        <span role="img" aria-label="sun">
-          🌞
-        </span>
-      )}
+      Dark Mode
+      {theme === "light" ? <FaToggleOff size={24} /> : <FaToggleOn size={24} />}
     </button>
   );
 };
