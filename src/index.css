@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* React-Calendar Overrides */
+.react-calendar {
+  font-family: "Arial", sans-serif;
+}
+.react-calendar__tile {
+  @apply p-2 text-sm text-gray-700 hover:bg-blue-100 rounded-md;
+}
+.react-calendar__tile--active {
+  @apply bg-blue-500 text-white;
+}
