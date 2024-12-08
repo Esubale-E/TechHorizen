@@ -14,4 +14,15 @@ const Button = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
+const PureButton = ({ children, onClick }) => (
+  <button
+    className="flex items-center space-x-2 focus:outline-none"
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
+
 export default Button;
+export { PureButton };

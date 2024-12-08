@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaToggleOff, FaToggleOn } from "react-icons/fa";
 
-const ToggleTheme = () => {
+// eslint-disable-next-line react/prop-types
+const ToggleTheme = ({ setting }) => {
   const savedTheme = localStorage.getItem("theme");
   const initialTheme = savedTheme || "light";
 
@@ -21,13 +22,22 @@ const ToggleTheme = () => {
   };
 
   return (
-    <button
+    <a
       onClick={toggleTheme}
-      className="flex gap-2 text-center  bg-stale-800 text-white  shadow-lg hover:bg-gray-700 transition-colors duration-300"
+      href="#change-theme"
+      className={`flex items-center ${
+        setting
+          ? "py-2 px-4 hover:bg-gray-200 dark:hover:bg-gray-700"
+          : "hover:text-gray-400"
+      }  text-text dark:text-darkText `}
     >
-      Dark Mode
-      {theme === "light" ? <FaToggleOff size={24} /> : <FaToggleOn size={24} />}
-    </button>
+      {theme === "light" ? (
+        <FaToggleOff className="mr-2 " size={18} />
+      ) : (
+        <FaToggleOn className="mr-2" />
+      )}{" "}
+      Dark Theme
+    </a>
   );
 };
 

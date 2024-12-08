@@ -1,9 +1,23 @@
 import { useState, useEffect, useRef } from "react";
-import { FaUserAlt, FaSignOutAlt, FaCog, FaKey } from "react-icons/fa";
+import { FaUserAlt, FaCog } from "react-icons/fa";
+import Profile from "./Profile";
+import Setting from "./Setting";
+import { PureButton } from "../common/Button";
 
 const Topbar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const toggleButtons = (clicked) => {
+    if (clicked === "profile") {
+      setIsProfileOpen(true);
+      setIsSettingsOpen(false);
+    }
+    if (clicked === "setting") {
+      setIsSettingsOpen(true);
+      setIsProfileOpen(false);
+    }
+  };
 
   const profileRef = useRef(null);
   const settingsRef = useRef(null);
@@ -28,79 +42,33 @@ const Topbar = () => {
   }, []);
 
   return (
-    <header className="fixed w-screen z-50 bg-white dark:bg-darkBackground shadow-md py-4 px-6 pr-8 flex justify-between items-center">
-      {/* Logo Section */}
+    <header className="fixed w-screen z-50 bg-white dark:bg-darkBackground shadow-md py-4 px-6 pr-8 flex justify-between items-center ">
       <div className="text-2xl font-bold text-blue-600 text-center">
         Tech Horizon
       </div>
-      {/* Branding */}
-      <div className="text-2xl font-bold text-primary dark:text-white">
+      <div className="text-xl md:text-2xl font-bold text-primary dark:text-white">
         Student Dashboard
       </div>
-      {/* Navigation Icons */}
       <div className="flex items-center space-x-6">
-        {/* Profile Dropdown */}
-        <div className="relative" ref={profileRef}>
-          <button
-            className="flex items-center space-x-2 focus:outline-none"
-            onClick={() => setIsProfileOpen(!isProfileOpen)}
-          >
+        <div className="" ref={profileRef}>
+          <PureButton onClick={() => toggleButtons("profile")}>
             <FaUserAlt className="text-2xl text-gray-700 dark:text-white" />
-            <span className="text-sm text-gray-700 dark:text-white">
+            <span className="hidden md:block text-sm  text-gray-700 dark:text-white">
               Profile
             </span>
-          </button>
+          </PureButton>
 
-          {isProfileOpen && (
-            <div className="absolute right-0 bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-2 py-2 w-48 z-50">
-              <a
-                href="#profile"
-                className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-              >
-                <FaUserAlt className="mr-2" />
-                View Profile
-              </a>
-              <a
-                href="#logout"
-                className="flex items-center px-4 py-2 text-red-500 dark:text-red-400 hover:bg-gray-200 dark:hover:bg-gray-700"
-              >
-                <FaSignOutAlt className="mr-2" />
-                Logout
-              </a>
-            </div>
-          )}
+          {isProfileOpen && <Profile />}
         </div>
 
-        {/* Settings Dropdown */}
         <div className="relative" ref={settingsRef}>
-          <button
-            className="flex items-center space-x-2 focus:outline-none"
-            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-          >
+          <PureButton onClick={() => toggleButtons("setting")}>
             <FaCog className="text-2xl text-gray-700 dark:text-white" />
-            <span className="text-sm text-gray-700 dark:text-white">
+            <span className="hidden md:block text-sm text-gray-700 dark:text-white">
               Settings
             </span>
-          </button>
-
-          {isSettingsOpen && (
-            <div className="absolute right-0 bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-2 py-2 w-48 z-50">
-              <a
-                href="#account"
-                className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-              >
-                <FaCog className="mr-2" />
-                Account Settings
-              </a>
-              <a
-                href="#change-password"
-                className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-              >
-                <FaKey className="mr-2" />
-                Change Password
-              </a>
-            </div>
-          )}
+          </PureButton>
+          {isSettingsOpen && <Setting profile={()=>toggleButtons('profile')} />}
         </div>
       </div>
     </header>

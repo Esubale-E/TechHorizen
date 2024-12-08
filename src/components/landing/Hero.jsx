@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Heading1 from "../common/Heading1";
+import Heading1 from "../common/Headings";
 import TextHighlight from "../common/TextHighlight";
 import AppLink from "../common/AppLink";
 

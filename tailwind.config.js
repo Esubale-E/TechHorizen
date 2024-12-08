@@ -9,7 +9,7 @@ export default {
         secondary: "#00B0FF",
         accent: "#00B8D4",
         highlight: "#00FF7F",
-        background: "#F7FAFC",
+        background: "#F7FAFC",    
         text: "#333333",
         darkBackground: "#1A2637", // Dark mode background color
         darkText: "#F5F5F5", // Light text for dark mode

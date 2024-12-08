@@ -50,7 +50,9 @@ const Aside = () => {
       <aside
         className={`${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 fixed md:relative left-0 top-0 w-72  bg-white shadow-lg transition-transform duration-300 ease-in-out pt-12 z-40`}
+        } md:translate-x-0 fixed md:relative left-0 top-0 w-72 ${
+          sidebarOpen ? "h-full" : "s-screen"
+        } bg-white shadow-lg transition-transform duration-300 ease-in-out mt-16 z-40`}
         aria-hidden={!sidebarOpen}
       >
         <div className="p-6 text-gray-700">
@@ -85,12 +87,12 @@ const Aside = () => {
       </aside>
 
       {/* Main Content Toggle (Button) */}
-      <div className="flex-1 relative md:hidden">
+      <div className="flex-1 fixed top- left-2 z-50 md:hidden">
         <button
           aria-label="Toggle Sidebar"
           aria-expanded={sidebarOpen}
           onClick={toggleSidebar}
-          className="p-3 bg-blue-500 text-white rounded-lg absolute top-4 left-4 z-50 shadow-md hover:bg-blue-600 transition duration-300"
+          className="p-3 bg-blue-500 text-white rounded-lg absolute top-16 left-4 z-50 shadow-md hover:bg-blue-600 transition duration-300"
         >
           {sidebarOpen ? (
             <FaTimes className="text-lg" />

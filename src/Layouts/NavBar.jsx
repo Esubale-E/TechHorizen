@@ -15,13 +15,13 @@ const Navbar = () => {
       : "hover:text-gray-400";
 
   return (
-    <nav className="bg-gray-700 text-white p-4 shadow-md fixed w-full z-50">
+    <nav className="bg-background dark:bg-darkBackground text-gray-600 p-4 shadow-md fixed w-full z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="text-2xl font-bold">
           <Link
             to="/"
             title="TechHorizon"
-            className="hover:text-accent dark:hover:text-highlight"
+            className="hover:text-accent text-blue-600 dark:hover:text-highlight"
           >
             TechHorizon
           </Link>
@@ -33,12 +33,8 @@ const Navbar = () => {
           <CustomNavLink to="#about" text="About" isActive={isActive} />
           <CustomNavLink to="#events" text="Events" isActive={isActive} />
           <CustomNavLink to="#blog" text="Blog" isActive={isActive} />
-          <CustomNavLink
-            to="#contactus"
-            text="Contact Us"
-            isActive={isActive}
-          />
-          <Link to="signin" isActive={"/signin"}>
+          <CustomNavLink to="#contact" text="Contact" isActive={isActive} />
+          <Link to="signin" className="transition hover:text-gray-400 duration-300 text-text dark:text-darkText">
             Sign In
           </Link>
           <ToggleTheme />
@@ -86,7 +82,12 @@ export default Navbar;
 
 // eslint-disable-next-line react/prop-types
 const CustomNavLink = ({ to, text, isActive }) => (
-  <a href={to} className={`transition duration-300 ${isActive(to)}`}>
+  <a
+    href={to}
+    className={`transition duration-300 ${isActive(
+      to
+    )}  text-text dark:text-darkText`}
+  >
     {text}
   </a>
 );
