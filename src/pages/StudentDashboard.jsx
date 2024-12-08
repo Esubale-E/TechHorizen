@@ -1,37 +1,17 @@
-import { Routes, Route } from "react-router-dom";
-import Layout from "../components/Students/Layout";
-import Events from "../components/Students/Events";
-import Courses from "../components/Students/Cources";
-import Topbar from "../components/Students/Topbar";
-import Blog from "../components/Students/Blog";
-import Resources from "../components/Students/Resources";
-import { useEffect } from "react";
+import TextHighlight from "./../components/common/TextHighlight";
+import Heading1 from "./../components/common/Heading1";
 
-// eslint-disable-next-line react/prop-types
-function StudentDashboard({ changeNav }) {
-  useEffect(() => {
-    changeNav();
-  });
+function StudentDashboard() {
   return (
-    <>
-      <Topbar />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <h2 className="text-center mt-20 text-gray-600">
-                Welcome to the Dashboard!
-              </h2>
-            }
-          />
-          <Route path="/events" element={<Events />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/resource" element={<Resources />} />
-          <Route path="/blog" element={<Blog />} />
-        </Route>
-      </Routes>
-    </>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 to-gray-100">
+      <Heading1>Welcome to the Dashboard!</Heading1>
+      <p className="text-gray-600 text-center max-w-xl">
+        Explore the latest <TextHighlight>events</TextHighlight>,{" "}
+        <TextHighlight>courses</TextHighlight>,{" "}
+        <TextHighlight>resources</TextHighlight>, and{" "}
+        <TextHighlight>blogs</TextHighlight> curated for your tech journey.
+      </p>
+    </div>
   );
 }
 

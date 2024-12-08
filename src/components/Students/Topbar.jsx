@@ -28,12 +28,15 @@ const Topbar = () => {
   }, []);
 
   return (
-    <header className="bg-white dark:bg-darkBackground shadow-md py-4 px-6 flex justify-between items-center">
+    <header className="fixed w-screen z-50 bg-white dark:bg-darkBackground shadow-md py-4 px-6 pr-8 flex justify-between items-center">
+      {/* Logo Section */}
+      <div className="text-2xl font-bold text-blue-600 text-center">
+        Tech Horizon
+      </div>
       {/* Branding */}
-      <div className="text-xl font-bold text-primary dark:text-white">
+      <div className="text-2xl font-bold text-primary dark:text-white">
         Student Dashboard
       </div>
-
       {/* Navigation Icons */}
       <div className="flex items-center space-x-6">
         {/* Profile Dropdown */}

@@ -8,9 +8,6 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  // TODO: will be clear
-  const [isValidAccount, setIsValidAccount] = useState(false);
-
   const handleSignIn = (e) => {
     e.preventDefault();
     setError("");
@@ -21,7 +18,6 @@ const SignIn = () => {
       return;
     }
 
-    setIsValidAccount(true);
     console.log("Email:", email);
     console.log("Password:", password);
   };
@@ -95,7 +91,7 @@ const SignIn = () => {
               border: "none",
             }}
           >
-            <Link to={isValidAccount ? "/studentdashbord" : ""}>Sign In</Link>
+            <Link to={!error ? "/studentDashboard/" : ""}>Sign In</Link>
           </button>
 
           <p className="mt-2 text-sm text-gray-600 text-center">

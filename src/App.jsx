@@ -1,10 +1,10 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
 import LandingPage from "./pages/LandingPage";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import MainLayout from "./layouts/MainLayout";
 import StudentDashboard from "./pages/StudentDashboard";
-import StudentLayout from "./layouts/StudentLayout";
+import StudentLayout from "./Layouts/StudentLayout";
 import Resources from "./components/Students/Resources";
 import Courses from "./components/Students/Cources";
 import Events from "./components/Students/Events";
@@ -23,7 +23,7 @@ const App = () => {
 
         {/* Student Dashboard Navigation */}
         <Route element={<StudentLayout />}>
-          <Route path="/studentDashboard" element={<StudentDashboard />} />
+          <Route path="/studentDashboard/" element={<StudentDashboard />} />
           <Route path="/studentDashboard/events" element={<Events />} />
           <Route path="/studentDashboard/courses" element={<Courses />} />
           <Route path="/studentDashboard/resources" element={<Resources />} />

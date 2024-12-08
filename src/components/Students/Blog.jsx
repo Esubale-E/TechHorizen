@@ -30,7 +30,7 @@ const Blogs = () => {
   ];
 
   return (
-    <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
+    <div className="p-6 w-full bg-gray-100 rounded-lg shadow-lg">
       {/* Header */}
       <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
         Blog Section

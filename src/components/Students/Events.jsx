@@ -12,7 +12,7 @@ const Events = () => {
   );
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg">
+    <div className="p-6 w-full bg-white rounded-lg shadow-lg">
       {/* Header */}
       <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
         Events Calendar

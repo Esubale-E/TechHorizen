@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Topbar from "../components/Students/Topbar"; // Dashboard-specific navigation
+import Aside from "../components/Students/Aside";
 
 const StudentLayout = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Topbar />
-      <div className="p-4">
-        <Outlet /> {/* Content for student pages */}
+      <div className="flex flex-1 bg-gradient-to-r from-blue-100 to-gray-100">
+        <Aside />
+        <Outlet />
       </div>
     </div>
   );
