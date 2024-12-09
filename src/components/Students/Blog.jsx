@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaSearch, FaFilter, FaUser, FaCalendarAlt } from "react-icons/fa";
 import blogs from "../../services/blog";
+
 const Blogs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
@@ -30,9 +31,9 @@ const Blogs = () => {
   ];
 
   return (
-    <div className="p-6 w-full bg-gray-100 rounded-lg shadow-lg">
+    <div className="p-6 w-full bg-background rounded-lg shadow-lg dark:bg-darkbackground">
       {/* Header */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
+      <h2 className="text-4xl font-bold mb-6 text-text text-center dark:text-darktext">
         Blog Section
       </h2>
 
@@ -43,17 +44,17 @@ const Blogs = () => {
           <input
             type="text"
             placeholder="Search blogs..."
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-300 focus:outline-none shadow-sm"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-300 focus:outline-none shadow-sm dark:bg-darksecondarybackground dark:border-darkhighlight dark:text-darktext"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <FaSearch className="absolute right-3 top-3 text-gray-500" />
+          <FaSearch className="absolute right-3 top-3 text-gray-500 dark:text-darkhighlight" />
         </div>
 
         {/* Filter Dropdown */}
         <div className="relative">
           <select
-            className="px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-300 focus:outline-none shadow-sm"
+            className="px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-300 focus:outline-none shadow-sm dark:bg-darksecondarybackground dark:border-darkhighlight dark:text-darktext"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           >
@@ -63,7 +64,7 @@ const Blogs = () => {
               </option>
             ))}
           </select>
-          <FaFilter className="absolute right-3 top-3 text-gray-500" />
+          <FaFilter className="absolute right-3 top-3 text-gray-500 dark:text-darkhighlight" />
         </div>
       </div>
 
@@ -73,7 +74,7 @@ const Blogs = () => {
           displayedBlogs.map((blog, index) => (
             <div
               key={index}
-              className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-white p-4 rounded-lg shadow-md"
+              className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-white p-4 rounded-lg shadow-md dark:bg-darksecondarybackground dark:text-darktext"
             >
               {/* Blog Image */}
               <img
@@ -83,12 +84,12 @@ const Blogs = () => {
               />
 
               {/* Blog Title */}
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              <h3 className="text-xl font-semibold mb-2 text-text dark:text-darktext">
                 {blog.title}
               </h3>
 
               {/* Blog Metadata */}
-              <div className="text-gray-600 text-sm flex items-center mb-2">
+              <div className="text-gray-600 text-sm flex items-center mb-2 dark:text-darkhighlight">
                 <FaUser className="mr-2" />
                 {blog.author}
                 <span className="mx-2">|</span>
@@ -97,13 +98,13 @@ const Blogs = () => {
               </div>
 
               {/* Blog Description */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-4">
+              <p className="text-gray-700 text-sm leading-relaxed mb-4 dark:text-darktext">
                 {blog.description}
               </p>
 
               {/* Read More Button */}
               <button
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200"
+                className="px-4 py-2 bg-primary text-white rounded-lg shadow-md hover:bg-secondary transition duration-200 dark:bg-darkprimary dark:hover:bg-darksecondary"
                 onClick={() => alert(`Reading more about: ${blog.title}`)}
               >
                 Read More
@@ -111,7 +112,7 @@ const Blogs = () => {
             </div>
           ))
         ) : (
-          <p className="text-gray-600 text-center col-span-3">
+          <p className="text-gray-600 text-center col-span-3 dark:text-darkhighlight">
             No blogs found for your search or selected category.
           </p>
         )}
@@ -125,8 +126,8 @@ const Blogs = () => {
               key={i}
               className={`px-4 py-2 rounded-lg shadow-md transition duration-200 ${
                 currentPage === i + 1
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-800 hover:bg-blue-300"
+                  ? "bg-primary text-white"
+                  : "bg-gray-200 text-gray-800 hover:bg-primary dark:bg-darkprimary dark:text-darktext dark:hover:bg-darksecondary"
               }`}
               onClick={() => setCurrentPage(i + 1)}
             >

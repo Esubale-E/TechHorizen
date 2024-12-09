@@ -32,8 +32,8 @@ const Aside = () => {
 
   const isActive = (path) =>
     location.pathname === path
-      ? "bg-blue-200 text-blue-700"
-      : "hover:bg-blue-100";
+      ? "bg-highlight text-darktext"
+      : "hover:bg-highlight hover:text-darktext";
 
   return (
     <>
@@ -52,12 +52,12 @@ const Aside = () => {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 fixed md:relative left-0 top-0 w-72 ${
           sidebarOpen ? "h-full" : "s-screen"
-        } bg-white shadow-lg transition-transform duration-300 ease-in-out mt-16 z-40`}
+        } bg-backgound shadow-lg transition-transform duration-300 ease-in-out mt-16 z-40 dark:bg-darksecondarybackground`}
         aria-hidden={!sidebarOpen}
       >
-        <div className="p-6 text-gray-700">
+        <div className="p-6 text-gray-700 dark:text-darktext">
           {/* Menu Items */}
-          <nav className="space-y-4">
+          <nav className="space-y-4 ">
             <SidebarLink
               to="/studentDashboard/events"
               icon={<FaCalendarAlt />}
@@ -92,7 +92,7 @@ const Aside = () => {
           aria-label="Toggle Sidebar"
           aria-expanded={sidebarOpen}
           onClick={toggleSidebar}
-          className="p-3 bg-blue-500 text-white rounded-lg absolute top-16 left-4 z-50 shadow-md hover:bg-blue-600 transition duration-300"
+          className="p-3 bg-primary text-darktext rounded-lg absolute top-16 left-4 z-50 shadow-md hover:bg-secondary transition duration-300"
         >
           {sidebarOpen ? (
             <FaTimes className="text-lg" />
@@ -109,11 +109,11 @@ const Aside = () => {
 const SidebarLink = ({ to, icon, label, isActive }) => (
   <Link
     to={to}
-    className={`flex items-center py-3 px-4 rounded-lg transition duration-200 ${isActive(
+    className={`flex items-center py-3 px-4  border-b border-highlight w-full transition duration-200 ${isActive(
       to
     )}`}
   >
-    <span className="text-blue-600 mr-3">{icon}</span>
+    <span className="text-accent dark:text-darkaccent mr-3">{icon}</span>
     {label}
   </Link>
 );

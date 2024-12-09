@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* eslint-disable react/prop-types */
 import { FaUser } from "react-icons/fa";
 import studentd from "../../services/studentData";
 
@@ -13,8 +13,8 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
   );
 
   return (
-    <div className=" absolute top-10 right-4 bg-background dark:bg-darkBackground text-text dark:text-darkText pb-2 flex items-center justify-center">
-      <div className="max-w-4xl mx-auto bg-white dark:bg-darkBackground rounded-lg shadow-lg p-8">
+    <div className="absolute top-10 right-4 bg-background dark:bg-darkbackground text-text dark:text-darktext pb-2 flex items-center justify-center">
+      <div className="max-w-4xl mx-auto bg-white dark:bg-darksecondarybackground rounded-lg shadow-lg p-8">
         {/* Profile Picture and Name */}
         <div className="flex items-center justify-around flex-col mb-8">
           <div className="w-32 h-32 rounded-full overflow-hidden shadow-md mb-4">
@@ -27,10 +27,10 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
             )}
           </div>
           <div className="ms-8">
-            <h2 className="text-2xl font-bold text-primary dark:text-highlight mb-2">
+            <h2 className="text-2xl font-bold text-primary dark:text-darkhighlight mb-2">
               {student.name}
             </h2>
-            <p className="text-lg text-secondary dark:text-darkSecondary">
+            <p className="text-lg text-secondary dark:text-darksecondary">
               {student.department}, {student.year} Year
             </p>
           </div>
@@ -40,7 +40,7 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
         <div className="space-y-6">
           {/* Personal Details */}
           <div>
-            <h3 className="text-1xl font-semibold text-primary dark:text-highlight mb-4">
+            <h3 className="text-1xl font-semibold text-primary dark:text-darkhighlight mb-4">
               Personal Details
             </h3>
             <p className="text-sm">
@@ -59,7 +59,7 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
 
           {/* Academic Information */}
           <div>
-            <h3 className="text-2xl font-semibold text-primary dark:text-highlight mb-4">
+            <h3 className="text-2xl font-semibold text-primary dark:text-darkhighlight mb-4">
               Academic Information
             </h3>
             <p>
@@ -79,26 +79,5 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
   );
 };
 
-/* <div className="absolute right-0 bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-2 py-2 w-48 z-50">
-
-            </div>*/
-
-export default StudentProfile;
-
 // Prop Validation
-StudentProfile.propTypes = {
-  studentData: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    profilePicture: PropTypes.string.isRequired,
-    department: PropTypes.string.isRequired,
-    college: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    birthDate: PropTypes.string.isRequired, // Use ISO format for dates
-    password: PropTypes.string.isRequired, // Should be encrypted in production
-  }).isRequired,
-};
-
-export { StudentProfile };
+export default StudentProfile;

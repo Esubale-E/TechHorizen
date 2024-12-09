@@ -6,6 +6,7 @@ import {
   FaFilter,
 } from "react-icons/fa";
 import resources from "../../services/resource";
+
 const Resources = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
@@ -27,9 +28,9 @@ const Resources = () => {
   ];
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg">
+    <div className="p-6 bg-background dark:bg-darkbackground rounded-lg shadow-lg">
       {/* Header */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
+      <h2 className="text-4xl font-bold mb-6 text-text dark:text-darktext text-center">
         Resources
       </h2>
 
@@ -70,22 +71,22 @@ const Resources = () => {
           filteredResources.map((resource, index) => (
             <div
               key={index}
-              className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 p-4 rounded-lg shadow-md"
+              className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-white dark:bg-darksecondarybackground p-4 rounded-lg shadow-md"
             >
               {/* Resource Title */}
               <div className="flex items-center mb-2">
-                <FaBookOpen className="text-blue-600 mr-2" />
-                <h4 className="text-xl font-semibold text-gray-800">
+                <FaBookOpen className="text-primary dark:text-darkprimary mr-2" />
+                <h4 className="text-xl font-semibold text-text dark:text-darktext">
                   {resource.title}
                 </h4>
               </div>
 
               {/* Resource Details */}
-              <p className="text-gray-600 text-sm mb-2">
+              <p className="text-sm text-text dark:text-darktext mb-2">
                 Category:{" "}
                 <span className="font-medium">{resource.category}</span>
               </p>
-              <p className="text-gray-700 text-sm leading-relaxed mb-4">
+              <p className="text-sm text-text dark:text-darktext leading-relaxed mb-4">
                 {resource.description}
               </p>
 
@@ -94,7 +95,7 @@ const Resources = () => {
                 href={resource.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200"
+                className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg shadow-md hover:bg-secondary dark:bg-darkaccent dark:hover:bg-darkhighlight transition duration-200"
               >
                 Visit Resource
                 <FaExternalLinkAlt className="ml-2" />
@@ -102,7 +103,7 @@ const Resources = () => {
             </div>
           ))
         ) : (
-          <p className="text-gray-600 text-center col-span-3">
+          <p className="text-text dark:text-darktext text-center col-span-3">
             No resources found for your search or selected category.
           </p>
         )}
