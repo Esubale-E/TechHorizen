@@ -4,8 +4,8 @@ import {
   FaChalkboardTeacher,
   FaBlog,
 } from "react-icons/fa";
-import { Heading2, Heading3 } from "./../common/Headings";
-import Text from "./../common/Text";
+import { Heading2, Heading3 } from "../common/Headings";
+import Text from "../common/Text";
 
 const Features = () => {
   const features = [
@@ -65,7 +65,7 @@ const Features = () => {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="bg-white dark:bg-darkbackground shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2"
+              className="bg-white dark:bg-darksecondarybackground shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2"
             >
               <div className="mb-4 flex justify-center">{feature.icon}</div>
               <Heading3 className="mb-2">{feature.title}</Heading3>

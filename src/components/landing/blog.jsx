@@ -1,5 +1,5 @@
-import { Heading2 } from "./common/Headings";
-import AppLink from "./common/AppLink";
+import { Heading2 } from "../common/Headings";
+import AppLink from "../common/AppLink";
 
 const blogs = [
   {
@@ -36,7 +36,7 @@ const BlogSection = () => {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white dark:bg-darkbackground rounded-lg shadow-md overflow-hidden"
+              className="bg-white dark:bg-darksecondarybackground rounded-lg shadow-md overflow-hidden"
             >
               {/* Blog Image */}
               <img

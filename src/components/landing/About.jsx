@@ -18,15 +18,7 @@ const AboutUs = () => {
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="flex justify-center items-center">
-            <img
-              src="https://via.placeholder.com/400"
-              alt="Tech Community"
-              className="rounded-lg shadow-lg w-full md:w-2/3 transition-transform duration-300 hover:scale-105"
-            />
-          </div>
-
-          <div className="flex flex-col justify-center text-left">
+          <div className="bg-white dark:bg-darksecondarybackground shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
             <Heading3>Our Vision</Heading3>
             <p className="text-text dark:text-darktext mb-6">
               Our vision is to inspire, educate, and empower the next generation
@@ -34,9 +26,10 @@ const AboutUs = () => {
               fostering a collaborative environment, we aim to help members grow
               professionally and personally in the ever-evolving tech world.
             </p>
-
+          </div>
+          <div className="bg-white dark:bg-darksecondarybackground shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
             <Heading3>Our Values</Heading3>
-            <ul className="list-disc pl-6 text-text dark:text-darktext space-y-2">
+            <ul className=" pl-6 text-text dark:text-darktext list-none space-y-2">
               <li>
                 <strong>Inclusivity:</strong> We believe in creating a welcoming
                 space for all backgrounds and skill levels.

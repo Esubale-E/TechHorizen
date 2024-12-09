@@ -28,12 +28,12 @@ const ContactUs = () => {
 
   return (
     <section
-      className="py-16 px-6 bg-gradient-to-r from-background to-secondary dark:from-darkprimary dark:to-darksecondary"
+      className="py-16 px-6 bg-background dark:bg-darkbackground"
       id="contactus"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Contact Form */}
-        <div className="bg-white dark:bg-darksecondary shadow-lg rounded-xl p-8 transform transition-transform duration-300 hover:scale-105">
+        <div className="bg-white dark:bg-darksecondarybackground shadow-lg rounded-xl p-8 transform transition-transform duration-300 hover:scale-105">
           <h2 className="text-3xl font-bold text-primary dark:text-darkaccent mb-6 text-center">
             Get In Touch
           </h2>
@@ -101,7 +101,7 @@ const ContactUs = () => {
 
             <button
               type="submit"
-              className="w-full bg-accent dark:bg-darkaccent text-white dark:text-darkprimary py-3 rounded-lg font-medium hover:bg-highlight dark:hover:bg-darkhighlight focus:ring-2 focus:ring-accent dark:focus:ring-darkhighlight focus:outline-none transition-transform duration-300 hover:scale-105"
+              className="w-full bg-accent dark:bg-darkaccent text-white dark:text-darktext py-3 rounded-lg font-medium hover:bg-highlight dark:hover:bg-darkaccent focus:ring-2 focus:ring-accent dark:focus:ring-darkhighlight focus:outline-none transition-transform duration-300 hover:scale-105"
             >
               Send Message
             </button>
@@ -115,11 +115,11 @@ const ContactUs = () => {
         </div>
 
         {/* Right Side: Social Media & Links */}
-        <div className="flex flex-col items-center justify-center bg-gradient-to-br from-background to-secondary dark:from-darksecondary dark:to-darkprimary p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+        <div className="flex flex-col items-center justify-center bg-white dark:bg-darksecondarybackground p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
           <h3 className="text-3xl font-bold text-primary dark:text-darkaccent mb-6">
             Connect With Us
           </h3>
-          <p className="text-secondary dark:text-darkhighlight text-center mb-8">
+          <p className="text-secondary dark:text-white text-center mb-8">
             Follow us on social media or reach out directly.
           </p>
 
@@ -129,7 +129,7 @@ const ContactUs = () => {
               href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-accent dark:text-darkaccent transition-transform duration-300 hover:scale-125"
             >
               <FaFacebook size={36} />
             </a>
@@ -137,7 +137,7 @@ const ContactUs = () => {
               href="https://www.twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-accent dark:text-darkaccent transition-transform duration-300 hover:scale-125"
             >
               <FaTwitter size={36} />
             </a>
@@ -145,7 +145,7 @@ const ContactUs = () => {
               href="https://www.linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-accent dark:text-darkaccent transition-transform duration-300 hover:scale-125"
             >
               <FaLinkedin size={36} />
             </a>
@@ -154,7 +154,7 @@ const ContactUs = () => {
               href="https://www.github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-accent dark:text-darkaccent transition-transform duration-300 hover:scale-125"
             >
               <FaGithub size={36} />
             </a>
@@ -162,10 +162,10 @@ const ContactUs = () => {
 
           {/* Contact Info */}
           <div className="space-y-4 text-center">
-            <p className="text-secondary dark:text-darkhighlight">
+            <p className="text-secondary dark:text-darktext">
               <strong>Email:</strong> contact@techhorizon.com
             </p>
-            <p className="text-secondary dark:text-darkhighlight">
+            <p className="text-secondary dark:text-darktext">
               <strong>Phone:</strong> +1 (555) 123-4567
             </p>
           </div>
@@ -174,7 +174,7 @@ const ContactUs = () => {
           <div className="mt-8">
             <a
               href="/about"
-              className="text-primary dark:text-darkhighlight underline hover:text-highlight dark:hover:text-darkaccent transition-transform duration-300 hover:scale-105"
+              className="text-primary dark:text-darkprimary underline hover:text-highlight dark:hover:text-darkaccent transition-transform duration-300 hover:scale-105"
             >
               Learn More About Us
             </a>

@@ -37,7 +37,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bg-gray-600 text-white py-12 px-4 animate-fadeIn"
+      className="bg-slate-800 text-white py-12 px-4 animate-fadeIn"
     >
       <div className="max-w-6xl mx-auto text-center">
         {/* Footer Navigation Links */}
