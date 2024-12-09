@@ -27,15 +27,15 @@ const ToggleTheme = ({ setting }) => {
       href="#change-theme"
       className={`flex items-center ${
         setting
-          ? "py-2 px-4 hover:bg-gray-200 dark:hover:bg-gray-700"
+          ? "py-2 px-4 hover:bg-gray-200 dark:hover:bg-darksecondarybackground"
           : "hover:text-gray-400"
-      }  text-text dark:text-darkText `}
+      } text-text dark:text-darktext`}
     >
       {theme === "light" ? (
-        <FaToggleOff className="mr-2 " size={18} />
+        <FaToggleOff className="mr-2" size={18} />
       ) : (
         <FaToggleOn className="mr-2" />
-      )}{" "}
+      )}
       Dark Theme
     </a>
   );

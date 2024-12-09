@@ -22,22 +22,22 @@ const SignUp = () => {
   };
 
   return (
-    <div
-      className="h-screen flex items-center justify-center"
-      style={{ background: "linear-gradient(135deg, #6a11cb, #2575fc)" }}
-    >
-      <div className="w-[400px] bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+    <div className="h-screen flex items-center justify-center bg-background dark:bg-darkbackground">
+      <div className="w-[400px] bg-white dark:bg-darksecondarybackground rounded-xl shadow-lg p-6">
+        <h2 className="text-xl font-semibold text-primary dark:text-darkprimary mb-4 text-center">
           Create Your Account
         </h2>
-        <p className="text-sm text-gray-500 mb-4 text-center">
+        <p className="text-sm text-text dark:text-darktext mb-4 text-center">
           Join us and start your journey!
         </p>
 
         <form className="flex flex-col space-y-4" onSubmit={handleSignUp}>
           {/* Name Field */}
           <div>
-            <label className="block text-sm text-gray-700 mb-2" htmlFor="name">
+            <label
+              className="block text-sm text-text dark:text-darktext mb-2"
+              htmlFor="name"
+            >
               Name
             </label>
             <Input
@@ -52,7 +52,10 @@ const SignUp = () => {
 
           {/* Email Field */}
           <div>
-            <label className="block text-sm text-gray-700 mb-2" htmlFor="email">
+            <label
+              className="block text-sm text-text dark:text-darktext mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <Input
@@ -68,7 +71,7 @@ const SignUp = () => {
           {/* Password Field */}
           <div className="relative">
             <label
-              className="block text-sm text-gray-700 mb-2"
+              className="block text-sm text-text dark:text-darktext mb-2"
               htmlFor="password"
             >
               Password
@@ -86,15 +89,23 @@ const SignUp = () => {
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
-                <FaEyeSlash size={20} className="mt-8 text-gray-500" />
+                <FaEyeSlash
+                  size={20}
+                  className="mt-8 text-gray-500 dark:text-darktext"
+                />
               ) : (
-                <FaEye size={20} className="mt-8 text-gray-500" />
+                <FaEye
+                  size={20}
+                  className="mt-8 text-gray-500 dark:text-darktext"
+                />
               )}
             </div>
           </div>
+
+          {/* Confirm Password Field */}
           <div className="relative">
             <label
-              className="block text-sm text-gray-700 mb-2"
+              className="block text-sm text-text dark:text-darktext mb-2"
               htmlFor="confirmPassword"
             >
               Confirm Password
@@ -112,9 +123,15 @@ const SignUp = () => {
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? (
-                <FaEyeSlash size={20} className="mt-8 text-gray-500" />
+                <FaEyeSlash
+                  size={20}
+                  className="mt-8 text-gray-500 dark:text-darktext"
+                />
               ) : (
-                <FaEye size={20} className="mt-8  text-gray-500" />
+                <FaEye
+                  size={20}
+                  className="mt-8 text-gray-500 dark:text-darktext"
+                />
               )}
             </div>
           </div>
@@ -122,7 +139,7 @@ const SignUp = () => {
           <Button type="submit">Sign Up</Button>
         </form>
 
-        <p className="mt-4 text-sm text-gray-700 text-center">
+        <p className="mt-4 text-sm text-text dark:text-darktext text-center">
           Already have an account? <AppLink to="/signin">Sign In</AppLink>
         </p>
       </div>

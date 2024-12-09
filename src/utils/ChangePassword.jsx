@@ -32,9 +32,9 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <section className="absolute top-18 right-6 flex justify-center items-center bg-background dark:bg-darkBackground">
-      <div className="max-w-md mx-auto bg-white dark:bg-darkBackground shadow-md rounded-lg p-6">
-        <h2 className="text-xl font-bold text-primary dark:text-darkPrimary mb-6">
+    <section className="absolute top-18 right-6 flex justify-center items-center bg-background dark:bg-darkbackground">
+      <div className="max-w-md mx-auto bg-white dark:bg-darkbackground shadow-md rounded-lg p-6">
+        <h2 className="text-xl font-bold text-primary dark:text-darkprimary mb-6">
           Change Password
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -42,7 +42,7 @@ const ChangePasswordForm = () => {
           <div>
             <label
               htmlFor="currentPassword"
-              className="block text-sm font-medium text-text dark:text-darkText mb-1"
+              className="block text-sm font-medium text-text dark:text-darktext mb-1"
             >
               Current Password
             </label>
@@ -50,7 +50,7 @@ const ChangePasswordForm = () => {
               type="password"
               id="currentPassword"
               {...register("currentPassword")}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-darkSecondary rounded-lg focus:ring-secondary focus:border-secondary dark:focus:ring-darkSecondary dark:focus:border-darkSecondary"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-darksecondary rounded-lg focus:ring-secondary focus:border-secondary dark:focus:ring-darksecondary dark:focus:border-darksecondary"
               placeholder="Enter your current password"
             />
             <p className="text-red-600 text-sm">
@@ -62,7 +62,7 @@ const ChangePasswordForm = () => {
           <div>
             <label
               htmlFor="newPassword"
-              className="block text-sm font-medium text-text dark:text-darkText mb-1"
+              className="block text-sm font-medium text-text dark:text-darktext mb-1"
             >
               New Password
             </label>
@@ -70,7 +70,7 @@ const ChangePasswordForm = () => {
               type="password"
               id="newPassword"
               {...register("newPassword")}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-darkSecondary rounded-lg focus:ring-secondary focus:border-secondary dark:focus:ring-darkSecondary dark:focus:border-darkSecondary"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-darksecondary rounded-lg focus:ring-secondary focus:border-secondary dark:focus:ring-darksecondary dark:focus:border-darksecondary"
               placeholder="Enter your new password"
             />
             <p className="text-red-600 text-sm">
@@ -82,7 +82,7 @@ const ChangePasswordForm = () => {
           <div>
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-medium text-text dark:text-darkText mb-1"
+              className="block text-sm font-medium text-text dark:text-darktext mb-1"
             >
               Confirm New Password
             </label>
@@ -90,7 +90,7 @@ const ChangePasswordForm = () => {
               type="password"
               id="confirmPassword"
               {...register("confirmPassword")}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-darkSecondary rounded-lg focus:ring-secondary focus:border-secondary dark:focus:ring-darkSecondary dark:focus:border-darkSecondary"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-darksecondary rounded-lg focus:ring-secondary focus:border-secondary dark:focus:ring-darksecondary dark:focus:border-darksecondary"
               placeholder="Re-enter your new password"
             />
             <p className="text-red-600 text-sm">
@@ -101,7 +101,7 @@ const ChangePasswordForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary dark:bg-darkPrimary dark:hover:bg-darkSecondary transition-colors"
+            className="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary dark:bg-darkprimary dark:hover:bg-darksecondary transition-colors"
           >
             Change Password
           </button>

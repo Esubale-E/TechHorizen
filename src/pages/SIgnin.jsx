@@ -23,27 +23,27 @@ const SignIn = () => {
   };
 
   return (
-    <div
-      className="h-screen flex items-center justify-center"
-      style={{ background: "linear-gradient(135deg, #6a11cb, #2575fc)" }}
-    >
-      <div className="w-[350px] bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+    <div className="h-screen flex items-center justify-center bg-background dark:bg-darkbackground">
+      <div className="w-[350px] bg-white dark:bg-darksecondarybackground rounded-xl shadow-lg p-6">
+        <h2 className="text-2xl font-semibold text-primary dark:text-darkprimary mb-4 text-center">
           Welcome Back
         </h2>
-        <p className="text-sm text-gray-500 mb-6 text-center">
+        <p className="text-sm text-text dark:text-darktext mb-6 text-center">
           Sign in to your account
         </p>
 
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
-        <form className="flex flex-col " onSubmit={handleSignIn}>
+        <form className="flex flex-col" onSubmit={handleSignIn}>
           <div className="mb-4">
-            <label className="block text-sm text-gray-700 mb-2" htmlFor="email">
+            <label
+              className="block text-sm text-text dark:text-darktext mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
-              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+              className="w-full p-2 text-lg border border-gray-300 dark:border-darksecondary rounded-xl focus:outline-none focus:ring-secondary focus:border-secondary dark:focus:ring-darksecondary dark:focus:border-darksecondary shadow-sm transition-all duration-300 ease-in-out"
               type="email"
               id="email"
               placeholder="Enter your email"
@@ -55,13 +55,13 @@ const SignIn = () => {
 
           <div className="mb-4 relative">
             <label
-              className="block text-sm text-gray-700 mb-2"
+              className="block text-sm text-text dark:text-darktext mb-2"
               htmlFor="password"
             >
               Password
             </label>
             <input
-              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+              className="w-full p-2 text-lg border border-gray-300 dark:border-darksecondary rounded-xl focus:outline-none focus:ring-secondary focus:border-secondary dark:focus:ring-darksecondary dark:focus:border-darksecondary shadow-sm transition-all duration-300 ease-in-out"
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder="Enter your password"
@@ -71,44 +71,36 @@ const SignIn = () => {
             />
             <button
               type="button"
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 dark:text-darktext"
               onClick={() => setShowPassword(!showPassword)}
               aria-label="Toggle password visibility"
             >
-              {showPassword ? (
-                <FiEyeOff className="mt-8  text-gray-600" />
-              ) : (
-                <FiEye className="mt-8  text-gray-600" />
-              )}
+              {showPassword ? <FiEyeOff /> : <FiEye />}
             </button>
           </div>
 
           <button
-            className="w-full py-2 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 ease-in-out transform hover:scale-105"
+            className="w-full py-2 text-lg font-semibold text-white bg-primary dark:bg-darkprimary rounded-xl hover:bg-secondary dark:hover:bg-darksecondary transition-all duration-300 ease-in-out"
             type="submit"
-            style={{
-              background: "linear-gradient(135deg, #6a11cb, #2575fc)",
-              border: "none",
-            }}
           >
             <Link to={!error ? "/studentDashboard/" : ""}>Sign In</Link>
           </button>
 
-          <p className="mt-2 text-sm text-gray-600 text-center">
+          <p className="mt-2 text-sm text-text dark:text-darktext text-center">
             <a
               href="#"
-              className="text-purple-600 hover:text-indigo-600 transition-all duration-300 ease-in-out"
+              className="text-accent dark:text-darkaccent hover:text-secondary dark:hover:text-darksecondary transition-all duration-300 ease-in-out"
             >
               Forgot Password?
             </a>
           </p>
         </form>
 
-        <p className="mt-4 text-sm text-gray-700 text-center">
+        <p className="mt-4 text-sm text-text dark:text-darktext text-center">
           Don’t have an account?{" "}
           <Link
             to="/signup"
-            className="text-purple-600 hover:text-indigo-600 transition-all duration-300 ease-in-out"
+            className="text-primary dark:text-darkprimary hover:text-secondary dark:hover:text-darksecondary transition-all duration-300 ease-in-out"
           >
             Sign Up
           </Link>

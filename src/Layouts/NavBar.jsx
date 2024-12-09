@@ -15,7 +15,7 @@ const Navbar = () => {
       : "hover:text-gray-400";
 
   return (
-    <nav className="bg-background dark:bg-darkBackground text-gray-600 p-4 shadow-md fixed w-full z-50">
+    <nav className="bg-background dark:bg-darkbackground text-gray-600 p-4 shadow-md fixed w-full z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="text-2xl font-bold">
           <Link
@@ -34,7 +34,10 @@ const Navbar = () => {
           <CustomNavLink to="#events" text="Events" isActive={isActive} />
           <CustomNavLink to="#blog" text="Blog" isActive={isActive} />
           <CustomNavLink to="#contact" text="Contact" isActive={isActive} />
-          <Link to="signin" className="transition hover:text-gray-400 duration-300 text-text dark:text-darkText">
+          <Link
+            to="signin"
+            className="transition hover:text-gray-400 duration-300 text-text dark:text-darktext"
+          >
             Sign In
           </Link>
           <ToggleTheme />
@@ -86,7 +89,7 @@ const CustomNavLink = ({ to, text, isActive }) => (
     href={to}
     className={`transition duration-300 ${isActive(
       to
-    )}  text-text dark:text-darkText`}
+    )}  text-text dark:text-darktext`}
   >
     {text}
   </a>
