@@ -1,3 +1,6 @@
+import { Heading2 } from "./common/Headings";
+import AppLink from "./common/AppLink";
+
 const blogs = [
   {
     id: 1,
@@ -17,15 +20,13 @@ const BlogSection = () => {
   return (
     <section
       id="blog"
-      className="bg-background dark:bg-darkBackground py-12 px-6"
+      className="bg-background dark:bg-darkbackground py-12 px-6"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-primary dark:text-darkPrimary">
-            Latest Blogs
-          </h2>
-          <p className="text-secondary dark:text-darkSecondary mt-4">
+          <Heading2>Latest Blogs</Heading2>
+          <p className="text-secondary dark:text-darksecondary mt-4">
             Stay updated with our latest articles and insights
           </p>
         </div>
@@ -35,7 +36,7 @@ const BlogSection = () => {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white dark:bg-darkBackground rounded-lg shadow-md overflow-hidden"
+              className="bg-white dark:bg-darkbackground rounded-lg shadow-md overflow-hidden"
             >
               {/* Blog Image */}
               <img
@@ -50,17 +51,12 @@ const BlogSection = () => {
                 </h3>
 
                 {/* Blog Description */}
-                <p className="text-text dark:text-darkText mb-4">
+                <p className="text-text dark:text-darktext mb-4">
                   {blog.description}
                 </p>
 
                 {/* Read More Button */}
-                <a
-                  href={`/blog/${blog.id}`}
-                  className="text-secondary dark:text-darkSecondary font-bold hover:underline"
-                >
-                  Read More →
-                </a>
+                <AppLink to={`/blog/${blog.id}`}>Read More →</AppLink>
               </div>
             </div>
           ))}

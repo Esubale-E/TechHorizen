@@ -6,16 +6,18 @@ export default {
     extend: {
       colors: {
         primary: "#003366",
-        secondary: "#00B0FF",
-        accent: "#00B8D4",
-        highlight: "#00FF7F",
-        background: "#F7FAFC",    
-        text: "#333333",
-        darkBackground: "#1A2637", // Dark mode background color
-        darkText: "#F5F5F5", // Light text for dark mode
-        // Optional: Add more specific dark mode colors if needed
-        darkPrimary: "#002244", // Dark mode primary color
-        darkSecondary: "#0066FF", // Dark mode secondary color
+        secondary: "#4D7094",
+        accent: "#e1b813",
+        background: "#E6EBF0",
+        text: "#002447",
+        highlight: "#6685A3",
+        // Dark mode
+        darkprimary: "#232E38",
+        darksecondary: "#39434C",
+        darkaccent: "#7B8288",
+        darkbackground: "#0A0E11",
+        darktext: "#E9EAEB",
+        darkhighlight: "#4F5860",
       },
     },
   },
