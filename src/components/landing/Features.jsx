@@ -4,8 +4,7 @@ import {
   FaChalkboardTeacher,
   FaBlog,
 } from "react-icons/fa";
-import { Heading2, Heading3 } from "./../common/Headings";
-import Text from "./../common/Text";
+import { Heading2, Heading3 } from "../common/Headings";
 
 const Features = () => {
   const features = [
@@ -54,12 +53,12 @@ const Features = () => {
     >
       <div className="text-center max-w-6xl mx-auto">
         <Heading2>What We Offer</Heading2>
-        <Text className="text-lg mb-12">
+        <p className="text-lg mb-12">
           At TechHorizon, we bring together tech enthusiasts, professionals, and
           learners. We offer engaging events, collaborative workshops, valuable
           networking opportunities, and insightful blog content to help you
           grow.
-        </Text>
+        </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature) => (
@@ -69,7 +68,7 @@ const Features = () => {
             >
               <div className="mb-4 flex justify-center">{feature.icon}</div>
               <Heading3 className="mb-2">{feature.title}</Heading3>
-              <Text>{feature.description}</Text>
+              <p>{feature.description}</p>
             </div>
           ))}
         </div>

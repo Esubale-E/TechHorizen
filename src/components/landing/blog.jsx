@@ -1,5 +1,5 @@
-import { Heading2 } from "./common/Headings";
-import AppLink from "./common/AppLink";
+import { Heading2 } from "../common/Headings";
+import AppLink from "../common/AppLink";
 
 const blogs = [
   {
