@@ -19,7 +19,7 @@ const Heading2 = ({ children }) => {
 // eslint-disable-next-line react/prop-types
 const Heading3 = ({ children }) => {
   return (
-    <h3 className="text-xl font-semibold text-highlight dark:text-darkhighlight mb-4 text-center">
+    <h3 className="text-xl font-semibold text-highlight dark:text-darkaccent mb-4 text-center">
       {children}
     </h3>
   );

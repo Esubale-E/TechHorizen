@@ -21,7 +21,7 @@ const Event = () => {
           {events.map((event, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-darkbackground rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+              className="bg-white dark:bg-darksecondarybackground rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
             >
               {/* Event Title */}
               <Heading3>{event.title}</Heading3>

@@ -28,7 +28,7 @@ const ContactUs = () => {
 
   return (
     <section
-      className="py-16 px-6 bg-background  dark:from-darkprimary dark:to-darksecondary"
+      className="py-16 px-6 bg-background dark:bg-darkbackground"
       id="contactus"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -101,7 +101,7 @@ const ContactUs = () => {
 
             <button
               type="submit"
-              className="w-full bg-accent dark:bg-darkaccent text-white dark:text-darkprimary py-3 rounded-lg font-medium hover:bg-highlight dark:hover:bg-darkhighlight focus:ring-2 focus:ring-accent dark:focus:ring-darkhighlight focus:outline-none transition-transform duration-300 hover:scale-105"
+              className="w-full bg-darkaccent dark:bg-darkaccent text-white dark:text-darktext py-3 rounded-lg font-medium hover:bg-highlight  focus:ring-2 focus:ring-accent dark:focus:ring-darkhighlight focus:outline-none transition-transform duration-300 hover:scale-105"
             >
               Send Message
             </button>
@@ -115,11 +115,11 @@ const ContactUs = () => {
         </div>
 
         {/* Right Side: Social Media & Links */}
-        <div className="flex flex-col items-center justify-center bg-background dark:from-darksecondary dark:to-darkprimary p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+        <div className="flex flex-col items-center justify-center bg-background dark:bg-darksecondary p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
           <h3 className="text-3xl font-bold text-primary dark:text-darkaccent mb-6">
             Connect With Us
           </h3>
-          <p className="text-secondary dark:text-darkhighlight text-center mb-8">
+          <p className="text-secondary dark:text-darktext text-center mb-8">
             Follow us on social media or reach out directly.
           </p>
 
@@ -129,7 +129,7 @@ const ContactUs = () => {
               href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-darkaccent transition-transform duration-300 hover:scale-125"
             >
               <FaFacebook size={36} />
             </a>
@@ -137,7 +137,8 @@ const ContactUs = () => {
               href="https://www.twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-darkaccent
+              transition-transform duration-300 hover:scale-125"
             >
               <FaTwitter size={36} />
             </a>
@@ -145,7 +146,8 @@ const ContactUs = () => {
               href="https://www.linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-darkaccent
+              transition-transform duration-300 hover:scale-125"
             >
               <FaLinkedin size={36} />
             </a>
@@ -154,7 +156,8 @@ const ContactUs = () => {
               href="https://www.github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent dark:text-darkhighlight transition-transform duration-300 hover:scale-125"
+              className="text-darkaccent
+              transition-transform duration-300 hover:scale-125"
             >
               <FaGithub size={36} />
             </a>
@@ -162,10 +165,10 @@ const ContactUs = () => {
 
           {/* Contact Info */}
           <div className="space-y-4 text-center">
-            <p className="text-secondary dark:text-darkhighlight">
+            <p className="text-secondary dark:text-white">
               <strong>Email:</strong> contact@techhorizon.com
             </p>
-            <p className="text-secondary dark:text-darkhighlight">
+            <p className="text-secondary dark:text-white">
               <strong>Phone:</strong> +1 (555) 123-4567
             </p>
           </div>
@@ -174,7 +177,7 @@ const ContactUs = () => {
           <div className="mt-8">
             <a
               href="/about"
-              className="text-primary dark:text-darkhighlight underline hover:text-highlight dark:hover:text-darkaccent transition-transform duration-300 hover:scale-105"
+              className="text-primary dark:text-darktext underline hover:text-highlight dark:hover:text-darkaccent transition-transform duration-300 hover:scale-105"
             >
               Learn More About Us
             </a>

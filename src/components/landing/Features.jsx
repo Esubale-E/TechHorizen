@@ -11,7 +11,7 @@ const Features = () => {
     {
       id: 1,
       icon: (
-        <FaCalendarAlt className="text-4xl text-primary dark:text-accent transition duration-300 hover:text-accent" />
+        <FaCalendarAlt className="text-4xl text-primary dark:text-darkaccent transition duration-300 hover:text-accent" />
       ),
       title: "Upcoming Events",
       description:
@@ -20,7 +20,7 @@ const Features = () => {
     {
       id: 2,
       icon: (
-        <FaUsersCog className="text-4xl text-primary dark:text-accent transition duration-300 hover:text-accent" />
+        <FaUsersCog className="text-4xl text-primary dark:text-darkaccent transition duration-300 hover:text-accent" />
       ),
       title: "Collaborative Workshops",
       description:
@@ -29,7 +29,7 @@ const Features = () => {
     {
       id: 3,
       icon: (
-        <FaChalkboardTeacher className="text-4xl text-primary dark:text-accent transition duration-300 hover:text-accent" />
+        <FaChalkboardTeacher className="text-4xl text-primary dark:text-darkaccent transition duration-300 hover:text-accent" />
       ),
       title: "Tech Talks & Webinars",
       description:
@@ -38,7 +38,7 @@ const Features = () => {
     {
       id: 4,
       icon: (
-        <FaBlog className="text-4xl text-primary dark:text-accent transition duration-300 hover:text-accent" />
+        <FaBlog className="text-4xl text-primary dark:text-darkaccent transition duration-300 hover:text-accent" />
       ),
       title: "Tech Blog",
       description:
@@ -53,7 +53,7 @@ const Features = () => {
     >
       <div className="text-center max-w-6xl mx-auto">
         <Heading2>What We Offer</Heading2>
-        <p className="text-lg mb-12">
+        <p className="text-lg mb-12 dark:text-darktext">
           At TechHorizon, we bring together tech enthusiasts, professionals, and
           learners. We offer engaging events, collaborative workshops, valuable
           networking opportunities, and insightful blog content to help you
@@ -64,7 +64,8 @@ const Features = () => {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="bg-white dark:bg-darkbackground shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2"
+              className="bg-white dark:bg-darksecondarybackground 
+              text-text dark:text-darktext shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2"
             >
               <div className="mb-4 flex justify-center">{feature.icon}</div>
               <Heading3 className="mb-2">{feature.title}</Heading3>
