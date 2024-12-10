@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Topbar from "../components/Students/Topbar"; // Dashboard-specific navigation
+import Topbar from "../components/Students/Topbar";
 import Aside from "../components/Students/Aside";
 import ProfileDetail from "../components/Students/Profile";
-import { useState } from "react";
 
 const StudentLayout = () => {
   const [showProfile, setShowProfile] = useState(false);

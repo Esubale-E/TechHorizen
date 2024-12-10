@@ -113,7 +113,7 @@ const SidebarLink = ({ to, icon, label, isActive }) => (
       to
     )}`}
   >
-    <span className="text-accent dark:text-darkaccent mr-3">{icon}</span>
+    <span className="text-darkaccent dark:text-darkaccent mr-3">{icon}</span>
     {label}
   </Link>
 );
