@@ -1,4 +1,4 @@
-Tech Horizon Educational Team Website
+TECH HORIZON EDUCATIONAL TEAM WEBSITE:
 Welcome to the Tech Horizon Educational Team's website! This platform is designed to bring together educators, students, 
 and tech enthusiasts, fostering a collaborative learning environment. The website provides resources, tools,
 and a community space for all members to connect, learn, and grow.
