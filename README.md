@@ -2,16 +2,16 @@
 
 Welcome to the Tech Horizon Educational Team's website! This platform is designed to bring together educators, students, and tech enthusiasts, fostering a collaborative learning environment. The website provides resources, tools,and a community space for all members to connect, learn, and grow.
 
-Table of Contents
-Project Overview
-Technologies Used
-Features
-Contributors
-Installation
-Usage
-Contributing
-License
-Contact
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Technologies Used](#technologies-used)
+3. [Features](#features)
+4. [Contributors](#contributors)
+5. [Installation](#installation)
+6. [Usage](#usage)
+7. [Contributing](#contributing)
+8. [Contact](#contact)
 
 ## Project Overview
 
@@ -58,6 +58,8 @@ Esubale Endale - Full Stack Developer and Database Specialist
 Abreham Nuradis - Project Lead and Full Stack Developer
 
 We would like to thank everyone who has contributed to this project. Feel free to open an issue or submit a pull request if you'd like to contribute.
+
+## installation
 
 ### To set up this project locally, follow these steps
 
