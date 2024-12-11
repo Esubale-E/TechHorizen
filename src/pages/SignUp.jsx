@@ -22,10 +22,7 @@ const SignUp = () => {
   };
 
   return (
-    <div
-      className="h-screen flex items-center justify-center"
-      style={{ background: "linear-gradient(135deg, #6a11cb, #2575fc)" }}
-    >
+    <div className="h-screen flex items-center justify-center">
       <div className="w-[400px] bg-white rounded-xl shadow-lg p-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
           Create Your Account

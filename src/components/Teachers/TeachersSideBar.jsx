@@ -1,17 +1,19 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
+  FaChalkboardTeacher,
+  FaBookOpen,
   FaCalendarAlt,
-  FaBook,
+  FaFileAlt,
   FaPen,
-  FaFolderOpen,
 } from "react-icons/fa";
 
-const Aside = () => {
+const TeachersSideBar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const location = useLocation(); // Get current location for active link styling
+  const location = useLocation();
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -32,8 +34,8 @@ const Aside = () => {
 
   const isActive = (path) =>
     location.pathname === path
-      ? "bg-blue-200 text-blue-700"
-      : "hover:bg-blue-100";
+      ? "bg-secondary text-white"
+      : "hover:bg-secondary hover:text-white";
 
   return (
     <>
@@ -49,50 +51,56 @@ const Aside = () => {
       {/* Sidebar */}
       <aside
         className={`${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 fixed md:relative left-0 top-0 w-72 ${
-          sidebarOpen ? "h-full" : "s-screen"
-        } bg-white shadow-lg transition-transform duration-300 ease-in-out mt-16 z-40`}
+          sidebarOpen ? "translate-x-0  h-full" : "-translate-x-full"
+        } md:translate-x-0 fixed md:relative left-0 top-0 w-72 bg-white text-primary shadow-lg transition-transform duration-300 ease-in-out z-40`}
         aria-hidden={!sidebarOpen}
       >
-        <div className="p-6 text-gray-700">
+        <div className="p-6">
+
+
           {/* Menu Items */}
           <nav className="space-y-4">
             <SidebarLink
-              to="/student/events"
-              icon={<FaCalendarAlt />}
-              label="Events"
+              to="/teacher/dashboard"
+              icon={<FaChalkboardTeacher />}
+              label="Dashboard"
               isActive={isActive}
             />
             <SidebarLink
-              to="/student/courses"
-              icon={<FaBook />}
+              to="/teacher/courses"
+              icon={<FaBookOpen />}
               label="Courses"
               isActive={isActive}
             />
             <SidebarLink
-              to="/student/blog"
-              icon={<FaPen />}
-              label="Blog"
+              to="/teacher/schedule"
+              icon={<FaCalendarAlt />}
+              label="Schedule"
               isActive={isActive}
             />
             <SidebarLink
-              to="/student/resources"
-              icon={<FaFolderOpen />}
+              to="/teacher/resources"
+              icon={<FaFileAlt />}
               label="Resources"
+              isActive={isActive}
+            />
+            <SidebarLink
+              to="/teacher/blog"
+              icon={<FaPen />}
+              label="Blog"
               isActive={isActive}
             />
           </nav>
         </div>
       </aside>
 
-      {/* Main Content Toggle (Button) */}
-      <div className="flex-1 fixed top- left-2 z-50 md:hidden">
+      {/* Sidebar Toggle Button */}
+      <div className="fixed top-4 left-4 z-50 md:hidden">
         <button
           aria-label="Toggle Sidebar"
           aria-expanded={sidebarOpen}
           onClick={toggleSidebar}
-          className="p-3 bg-blue-500 text-white rounded-lg absolute top-16 left-4 z-50 shadow-md hover:bg-blue-600 transition duration-300"
+          className="p-3 bg-accent text-white rounded-lg shadow-md hover:bg-accent-dark transition duration-300"
         >
           {sidebarOpen ? (
             <FaTimes className="text-lg" />
@@ -105,7 +113,6 @@ const Aside = () => {
   );
 };
 
-// eslint-disable-next-line react/prop-types
 const SidebarLink = ({ to, icon, label, isActive }) => (
   <Link
     to={to}
@@ -113,9 +120,9 @@ const SidebarLink = ({ to, icon, label, isActive }) => (
       to
     )}`}
   >
-    <span className="text-blue-600 mr-3">{icon}</span>
+    <span className="text-lg mr-3">{icon}</span>
     {label}
   </Link>
 );
 
-export default Aside;
+export default TeachersSideBar;

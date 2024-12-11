@@ -1,14 +1,17 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SIgnIn";
 import MainLayout from "./layouts/MainLayout";
-import Dashboard from "./components/Students/Dashboard";
 import StudentLayout from "./Layouts/StudentLayout";
+import Dashboard from "./components/Students/Dashboard";
 import Resources from "./components/Students/Resources";
 import Courses from "./components/Students/Cources";
 import Events from "./components/Students/Events";
 import Blog from "./components/Students/Blog";
+import TeachersLayout from "./Layouts/TeachersLayout";
+import TeachersCourse from "./components/Teachers/TeachersCourse";
+import TeacherCourseDetail from "./components/Teachers/TeachersCourseDetail";
 
 const App = () => {
   return (
@@ -23,11 +26,27 @@ const App = () => {
 
         {/* Student Dashboard Navigation */}
         <Route element={<StudentLayout />}>
-          <Route path="/studentDashboard/" element={<Dashboard />} />
-          <Route path="/studentDashboard/events" element={<Events />} />
-          <Route path="/studentDashboard/courses" element={<Courses />} />
-          <Route path="/studentDashboard/resources" element={<Resources />} />
-          <Route path="/studentDashboard/blog" element={<Blog />} />
+          <Route path="/student/" element={<Dashboard />} />
+          <Route path="/student/events" element={<Events />} />
+          <Route path="/student/courses" element={<Courses />} />
+          <Route path="/student/resources" element={<Resources />} />
+          <Route path="/student/blog" element={<Blog />} />
+        </Route>
+
+        {/* Student Dashboard Navigation */}
+        <Route element={<TeachersLayout />}>
+          <Route path="/teacher/" element={<Dashboard />} />
+          <Route path="/teacher/events" element={<Events />} />
+          <Route
+            path="/teacher/courses"
+            element={<TeachersCourse currentTeacherName={"Dr. Alan Turing"} />}
+          />
+          <Route
+            path="/teacher/coursedetail"
+            element={<TeacherCourseDetail />}
+          />
+          <Route path="/teacher/resources" element={<Resources />} />
+          <Route path="/teacher/blog" element={<Blog />} />
         </Route>
       </Routes>
     </BrowserRouter>

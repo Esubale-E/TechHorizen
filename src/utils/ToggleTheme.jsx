@@ -32,9 +32,9 @@ const ToggleTheme = ({ setting }) => {
       }  text-text dark:text-darkText `}
     >
       {theme === "light" ? (
-        <FaToggleOff className="mr-2 " size={18} />
+        <FaToggleOff className="mr-2 " size={24} />
       ) : (
-        <FaToggleOn className="mr-2" />
+        <FaToggleOn className="mr-2" size={24} />
       )}{" "}
       Dark Theme
     </a>

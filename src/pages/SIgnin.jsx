@@ -17,15 +17,11 @@ const SignIn = () => {
       setError("Please fill in both fields.");
       return;
     }
-
-    console.log("Email:", email);
-    console.log("Password:", password);
   };
 
   return (
     <div
       className="h-screen flex items-center justify-center"
-      style={{ background: "linear-gradient(135deg, #6a11cb, #2575fc)" }}
     >
       <div className="w-[350px] bg-white rounded-xl shadow-lg p-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
@@ -91,7 +87,7 @@ const SignIn = () => {
               border: "none",
             }}
           >
-            <Link to={!error ? "/studentDashboard/" : ""}>Sign In</Link>
+            <Link to={!error ? "/student/" : ""}>Sign In</Link>
           </button>
 
           <p className="mt-2 text-sm text-gray-600 text-center">

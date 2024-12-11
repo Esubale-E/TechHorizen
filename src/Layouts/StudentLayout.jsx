@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Topbar from "../components/Students/Topbar"; // Dashboard-specific navigation
+import Topbar from "../components/Students/StudentsTopbar"; // Dashboard-specific navigation
 import Aside from "../components/Students/Aside";
 import ProfileDetail from "../components/Students/Profile";
 import { useState } from "react";

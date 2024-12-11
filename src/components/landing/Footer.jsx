@@ -4,18 +4,17 @@ import {
   FaLinkedin,
   FaGithub,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   // Footer Navigation Links
   const navLinks = [
-    { path: "/", label: "Home", aria: "Go to Home Page" },
-    { path: "/about", label: "About", aria: "Learn more About Us" },
-    { path: "/events", label: "Events", aria: "View Upcoming Events" },
-    { path: "/blog", label: "Blog", aria: "Read our Blog" },
-    { path: "/contact", label: "Contact", aria: "Contact Us" },
+    { path: "#", label: "Home", aria: "Go to Home Page" },
+    { path: "#about", label: "About", aria: "Learn more About Us" },
+    { path: "#events", label: "Events", aria: "View Upcoming Events" },
+    { path: "#blog", label: "Blog", aria: "Read our Blog" },
+    { path: "#contact", label: "Contact", aria: "Contact Us" },
   ];
 
   // Social Media Links
@@ -48,13 +47,13 @@ const Footer = () => {
                 key={index}
                 className="hover:scale-110 transition-transform duration-300"
               >
-                <Link
-                  to={link.path}
+                <a
+                  href={link.path}
                   className="hover:text-gray-400"
                   aria-label={link.aria}
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

@@ -11,3 +11,6 @@
 .react-calendar__tile--active {
   @apply bg-blue-500 text-white;
 }
+html {
+  scroll-behavior: smooth;
+}
