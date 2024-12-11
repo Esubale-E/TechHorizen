@@ -30,16 +30,16 @@ const ContactUs = () => {
 
   return (
     <section
-      className="py-16 px-6 bg-background dark:bg-darkbackground"
+      className="py-16 px-6 bg-background"
       id="contactus"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Contact Form */}
         <div className="bg-background dark:bg-darksecondary shadow-lg rounded-xl p-8 transform transition-transform duration-300 hover:scale-105">
-          <h2 className="text-3xl font-bold text-primary dark:text-darkaccent mb-6 text-center">
+          <h2 className="text-3xl font-bold text-primary  mb-6 text-center">
             Get In Touch
           </h2>
-          <p className="text-secondary dark:text-darkhighlight text-center mb-6">
+          <p className="text-secondar text-center mb-6">
             We would love to hear from you! Fill out the form below or reach out
             via social links.
           </p>
@@ -47,7 +47,7 @@ const ContactUs = () => {
             <div className="mb-6">
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-text dark:text-darktext"
+                className="block text-sm font-medium text-text"
               >
                 Name
               </label>
@@ -57,7 +57,7 @@ const ContactUs = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="mt-2 w-full p-3 border border-highlight dark:border-darkhighlight rounded-lg focus:ring-2 focus:ring-accent dark:focus:ring-darkaccent focus:outline-none transition-shadow duration-300 hover:shadow-lg"
+                className="mt-2 w-full p-3 border border-highlight rounded-lg focus:ring-2 focus:ring-accent dark:focus:ring-darkaccent focus:outline-none transition-shadow duration-300 hover:shadow-lg"
                 placeholder="John Doe"
                 required
               />
@@ -66,7 +66,7 @@ const ContactUs = () => {
             <div className="mb-6">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-text dark:text-darktext"
+                className="block text-sm font-medium text-text"
               >
                 Email
               </label>
@@ -84,7 +84,7 @@ const ContactUs = () => {
             <div className="mb-6">
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-text dark:text-darktext"
+                className="block text-sm font-medium text-text"
               >
                 Message
               </label>
@@ -94,7 +94,7 @@ const ContactUs = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                className="mt-2 w-full p-3 border border-highlight dark:border-darkhighlight rounded-lg focus:ring-2 focus:ring-accent dark:focus:ring-darkaccent focus:outline-none transition-shadow duration-300 hover:shadow-lg"
+                className="mt-2 w-full p-3 border border-highlight  rounded-lg focus:ring-2 focus:ring-accent focus:outline-none transition-shadow duration-300 hover:shadow-lg"
                 placeholder="Write your message here..."
                 required
               />
@@ -102,23 +102,23 @@ const ContactUs = () => {
 
             <button
               type="submit"
-              className="w-full bg-darkaccent dark:bg-darkaccent text-white dark:text-darktext py-3 rounded-lg font-medium  focus:ring-2 focus:ring-accent dark:focus:ring-darkhighlight focus:outline-none transition-transform duration-300 hover:scale-105"
+              className="w-full bg-darkaccent text-white dark:text-darktext py-3 rounded-lg font-medium  focus:ring-2 focus:ring-accentfocus:outline-none transition-transform duration-300 hover:scale-105"
             >
               Send Message
             </button>
           </form>
 
           {submissionStatus === "success" && (
-            <div className="text-green-600 dark:text-darkhighlight text-center mt-4">
+            <div className="text-green-600 text-center mt-4">
               Your message has been sent successfully!
             </div>
           )}
         </div>
 
         {/* Right Side: Social Media & Links */}
-        <div className="flex flex-col items-center justify-center bg-background dark:bg-darksecondary p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+        <div className="flex flex-col items-center justify-center bg-background  p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
           <Heading3>Connect With Us</Heading3>
-          <p className="text-secondary dark:text-darktext text-center mb-8">
+          <p className="text-secondary text-center mb-8">
             Follow us on social media or reach out directly.
           </p>
 
@@ -164,10 +164,10 @@ const ContactUs = () => {
 
           {/* Contact Info */}
           <div className="space-y-4 text-center">
-            <p className="text-secondary dark:text-white">
+            <p className="text-secondary ">
               <strong>Email:</strong> contact@techhorizon.com
             </p>
-            <p className="text-secondary dark:text-white">
+            <p className="text-secondary">
               <strong>Phone:</strong> +1 (555) 123-4567
             </p>
           </div>
@@ -176,7 +176,7 @@ const ContactUs = () => {
           <div className="mt-8">
             <a
               href="/about"
-              className="text-primary dark:text-darktext underline hover:text-highlight dark:hover:text-darkaccent transition-transform duration-300 hover:scale-105"
+              className="text-primary underline hover:text-highlight  transition-transform duration-300 hover:scale-105"
             >
               Learn More About Us
             </a>

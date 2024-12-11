@@ -2,7 +2,7 @@
 const Text = ({ children }) => {
   
   return (
-    <p className="text-lg text-text dark:text-darktext mb-12">
+    <p className="text-lg text-text mb-12">
       {children}
     </p>
   );

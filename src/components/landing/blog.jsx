@@ -9,7 +9,7 @@ const BlogSection = () => {
   return (
     <section
       id="blog"
-      className="bg-background dark:bg-darkbackground py-12 px-6"
+      className="bg-background py-12 px-6"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}

@@ -8,7 +8,7 @@ const Event = () => {
   return (
     <section
       id="events"
-      className="bg-background dark:bg-darkbackground py-16 px-4"
+      className="bg-background py-16 px-4"
     >
       <div className="max-w-6xl mx-auto text-center">
         {/* Section Header */}
@@ -30,14 +30,14 @@ const Event = () => {
 };
 
 const EventCard = ({ event }) => (
-  <div className="bg-white dark:bg-darksecondarybackground rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col">
+  <div className="bg-white  rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col">
     <Heading3>{event.title}</Heading3>
 
     <Text className="text-gray-700 mb-2">{event.description}</Text>
     <div className="text-sm text-blue-500 font-semibold ">
       <div className="flex items-center justify-center">
-        <FaMapMarkerAlt className="text-gray-500 mr-2" />
-        <span className="text-gray-600">{event.location}</span>
+        <FaMapMarkerAlt className="text-text mr-2" />
+        <span className="text-text">{event.location}</span>
       </div>
       <div className="flex items-center justify-center">
         <FaCalendarAlt className="text-blue-600 mr-2" />{" "}

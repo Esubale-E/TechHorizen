@@ -49,11 +49,11 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="bg-background dark:bg-darkbackground py-16 px-4"
+      className="bg-background py-16 px-4"
     >
       <div className="text-center max-w-6xl mx-auto">
         <Heading2>What We Offer</Heading2>
-        <p className="text-lg mb-12 dark:text-darktext">
+        <p className="text-lg mb-12 ">
           At TechHorizon, we bring together tech enthusiasts, professionals, and
           learners. We offer engaging events, collaborative workshops, valuable
           networking opportunities, and insightful blog content to help you
@@ -64,7 +64,7 @@ const Features = () => {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="bg-white dark:bg-darksecondarybackground 
+              className="bg-white 
               text-text dark:text-darktext shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2"
             >
               <div className="mb-4 flex justify-center">{feature.icon}</div>

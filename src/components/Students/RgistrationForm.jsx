@@ -76,8 +76,8 @@ const StudentRegistration = () => {
 
   return (
     <div className="h-screen flex items-center justify-center bg-background dark:bg-darkBackground">
-      <div className="w-[500px] bg-white dark:bg-darkBackground rounded-lg shadow-lg p-6">
-        <h2 className="text-2xl font-semibold text-text dark:text-darkText mb-4 text-center">
+      <div className="w-[500px] bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-semibold text-text mb-4 text-center">
           Student Registration
         </h2>
 
@@ -88,7 +88,7 @@ const StudentRegistration = () => {
           {/* ID Field */}
           <div>
             <label
-              className="block text-sm text-text dark:text-darkText mb-2"
+              className="block text-sm text-text mb-2"
               htmlFor="id"
             >
               Student ID
@@ -97,7 +97,7 @@ const StudentRegistration = () => {
               type="number"
               id="id"
               {...register("id")}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary dark:bg-darkBackground dark:text-darkText dark:border-darkPrimary"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary "
               placeholder="Enter your student ID"
             />
             <p className="text-highlight text-sm">{errors.id?.message}</p>
@@ -106,7 +106,7 @@ const StudentRegistration = () => {
           {/* Name Field */}
           <div>
             <label
-              className="block text-sm text-text dark:text-darkText mb-2"
+              className="block text-sm text-text mb-2"
               htmlFor="name"
             >
               Name
@@ -115,7 +115,7 @@ const StudentRegistration = () => {
               type="text"
               id="name"
               {...register("name")}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary dark:bg-darkBackground dark:text-darkText dark:border-darkPrimary"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary "
               placeholder="Enter your name"
             />
             <p className="text-highlight text-sm">{errors.name?.message}</p>
@@ -124,7 +124,7 @@ const StudentRegistration = () => {
           {/* Email Field */}
           <div>
             <label
-              className="block text-sm text-text dark:text-darkText mb-2"
+              className="block text-sm text-text mb-2"
               htmlFor="email"
             >
               Email
@@ -133,7 +133,7 @@ const StudentRegistration = () => {
               type="email"
               id="email"
               {...register("email")}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary dark:bg-darkBackground dark:text-darkText dark:border-darkPrimary"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary "
               placeholder="Enter your email"
             />
             <p className="text-highlight text-sm">{errors.email?.message}</p>
@@ -142,7 +142,7 @@ const StudentRegistration = () => {
           {/* Phone Field */}
           <div>
             <label
-              className="block text-sm text-text dark:text-darkText mb-2"
+              className="block text-sm text-text mb-2"
               htmlFor="phone"
             >
               Phone Number
@@ -151,7 +151,7 @@ const StudentRegistration = () => {
               type="text"
               id="phone"
               {...register("phone")}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary dark:bg-darkBackground dark:text-darkText dark:border-darkPrimary"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary "
               placeholder="Enter your phone number"
             />
             <p className="text-highlight text-sm">{errors.phone?.message}</p>
@@ -159,7 +159,7 @@ const StudentRegistration = () => {
           {/* Profile Picture Field */}
           <div>
             <label
-              className="block text-sm text-text dark:text-darkText mb-2"
+              className="block text-sm text-text mb-2"
               htmlFor="profilePicture"
             >
               Profile Picture
@@ -168,7 +168,7 @@ const StudentRegistration = () => {
               type="file"
               id="profilePicture"
               {...register("profilePicture")}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary dark:bg-darkBackground dark:text-darkText dark:border-darkPrimary"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary "
               accept="image/*" // Only accept image files
             />
             <p className="text-highlight text-sm">
@@ -179,7 +179,7 @@ const StudentRegistration = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-primary text-white rounded-lg hover:bg-secondary transition dark:bg-darkSecondary dark:hover:bg-highlight"
+            className="w-full py-3 bg-primary text-white rounded-lg hover:bg-secondary transition"
           >
             Register
           </button>

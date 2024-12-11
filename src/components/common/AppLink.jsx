@@ -5,7 +5,7 @@ const AppLink = ({ children, to }) => {
   return (
     <Link
       to={to}
-      className="text-accent hover:text-highlight transition-all duration-300 ease-in-out dark:text-darkaccent dark:hover:text-darkhighlight"
+      className="text-accent hover:text-highlight transition-all duration-300 ease-in-out"
     >
       {children}
     </Link>

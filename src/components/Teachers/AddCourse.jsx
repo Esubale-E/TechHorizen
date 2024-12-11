@@ -72,21 +72,6 @@ const AddCourse = ({ onAddCourse }) => {
               required
             />
           </div>
-          {/* <div>
-                <label htmlFor="status" className="block text-gray-700">
-                  Status
-                </label>
-                <select
-                  id="status"
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  className="mt-1 block w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                >
-                  <option value="Active">Active</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Pending">Pending</option>
-                </select>
-              </div> */}
           <div>
             <label htmlFor="author" className="block text-gray-700">
               Author/Instructor
@@ -100,18 +85,6 @@ const AddCourse = ({ onAddCourse }) => {
               required
             />
           </div>
-          {/* <div>
-                <label htmlFor="progress" className="block text-gray-700">
-                  Progress
-                </label>
-                <input
-                  id="progress"
-                  type="text"
-                  value={progress}
-                  onChange={(e) => setProgress(e.target.value)}
-                  className="mt-1 block w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                />
-              </div> */}
           <div className="flex justify-center">
             <button
               onClick={onAddCourse}

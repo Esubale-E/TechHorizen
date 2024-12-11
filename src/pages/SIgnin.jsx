@@ -20,9 +20,7 @@ const SignIn = () => {
   };
 
   return (
-    <div
-      className="h-screen flex items-center justify-center"
-    >
+    <div className="h-screen flex items-center justify-center">
       <div className="w-[350px] bg-white rounded-xl shadow-lg p-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
           Welcome Back
@@ -31,7 +29,7 @@ const SignIn = () => {
           Sign in to your account
         </p>
 
-        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
 
         <form className="flex flex-col " onSubmit={handleSignIn}>
           <div className="mb-4">

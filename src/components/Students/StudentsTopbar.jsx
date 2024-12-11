@@ -42,18 +42,18 @@ const Topbar = () => {
   }, []);
 
   return (
-    <header className="fixed w-screen z-50 bg-white dark:bg-darkBackground shadow-md py-4 px-6 pr-8 flex justify-between items-center ">
+    <header className="fixed w-screen z-50 bg-white shadow-md py-4 px-6 pr-8 flex justify-between items-center ">
       <div className="text-2xl font-bold text-blue-600 text-center">
         Tech Horizon
       </div>
-      <div className="text-xl md:text-2xl font-bold text-primary dark:text-white">
+      <div className="text-xl md:text-2xl font-bold text-secondary">
         Student Dashboard
       </div>
       <div className="flex items-center space-x-6">
         <div className="" ref={profileRef}>
           <PureButton onClick={() => toggleButtons("profile")}>
-            <FaUserAlt className="text-2xl text-gray-700 dark:text-white" />
-            <span className="hidden md:block text-sm  text-gray-700 dark:text-white">
+            <FaUserAlt className="text-2xl text-gray-700 " />
+            <span className="hidden md:block text-sm  text-gray-700">
               Profile
             </span>
           </PureButton>
@@ -63,12 +63,14 @@ const Topbar = () => {
 
         <div className="relative" ref={settingsRef}>
           <PureButton onClick={() => toggleButtons("setting")}>
-            <FaCog className="text-2xl text-gray-700 dark:text-white" />
-            <span className="hidden md:block text-sm text-gray-700 dark:text-white">
+            <FaCog className="text-2xl text-gray-700 " />
+            <span className="hidden md:block text-sm text-gray-700 ">
               Settings
             </span>
           </PureButton>
-          {isSettingsOpen && <Setting profile={()=>toggleButtons('profile')} />}
+          {isSettingsOpen && (
+            <Setting profile={() => toggleButtons("profile")} />
+          )}
         </div>
       </div>
     </header>

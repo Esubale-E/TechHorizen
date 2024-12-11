@@ -7,7 +7,7 @@ const AboutUs = () => {
   return (
     <section
       id="about"
-      className="bg-background dark:bg-darkbackground py-16 px-4"
+      className="bg-background py-16 px-4"
     >
       <div className="max-w-6xl mx-auto text-center">
         <Heading2>About TechHorizon</Heading2>
@@ -42,7 +42,7 @@ const AboutUs = () => {
 
             <div className="flex flex-col justify-center text-left">
               <Heading3>Our Values</Heading3>
-              <ul className="list-disc pl-6 text-text dark:text-darktext space-y-2">
+              <ul className="list-disc pl-6 text-text  space-y-2">
                 <li>
                   <strong>Inclusivity:</strong> We believe in creating a
                   welcoming space for all backgrounds and skill levels.

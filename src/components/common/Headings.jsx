@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
 const Heading = ({ children }) => {
   return (
-    <h1 className="text-5xl text-primary text-center font-bold leading-tight mb-4 dark:text-darktext">
+    <h1 className="text-5xl text-primary text-center font-bold leading-tight mb-4 ">
       {children}
     </h1>
   );
@@ -10,7 +10,7 @@ const Heading = ({ children }) => {
 // eslint-disable-next-line react/prop-types
 const Heading2 = ({ children }) => {
   return (
-    <h2 className="text-4xl font-bold text-primary dark:text-darkprimary mb-8">
+    <h2 className="text-4xl font-bold text-primary mb-8">
       {children}
     </h2>
   );
@@ -19,7 +19,7 @@ const Heading2 = ({ children }) => {
 // eslint-disable-next-line react/prop-types
 const Heading3 = ({ children }) => {
   return (
-    <h3 className="text-xl font-semibold text-highlight dark:text-darkaccent mb-4 text-center">
+    <h3 className="text-xl font-semibold text-highlight mb-4 text-center">
       {children}
     </h3>
   );

@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative bg-cover bg-center text-white h-screen flex items-center justify-center py-16 px-4 bg-[url('/hero-bg.jpg')] dark:bg-[url('/hero-bg.jpg')]"
+      className="relative bg-cover bg-center text-white h-screen flex items-center justify-center py-16 px-4 bg-[url('/hero-bg.jpg')] "
     >
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
@@ -25,7 +25,7 @@ const Hero = () => {
           shape the future of tech...
           <a
             href="#about"
-            className="inline-block text-yellow-400 hover:underline"
+            className="inline-block text-accent hover:underline"
           >
             Learn More
           </a>
@@ -33,7 +33,7 @@ const Hero = () => {
         <div className="mt-8">
           <Link
             to="#join"
-            className="bg-yellow-400 text-white px-6 py-3 text-xl font-semibold rounded-lg hover:bg-yellow-500 dark:bg-yellow-300 dark:text-blue-900 dark:hover:bg-yellow-400 transition duration-300"
+            className="bg-accent text-white px-6 py-3 text-xl font-semibold rounded-lg hover:bg-accent transition duration-300"
           >
             Join Us
           </Link>
