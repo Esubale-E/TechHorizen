@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Heading1 from "../common/Headings";
 import TextHighlight from "../common/TextHighlight";
-import AppLink from "../common/AppLink";
 
 const Hero = () => {
   return (
@@ -19,18 +18,18 @@ const Hero = () => {
         <p className="text-3xl mt-4">
           Your Gateway to <TextHighlight>Tech Excellence</TextHighlight>
         </p>
-        <p className="text-lg mt-6 mb-8 leading-relaxed">
+        <p className="text-white">
           At TechHorizon, we are a vibrant community of innovators, learners,
           and tech enthusiasts passionate about exploring the ever-evolving
           world of technology. Join us to connect, learn, and collaborate as we
-          shape the future of tech.
+          shape the future of tech...
+          <a
+            href="#about"
+            className="inline-block text-yellow-400 hover:underline"
+          >
+            Learn More
+          </a>
         </p>
-        <AppLink
-          to="#aboutus"
-          className="inline-block text-yellow-400 hover:underline"
-        >
-          Learn More
-        </AppLink>
         <div className="mt-8">
           <Link
             to="#join"

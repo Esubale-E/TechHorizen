@@ -35,4 +35,16 @@ const blogs = [
     image: "https://via.placeholder.com/300x200?text=Mental+Health",
   },
 ];
+
+const trim = () =>
+  blogs
+    .sort((blog) => {
+      blog.date < 1 ? 1 : -1;
+      blog.date > 1 ? -1 : 1;
+    })
+    .slice(0, 3);
+
+const latestBlogs = trim();
+
 export default blogs;
+export { latestBlogs };

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { Heading3 } from "../common/Headings";
+import Input from "../common/Input";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -68,13 +70,12 @@ const ContactUs = () => {
               >
                 Email
               </label>
-              <input
+              <Input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-2 w-full p-3 border border-highlight dark:border-darkhighlight rounded-lg focus:ring-2 focus:ring-accent dark:focus:ring-darkaccent focus:outline-none transition-shadow duration-300 hover:shadow-lg"
                 placeholder="johndoe@example.com"
                 required
               />
@@ -96,12 +97,12 @@ const ContactUs = () => {
                 className="mt-2 w-full p-3 border border-highlight dark:border-darkhighlight rounded-lg focus:ring-2 focus:ring-accent dark:focus:ring-darkaccent focus:outline-none transition-shadow duration-300 hover:shadow-lg"
                 placeholder="Write your message here..."
                 required
-              ></textarea>
+              />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-darkaccent dark:bg-darkaccent text-white dark:text-darktext py-3 rounded-lg font-medium hover:bg-highlight  focus:ring-2 focus:ring-accent dark:focus:ring-darkhighlight focus:outline-none transition-transform duration-300 hover:scale-105"
+              className="w-full bg-darkaccent dark:bg-darkaccent text-white dark:text-darktext py-3 rounded-lg font-medium  focus:ring-2 focus:ring-accent dark:focus:ring-darkhighlight focus:outline-none transition-transform duration-300 hover:scale-105"
             >
               Send Message
             </button>
@@ -116,9 +117,7 @@ const ContactUs = () => {
 
         {/* Right Side: Social Media & Links */}
         <div className="flex flex-col items-center justify-center bg-background dark:bg-darksecondary p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
-          <h3 className="text-3xl font-bold text-primary dark:text-darkaccent mb-6">
-            Connect With Us
-          </h3>
+          <Heading3>Connect With Us</Heading3>
           <p className="text-secondary dark:text-darktext text-center mb-8">
             Follow us on social media or reach out directly.
           </p>

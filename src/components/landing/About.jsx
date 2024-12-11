@@ -1,7 +1,9 @@
 import { Heading2, Heading3 } from "../common/Headings";
+import Text from "../common/Text";
 import TextHighlight from "../common/TextHighlight";
 
 const AboutUs = () => {
+
   return (
     <section
       id="about"
@@ -9,13 +11,13 @@ const AboutUs = () => {
     >
       <div className="max-w-6xl mx-auto text-center">
         <Heading2>About TechHorizon</Heading2>
-        <p className="text-lg text-text dark:text-darktext mb-12">
+        <Text>
           At <TextHighlight>TechHorizon</TextHighlight>, we are more than just a
           tech community – we are a platform where technology enthusiasts,
           innovators, and learners come together to share ideas, collaborate on
           projects, and build lasting connections. Our mission is to provide an
           inclusive space for everyone who is passionate about tech to thrive.
-        </p>
+        </Text>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div className="flex justify-center items-center">
@@ -27,33 +29,38 @@ const AboutUs = () => {
           </div>
 
           <div className="flex flex-col justify-center text-left">
-            <Heading3>Our Vision</Heading3>
-            <p className="text-text dark:text-darktext mb-6">
-              Our vision is to inspire, educate, and empower the next generation
-              of tech leaders. By providing resources, hosting events, and
-              fostering a collaborative environment, we aim to help members grow
-              professionally and personally in the ever-evolving tech world.
-            </p>
+            <div className="flex flex-col justify-center text-left">
+              <Heading3>Our Vision</Heading3>
+              <Text>
+                Our vision is to inspire, educate, and empower the next
+                generation of tech leaders. By providing resources, hosting
+                events, and fostering a collaborative environment, we aim to
+                help members grow professionally and personally in the
+                ever-evolving tech world.
+              </Text>
+            </div>
 
-            <Heading3>Our Values</Heading3>
-            <ul className="list-disc pl-6 text-text dark:text-darktext space-y-2">
-              <li>
-                <strong>Inclusivity:</strong> We believe in creating a welcoming
-                space for all backgrounds and skill levels.
-              </li>
-              <li>
-                <strong>Collaboration:</strong> We foster a culture of teamwork
-                and mutual growth.
-              </li>
-              <li>
-                <strong>Innovation:</strong> We embrace new ideas and encourage
-                creative problem-solving.
-              </li>
-              <li>
-                <strong>Learning:</strong> We are committed to continuous
-                learning and knowledge sharing.
-              </li>
-            </ul>
+            <div className="flex flex-col justify-center text-left">
+              <Heading3>Our Values</Heading3>
+              <ul className="list-disc pl-6 text-text dark:text-darktext space-y-2">
+                <li>
+                  <strong>Inclusivity:</strong> We believe in creating a
+                  welcoming space for all backgrounds and skill levels.
+                </li>
+                <li>
+                  <strong>Collaboration:</strong> We foster a culture of
+                  teamwork and mutual growth.
+                </li>
+                <li>
+                  <strong>Innovation:</strong> We embrace new ideas and
+                  encourage creative problem-solving.
+                </li>
+                <li>
+                  <strong>Learning:</strong> We are committed to continuous
+                  learning and knowledge sharing.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

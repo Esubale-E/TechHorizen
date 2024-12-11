@@ -36,4 +36,9 @@ const events = [
   },
 ];
 
+const trim = () => events.sort((a, b) => a.date - b.date).slice(0, 4);
+
+const latestEvents = trim();
+
 export default events;
+export { latestEvents };

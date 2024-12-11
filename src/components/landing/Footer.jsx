@@ -65,7 +65,7 @@ const Footer = () => {
             {socialLinks.map((social, index) => (
               <li
                 key={index}
-                className="hover:text-gray-400 transition-transform transform hover:scale-125 duration-300"
+                className="text-darkaccent transition-transform transform hover:scale-125 duration-300"
               >
                 <a
                   href={social.href}

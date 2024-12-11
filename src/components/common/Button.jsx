@@ -11,8 +11,9 @@ const Button = ({ children }) => {
 };
 
 // eslint-disable-next-line react/prop-types
-const PureButton = ({ children, onClick }) => (
+const PureButton = ({ children, onClick,type }) => (
   <button
+    type={type||'button'}
     className="flex items-center space-x-2 text-text hover:text-highlight focus:outline-none dark:text-darktext dark:hover:text-darkhighlight transition-all duration-300 ease-in-out"
     onClick={onClick}
   >

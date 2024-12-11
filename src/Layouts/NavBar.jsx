@@ -32,9 +32,13 @@ const Navbar = () => {
           <CustomNavLink to="#" text="Home" isActive={isActive} />
           <CustomNavLink to="#about" text="About" isActive={isActive} />
           <CustomNavLink to="#events" text="Events" isActive={isActive} />
+          <CustomNavLink to="#features" text="Features" isActive={isActive} />
           <CustomNavLink to="#blog" text="Blog" isActive={isActive} />
           <CustomNavLink to="#contact" text="Contact" isActive={isActive} />
-          <Link to="signin" className="transition hover:text-gray-400 duration-300 text-text dark:text-darkText">
+          <Link
+            to="signin"
+            className="transition hover:text-gray-400 duration-300 text-text dark:text-darkText"
+          >
             Sign In
           </Link>
           <ToggleTheme />

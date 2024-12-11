@@ -14,7 +14,7 @@ export default {
         // Dark mode
         darkprimary: "#232E38",
         darksecondary: "#39434C",
-        darkaccent: "#7B8288",
+        darkaccent: "#5db4ff",
         darkbackground: "#0A0E11",
         darktext: "#E9EAEB",
         darkhighlight: "#4F5860",
