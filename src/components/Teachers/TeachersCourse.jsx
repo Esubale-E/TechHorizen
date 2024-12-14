@@ -35,10 +35,10 @@ const TeachersCourse = ({ currentTeacherName }) => {
           className="absolute top-0 right-12 flex justify-center items-center gap-2 text-text bg-blue-400 rounded-2xl py-3 px-7 cursor-pointer hover:bg-blue-500 "
         >
           <FaPlusCircle />
-          Add Course{" "}
+          Add Course
         </span>
       </div>
-      {addCourse && <AddCourse onAddCourse={handleAddCourse} />}
+      {addCourse && <AddCourse onAddCourse={handleAddCourse} onClose={()=>setAddCourse(false)}/>}
 
       {/* Courses Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

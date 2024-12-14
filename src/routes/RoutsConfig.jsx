@@ -11,7 +11,6 @@ import Blog from "../components/Students/Blog";
 import TeachersLayout from "../Layouts/TeachersLayout";
 import TeachersCourse from "../components/Teachers/TeachersCourse";
 import TeacherCourseDetail from "../components/Teachers/TeachersCourseDetail";
-import PrivateRoute from "./PrivateRoute";
 import SignIn from "../pages/SIgnin";
 
 const RoutesConfig = () => {
@@ -25,32 +24,24 @@ const RoutesConfig = () => {
       </Route>
 
       {/* Student Dashboard Navigation */}
-      <Route element={<PrivateRoute role="student" />}>
-        <Route element={<StudentLayout />}>
-          <Route path="/student" element={<Dashboard />} />
-          <Route path="/student/events" element={<Events />} />
-          <Route path="/student/courses" element={<Courses />} />
-          <Route path="/student/resources" element={<Resources />} />
-          <Route path="/student/blog" element={<Blog />} />
-        </Route>
+      <Route element={<StudentLayout />}>
+        <Route path="/student" element={<Dashboard />} />
+        <Route path="/student/events" element={<Events />} />
+        <Route path="/student/courses" element={<Courses />} />
+        <Route path="/student/resources" element={<Resources />} />
+        <Route path="/student/blog" element={<Blog />} />
       </Route>
 
-      {/* Teacher Dashboard Navigation */}
-      <Route element={<PrivateRoute role="teacher" />}>
-        <Route element={<TeachersLayout />}>
-          <Route path="/teacher" element={<Dashboard />} />
-          <Route path="/teacher/events" element={<Events />} />
-          <Route
-            path="/teacher/courses"
-            element={<TeachersCourse currentTeacherName={"Dr. Alan Turing"} />}
-          />
-          <Route
-            path="/teacher/coursedetail"
-            element={<TeacherCourseDetail />}
-          />
-          <Route path="/teacher/resources" element={<Resources />} />
-          <Route path="/teacher/blog" element={<Blog />} />
-        </Route>
+      <Route element={<TeachersLayout />}>
+        <Route path="/teacher" element={<Dashboard />} />
+        <Route path="/teacher/events" element={<Events />} />
+        <Route
+          path="/teacher/courses"
+          element={<TeachersCourse currentTeacherName={"Dr. Alan Turing"} />}
+        />
+        <Route path="/teacher/coursedetail" element={<TeacherCourseDetail />} />
+        <Route path="/teacher/resources" element={<Resources />} />
+        <Route path="/teacher/blog" element={<Blog />} />
       </Route>
     </Routes>
   );

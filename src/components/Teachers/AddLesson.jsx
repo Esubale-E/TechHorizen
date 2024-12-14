@@ -1,5 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import Button from "../common/Button";
+import Input from "../common/Input";
+import { Heading2 } from "../common/Headings";
+import { FaTimes } from "react-icons/fa";
 
 const AddLesson = ({ onAddLesson, onClose }) => {
   const [title, setTitle] = useState("");
@@ -34,34 +38,27 @@ const AddLesson = ({ onAddLesson, onClose }) => {
   };
 
   return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-40">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-40">
       <div className="m-6 p-6 w-full max-w-lg bg-white rounded-lg shadow-lg relative">
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
         >
-          &times;
+          <FaTimes size={28} />
         </button>
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-          Add New Lesson
-        </h2>
+        <Heading2>Add New Lesson</Heading2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Lesson Title */}
-          <div>
-            <label htmlFor="title" className="block text-gray-700 font-medium">
-              Lesson Title <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter lesson title"
-              required
-            />
-          </div>
+          <Input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter lesson title"
+            required
+          />
 
           {/* Lesson Description */}
           <div>
@@ -81,32 +78,18 @@ const AddLesson = ({ onAddLesson, onClose }) => {
               required
             />
           </div>
-
-          {/* Resources Upload */}
-          <div>
-            <label
-              htmlFor="resources"
-              className="block text-gray-700 font-medium"
-            >
-              Resources (Optional)
-            </label>
-            <input
-              type="file"
-              id="resources"
-              multiple
-              onChange={handleResourceChange}
-              className="block w-full text-gray-700 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          <Input
+            label="Resourse (optional)"
+            type="file"
+            id="resources"
+            multiple
+            onChange={handleResourceChange}
+            className="block w-full text-gray-700 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
 
           {/* Submit Button */}
           <div>
-            <button
-              type="submit"
-              className="w-full bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition-all duration-200"
-            >
-              Add Lesson
-            </button>
+            <Button type="submit">Add Lesson</Button>
           </div>
         </form>
       </div>

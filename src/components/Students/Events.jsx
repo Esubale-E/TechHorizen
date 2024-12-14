@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // Calendar styling
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import events from "../../services/events";
+import { Heading2, Heading3 } from "./../common/Headings";
 const Events = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -13,14 +14,9 @@ const Events = () => {
 
   return (
     <div className="p-6 w-full bg-white rounded-lg shadow-lg">
-      {/* Header */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
-        Events Calendar
-      </h2>
+      <Heading2>Events Calendar</Heading2>
 
-      {/* Calendar & Filtered Events Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Calendar */}
         <div className="bg-blue-50 p-4 rounded-lg shadow-md flex justify-center">
           <Calendar
             onChange={setSelectedDate}
@@ -29,12 +25,8 @@ const Events = () => {
           />
         </div>
 
-        {/* Events on Selected Date */}
         <div className="bg-blue-50 p-4 rounded-lg shadow-md">
-          <h3 className="text-xl font-bold mb-4 text-gray-800">
-            Events on {selectedDate.toDateString()}
-          </h3>
-
+          <Heading3>Events on {selectedDate.toDateString()}</Heading3>
           {filteredEvents.length > 0 ? (
             <div className="space-y-4">
               {filteredEvents.map((event, index) => (
@@ -70,9 +62,7 @@ const Events = () => {
 
       {/* All Events Section */}
       <div className="mt-8 bg-blue-50 p-6 rounded-lg shadow-md">
-        <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center">
-          All Upcoming Events
-        </h3>
+        <Heading3>All Upcoming Events</Heading3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event, index) => (
