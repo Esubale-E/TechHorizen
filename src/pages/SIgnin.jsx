@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import Input from "../components/common/Input";
+import { SignButton } from "../components/common/Button";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -8,15 +10,10 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
+
   const handleSignIn = (e) => {
     e.preventDefault();
     setError("");
-
-    // Add sign-in logic here (e.g., API call)
-    if (email === "" || password === "") {
-      setError("Please fill in both fields.");
-      return;
-    }
   };
 
   return (
@@ -33,11 +30,7 @@ const SignIn = () => {
 
         <form className="flex flex-col " onSubmit={handleSignIn}>
           <div className="mb-4">
-            <label className="block text-sm text-gray-700 mb-2" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+            <Input
               type="email"
               id="email"
               placeholder="Enter your email"
@@ -48,14 +41,7 @@ const SignIn = () => {
           </div>
 
           <div className="mb-4 relative">
-            <label
-              className="block text-sm text-gray-700 mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+            <Input
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder="Enter your password"
@@ -77,16 +63,7 @@ const SignIn = () => {
             </button>
           </div>
 
-          <button
-            className="w-full py-2 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 ease-in-out transform hover:scale-105"
-            type="submit"
-            style={{
-              background: "linear-gradient(135deg, #6a11cb, #2575fc)",
-              border: "none",
-            }}
-          >
-            <Link to={!error ? "/student/" : ""}>Sign In</Link>
-          </button>
+          <SignButton path={"/student"} label={"Sign Up"} />
 
           <p className="mt-2 text-sm text-gray-600 text-center">
             <a

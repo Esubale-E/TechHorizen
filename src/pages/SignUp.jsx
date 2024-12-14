@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Input from "../components/common/Input";
-import Button from "../components/common/Button";
 import AppLink from "../components/common/AppLink";
+import { SignButton } from "../components/common/Button";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -33,43 +33,26 @@ const SignUp = () => {
 
         <form className="flex flex-col space-y-4" onSubmit={handleSignUp}>
           {/* Name Field */}
-          <div>
-            <label className="block text-sm text-gray-700 mb-2" htmlFor="name">
-              Name
-            </label>
-            <Input
-              type="text"
-              id="name"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
+          <Input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
 
-          {/* Email Field */}
-          <div>
-            <label className="block text-sm text-gray-700 mb-2" htmlFor="email">
-              Email
-            </label>
-            <Input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+          <Input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
           {/* Password Field */}
           <div className="relative">
-            <label
-              className="block text-sm text-gray-700 mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
             <Input
               type={showPassword ? "text" : "password"}
               id="password"
@@ -90,12 +73,6 @@ const SignUp = () => {
             </div>
           </div>
           <div className="relative">
-            <label
-              className="block text-sm text-gray-700 mb-2"
-              htmlFor="confirmPassword"
-            >
-              Confirm Password
-            </label>
             <Input
               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
@@ -116,7 +93,7 @@ const SignUp = () => {
             </div>
           </div>
 
-          <Button type="submit">Sign Up</Button>
+          <SignButton path={"/student"} label={"Sign Up"} />
         </form>
 
         <p className="mt-4 text-sm text-gray-700 text-center">

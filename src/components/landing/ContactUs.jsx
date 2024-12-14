@@ -29,13 +29,10 @@ const ContactUs = () => {
   };
 
   return (
-    <section
-      className="py-16 px-6 bg-background"
-      id="contactus"
-    >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section className="py-16 px-6 bg-background" id="contactus">
+      <div className="max-w-7xl  mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Contact Form */}
-        <div className="bg-background dark:bg-darksecondary shadow-lg rounded-xl p-8 transform transition-transform duration-300 hover:scale-105">
+        <div className="bg-white shadow-lg rounded-xl p-8 transform transition-transform duration-300 hover:scale-105">
           <h2 className="text-3xl font-bold text-primary  mb-6 text-center">
             Get In Touch
           </h2>
@@ -116,7 +113,7 @@ const ContactUs = () => {
         </div>
 
         {/* Right Side: Social Media & Links */}
-        <div className="flex flex-col items-center justify-center bg-background  p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+        <div className="flex flex-col items-center justify-center  bg-white  p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
           <Heading3>Connect With Us</Heading3>
           <p className="text-secondary text-center mb-8">
             Follow us on social media or reach out directly.
