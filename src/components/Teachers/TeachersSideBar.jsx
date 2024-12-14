@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
-  FaChalkboardTeacher,
   FaBookOpen,
   FaCalendarAlt,
   FaFileAlt,
@@ -51,8 +50,8 @@ const TeachersSideBar = () => {
       {/* Sidebar */}
       <aside
         className={`${
-          sidebarOpen ? "translate-x-0  h-full" : "-translate-x-full"
-        } md:translate-x-0 fixed md:relative left-0 top-0 w-72 bg-white text-primary shadow-lg transition-transform duration-300 ease-in-out z-40`}
+          sidebarOpen ? "translate-x-0  " : "-translate-x-full"
+        } md:translate-x-0 fixed md:relative left-0 top-0 w-72 bg-white h-screen text-primary shadow-lg transition-transform duration-300 ease-in-out z-40`}
         aria-hidden={!sidebarOpen}
       >
         <div className="p-6">
@@ -60,12 +59,7 @@ const TeachersSideBar = () => {
 
           {/* Menu Items */}
           <nav className="space-y-4">
-            <SidebarLink
-              to="/teacher/dashboard"
-              icon={<FaChalkboardTeacher />}
-              label="Dashboard"
-              isActive={isActive}
-            />
+           
             <SidebarLink
               to="/teacher/courses"
               icon={<FaBookOpen />}
@@ -73,9 +67,9 @@ const TeachersSideBar = () => {
               isActive={isActive}
             />
             <SidebarLink
-              to="/teacher/schedule"
+              to="/teacher/events"
               icon={<FaCalendarAlt />}
-              label="Schedule"
+              label="Event"
               isActive={isActive}
             />
             <SidebarLink

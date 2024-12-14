@@ -1,11 +1,22 @@
-import { FaBell, FaUserCircle } from "react-icons/fa";
+import { FaBell, FaChalkboardTeacher, FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   return (
     <div className="w-full bg-white text-primary p-4 flex items-center justify-between shadow-md">
-      {/* Logo Section */}
-      <div className="text-lg font-semibold">TechHorizon</div>
-      <h2 className="text-xl font-semibold mb-4">Dashboard</h2>
+      <div className="text-2xl font-bold">
+        <Link
+          to="/teacher"
+          title="TechHorizon"
+          className="hover:text-accent text-blue-600 "
+        >
+          TechHorizon
+        </Link>
+      </div>
+      <Link to="/teacher" className="flex items-center font-bold ">
+        <FaChalkboardTeacher size={24} />{" "}
+        <span className="font-bold ms-5 text-lg">Dashboard</span>
+      </Link>
       <div className="flex items-center space-x-6">
         {/* Notifications */}
         <button

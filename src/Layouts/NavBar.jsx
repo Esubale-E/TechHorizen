@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="text-2xl font-bold">
           <Link
-            to="/"
+            to="/teacher"
             title="TechHorizon"
             className="hover:text-accent text-blue-600 "
           >

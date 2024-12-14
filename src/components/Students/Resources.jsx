@@ -6,6 +6,7 @@ import {
   FaFilter,
 } from "react-icons/fa";
 import resources from "../../services/resource";
+
 const Resources = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");

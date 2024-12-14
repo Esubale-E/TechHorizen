@@ -9,6 +9,10 @@ const Courses = () => {
       ? courses
       : courses.filter((course) => course.status === filter);
 
+  const handleEnroll = () => {
+    alert("you have enrolled successfuly");
+  };
+
   return (
     <div className="p-6 w-full bg-white rounded-lg shadow-lg">
       {/* Header */}
@@ -74,6 +78,16 @@ const Courses = () => {
               </div>
               <div className="text-sm text-gray-600">
                 Progress: {course.progress}
+              </div>
+
+              {/* Enroll Button */}
+              <div className="mt-4">
+                <button
+                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                  onClick={() => handleEnroll(course.id)} // Assuming handleEnroll is a function to handle enrollment
+                >
+                  Enroll
+                </button>
               </div>
             </div>
           ))
