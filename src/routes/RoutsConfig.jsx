@@ -11,7 +11,7 @@ import Blog from "../components/Students/Blog";
 import TeachersLayout from "../Layouts/TeachersLayout";
 import TeachersCourse from "../components/Teachers/TeachersCourse";
 import TeacherCourseDetail from "../components/Teachers/TeachersCourseDetail";
-import SignIn from "../pages/SIgnin";
+import SignIn from "../pages/SignIn";
 
 const RoutesConfig = () => {
   return (

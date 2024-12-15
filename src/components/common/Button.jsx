@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
 
 const Button = ({ children }) => {
   return (
@@ -22,7 +21,7 @@ const PureButton = ({ children, onClick, type }) => (
   </button>
 );
 
-const SignButton = ({ path, label }) => (
+const SignButton = ({ label }) => (
   <button
     className="w-full py-2 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 ease-in-out transform hover:scale-105"
     type="submit"
@@ -30,8 +29,7 @@ const SignButton = ({ path, label }) => (
       background: "linear-gradient(135deg, #6a11cb, #2575fc)",
       border: "none",
     }}
-  >
-    <Link to={path}>{label}</Link>
+  >{label}
   </button>
 );
 export default Button;

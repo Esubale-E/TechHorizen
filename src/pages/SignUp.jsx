@@ -1,102 +1,132 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Input from "../components/common/Input";
-import AppLink from "../components/common/AppLink";
+import AppLink from "./../components/common/AppLink";
 import { SignButton } from "../components/common/Button";
+import { Heading2 } from "./../components/common/Headings";
+
+// Validation schema using Yup
+const validationSchema = yup.object().shape({
+  firstName: yup.string().required("First name is required"),
+  lastName: yup.string().required("Last name is required"),
+  email: yup
+    .string()
+    .email("Please enter a valid email address")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters long")
+    .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Please confirm your password"),
+});
 
 const SignUp = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    return true;
+  const inputstyle =
+    "w-full py-1 px-3 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105";
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = (data) => {
+    alert("Sign-up successful!");
+    console.log(data);
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="w-[400px] bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-          Create Your Account
-        </h2>
-        <p className="text-sm text-gray-500 mb-4 text-center">
-          Join us and start your journey!
-        </p>
-
-        <form className="flex flex-col space-y-4" onSubmit={handleSignUp}>
-          {/* Name Field */}
-          <Input
-            type="text"
-            id="name"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-
-          <Input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-
-          {/* Password Field */}
-          <div className="relative">
-            <Input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="w-[400px]  mt- bg-white rounded-xl shadow-lg p-6">
+        <Heading2>Create Your Account</Heading2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4jk">
+          <div>
+            <Label hFor="firstName" label={"First Name"} />
+            <input
+              id="firstName"
+              {...register("firstName")}
+              type="text"
+              className={inputstyle}
+              placeholder="Enter your first name"
             />
-            <div
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? (
-                <FaEyeSlash size={20} className="mt-8 text-gray-500" />
-              ) : (
-                <FaEye size={20} className="mt-8 text-gray-500" />
-              )}
-            </div>
+            {errors.firstName && <ErrText>{errors.firstName.message}</ErrText>}
+          </div>
+          <div>
+            <Label hFor="lastName" label={"Last Name"} />
+            <input
+              id="lastName"
+              {...register("lastName")}
+              type="text"
+              className={inputstyle}
+              placeholder="Enter your last name"
+            />
+            {errors.lastName && <ErrText>{errors.lastName.message}</ErrText>}
+          </div>
+          <div>
+            <Label hFor="email" label={"Email"} />
+            <input
+              id="email"
+              {...register("email")}
+              type="email"
+              className={inputstyle}
+              placeholder="Enter your email"
+            />
+            {errors.email && <ErrText>{errors.email.message}</ErrText>}
           </div>
           <div className="relative">
-            <Input
-              type={showConfirmPassword ? "text" : "password"}
-              id="confirmPassword"
-              placeholder="Re-enter your password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
+            <Label hFor="password" label="Password" />
+            <input
+              id="password"
+              {...register("password")}
+              type={showPassword ? "text" : "password"}
+              className={inputstyle}
+              placeholder="Enter your password"
             />
             <div
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              className="absolute right-3 top-9 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </div>
+            {errors.password && <ErrText>{errors.password.message}</ErrText>}
+          </div>
+          <div className="relative">
+            <Label hFor="confirmPassword" label="Confirm Password" />
+            <input
+              id="confirmPassword"
+              {...register("confirmPassword")}
+              type={showConfirmPassword ? "text" : "password"}
+              className={inputstyle}
+              placeholder="Re-enter your password"
+            />
+            <div
+              className="absolute right-3 top-9 cursor-pointer"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? (
-                <FaEyeSlash size={20} className="mt-8 text-gray-500" />
+                <FaEyeSlash size={20} />
               ) : (
-                <FaEye size={20} className="mt-8  text-gray-500" />
+                <FaEye size={20} />
               )}
             </div>
+            {errors.confirmPassword && (
+              <ErrText> {errors.confirmPassword.message}</ErrText>
+            )}
           </div>
-
-          <SignButton path={"/student"} label={"Sign Up"} />
+          <SignButton label={"Sign In"} />
         </form>
-
-        <p className="mt-4 text-sm text-gray-700 text-center">
+        <p className="mt-4 text-sm text-gray-600 text-center">
           Already have an account? <AppLink to="/signin">Sign In</AppLink>
         </p>
       </div>
@@ -105,3 +135,13 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+export const ErrText = ({ children }) => (
+  <p className="text-red-500 text-sm">{children}</p>
+);
+
+export const Label = ({ hFor, label }) => (
+  <label htmlFor={hFor} className="block text-sm text-gray-700 mb-2">
+    {label}
+  </label>
+);

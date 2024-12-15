@@ -17,7 +17,7 @@ const Input = ({
         {label || capitalize(name) || capitalize(id)}
       </label>
       <input
-        className="w-full p-2 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+        className="w-full py-1 px-3 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105"
         type={type || "text"}
         id={id || null}
         name={name || ""}

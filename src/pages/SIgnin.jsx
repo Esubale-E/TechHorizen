@@ -1,88 +1,79 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import Input from "../components/common/Input";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Heading2 } from "../components/common/Headings";
+import { ErrText, Label } from "./SignUp";
 import { SignButton } from "../components/common/Button";
+import AppLink from "../components/common/AppLink";
+
+// Validation schema using Yup
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Please enter a valid email address")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters long")
+    .required("Password is required"),
+});
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
 
-  const handleSignIn = (e) => {
-    e.preventDefault();
-    setError("");
+  const onSubmit = (data) => {
+    alert("Sign-in successful!");
+    console.log(data);
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="w-[350px] bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
-          Welcome Back
-        </h2>
-        <p className="text-sm text-gray-500 mb-6 text-center">
-          Sign in to your account
-        </p>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="w-[400px] bg-white rounded-xl shadow-lg p-6">
+        <Heading2> Sign In to Your Account</Heading2>
 
-        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
-
-        <form className="flex flex-col " onSubmit={handleSignIn}>
-          <div className="mb-4">
-            <Input
-              type="email"
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <Label hFor="email" label=" Email" />
+            <input
               id="email"
+              {...register("email")}
+              type="email"
+              className="w-full py-2 px-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
             />
+            {errors.email && <ErrText>{errors.email.message}</ErrText>}
           </div>
-
-          <div className="mb-4 relative">
-            <Input
-              type={showPassword ? "text" : "password"}
+          <div className="relative">
+            <Label hFor="password" label="Password" />
+            <input
               id="password"
+              {...register("password")}
+              type={showPassword ? "text" : "password"}
+              className="w-full py-2 px-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
             />
-            <button
-              type="button"
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
+            <div
+              className="absolute right-3 top-9 cursor-pointer"
               onClick={() => setShowPassword(!showPassword)}
-              aria-label="Toggle password visibility"
             >
-              {showPassword ? (
-                <FiEyeOff className="mt-8  text-gray-600" />
-              ) : (
-                <FiEye className="mt-8  text-gray-600" />
-              )}
-            </button>
+              {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </div>
+            {errors.password && <ErrText>{errors.password.message}</ErrText>}
           </div>
-
-          <SignButton path={"/student"} label={"Sign Up"} />
-
-          <p className="mt-2 text-sm text-gray-600 text-center">
-            <a
-              href="#"
-              className="text-purple-600 hover:text-indigo-600 transition-all duration-300 ease-in-out"
-            >
-              Forgot Password?
-            </a>
-          </p>
+          <SignButton label="Sign In" />
         </form>
-
-        <p className="mt-4 text-sm text-gray-700 text-center">
-          Don’t have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-purple-600 hover:text-indigo-600 transition-all duration-300 ease-in-out"
-          >
-            Sign Up
-          </Link>
+        <p className="mt-4 text-sm text-gray-600 text-center">
+          Don’t have an account? <AppLink to="/signup">Sign Up</AppLink>
         </p>
       </div>
     </div>
