@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation(); // Current location for active link styling
+  const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 

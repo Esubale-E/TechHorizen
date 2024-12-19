@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import { Heading3 } from "../common/Headings";
-import Input from "../common/Input";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -67,11 +66,12 @@ const ContactUs = () => {
               >
                 Email
               </label>
-              <Input
+              <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
+                className="mt-2 w-full p-3 border border-highlight rounded-lg focus:ring-2 focus:ring-accent dark:focus:ring-darkaccent focus:outline-none transition-shadow duration-300 hover:shadow-lg"
                 onChange={handleChange}
                 placeholder="johndoe@example.com"
                 required

@@ -7,6 +7,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AppLink from "./../components/common/AppLink";
 import { SignButton } from "../components/common/Button";
 import { Heading2 } from "./../components/common/Headings";
+import userService from "../services/user-service";
+import { useNavigate } from "react-router-dom";
 
 // Validation schema using Yup
 const validationSchema = yup.object().shape({
@@ -27,6 +29,7 @@ const validationSchema = yup.object().shape({
 });
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -41,9 +44,10 @@ const SignUp = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
-    alert("Sign-up successful!");
-    console.log(data);
+  const onSubmit = async (data) => {
+    const response = await userService.create(data);
+    console.log(response.data);
+    navigate("/student");
   };
 
   return (
@@ -124,8 +128,11 @@ const SignUp = () => {
               <ErrText> {errors.confirmPassword.message}</ErrText>
             )}
           </div>
-          <SignButton label={"Sign In"} />
+          <SignButton label={"Sign Up"} />
         </form>
+        <AppLink to={"http://localhost:5000/auth/google"}>
+          Sigh Up with Google
+        </AppLink>
         <p className="mt-4 text-sm text-gray-600 text-center">
           Already have an account? <AppLink to="/signin">Sign In</AppLink>
         </p>
