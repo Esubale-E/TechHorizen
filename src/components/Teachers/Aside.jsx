@@ -1,16 +1,10 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import {
-  FaBars,
-  FaTimes,
-  FaBookOpen,
-  FaCalendarAlt,
-  FaFileAlt,
-  FaPen,
-} from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
+import SidebarLink from "../common/SideBarLink";
+import sideLinks from "../../utils/sideLinks";
 
-const TeachersSideBar = () => {
+const Aside = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
@@ -19,7 +13,7 @@ const TeachersSideBar = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setSidebarOpen(false); // Automatically close overlay on larger screens
+        setSidebarOpen(false);
       }
     };
 
@@ -47,43 +41,26 @@ const TeachersSideBar = () => {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`${
-          sidebarOpen ? "translate-x-0  " : "-translate-x-full"
-        } md:translate-x-0 fixed md:relative left-0 top-0 w-72 bg-white h-screen text-primary shadow-lg transition-transform duration-300 ease-in-out z-40`}
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 fixed md:relative left-0 top-0 min-w-72 ${
+          sidebarOpen ? "h-full" : "s-screen"
+        } bg-white shadow-lg transition-transform duration-300 ease-in-out z-40`}
         aria-hidden={!sidebarOpen}
       >
         <div className="p-6">
-
-
           {/* Menu Items */}
           <nav className="space-y-4">
-           
-            <SidebarLink
-              to="/teacher/courses"
-              icon={<FaBookOpen />}
-              label="Courses"
-              isActive={isActive}
-            />
-            <SidebarLink
-              to="/teacher/events"
-              icon={<FaCalendarAlt />}
-              label="Event"
-              isActive={isActive}
-            />
-            <SidebarLink
-              to="/teacher/resources"
-              icon={<FaFileAlt />}
-              label="Resources"
-              isActive={isActive}
-            />
-            <SidebarLink
-              to="/teacher/blog"
-              icon={<FaPen />}
-              label="Blog"
-              isActive={isActive}
-            />
+            {sideLinks.map((li, i) => (
+              <SidebarLink
+                key={i}
+                to={"/teacher" + li.link}
+                icon={<li.icon />}
+                label={li.label}
+                isActive={isActive}
+              />
+            ))}
           </nav>
         </div>
       </aside>
@@ -107,16 +84,4 @@ const TeachersSideBar = () => {
   );
 };
 
-const SidebarLink = ({ to, icon, label, isActive }) => (
-  <Link
-    to={to}
-    className={`flex items-center py-3 px-4 rounded-lg transition duration-200 ${isActive(
-      to
-    )}`}
-  >
-    <span className="text-lg mr-3">{icon}</span>
-    {label}
-  </Link>
-);
-
-export default TeachersSideBar;
+export default Aside;

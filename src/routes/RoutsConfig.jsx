@@ -1,17 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import LandingPage from "../pages/LandingPage";
 import SignUp from "../pages/SignUp";
+import SignIn from "../pages/SignIn";
+import LandingPage from "../pages/LandingPage";
 import MainLayout from "../layouts/MainLayout";
 import StudentLayout from "../Layouts/StudentLayout";
+import TeachersLayout from "../Layouts/TeachersLayout";
 import Dashboard from "../components/Students/Dashboard";
 import Resources from "../components/Students/Resources";
 import Courses from "../components/Students/Cources";
 import Events from "../components/Students/Events";
 import Blog from "../components/Students/Blog";
-import TeachersLayout from "../Layouts/TeachersLayout";
-import TeachersCourse from "../components/Teachers/TeachersCourse";
-import TeacherCourseDetail from "../components/Teachers/TeachersCourseDetail";
-import SignIn from "../pages/SignIn";
+import TCourse from "../components/Teachers/Course";
+import TCourseDetail from "../components/Teachers/CourseDetail";
+import AddCourse from "../components/Teachers/AddCourse";
 
 const RoutesConfig = () => {
   return (
@@ -37,10 +38,11 @@ const RoutesConfig = () => {
         <Route path="/teacher/events" element={<Events />} />
         <Route
           path="/teacher/courses"
-          element={<TeachersCourse currentTeacherName={"Dr. Alan Turing"} />}
+          element={<TCourse currentTeacherName={"Dr. Alan Turing"} />}
         />
-        <Route path="/teacher/coursedetail" element={<TeacherCourseDetail />} />
+        <Route path="/teacher/coursedetail" element={<TCourseDetail />} />
         <Route path="/teacher/resources" element={<Resources />} />
+        <Route path="/teacher/addcourse" element={<AddCourse />} />
         <Route path="/teacher/blog" element={<Blog />} />
       </Route>
     </Routes>

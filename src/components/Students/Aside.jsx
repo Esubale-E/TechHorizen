@@ -1,14 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import {
-  FaBars,
-  FaTimes,
-  FaCalendarAlt,
-  FaBook,
-  FaPen,
-  FaFolderOpen,
-} from "react-icons/fa";
-
+import { useLocation } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { studentSideLinks } from "../../utils/sideLinks";
+import SidebarLink from "../common/SideBarLink";
 const Aside = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation(); // Get current location for active link styling
@@ -58,30 +52,15 @@ const Aside = () => {
         <div className="p-6 text-gray-700">
           {/* Menu Items */}
           <nav className="space-y-4">
-            <SidebarLink
-              to="/student/events"
-              icon={<FaCalendarAlt />}
-              label="Events"
-              isActive={isActive}
-            />
-            <SidebarLink
-              to="/student/courses"
-              icon={<FaBook />}
-              label="Courses"
-              isActive={isActive}
-            />
-            <SidebarLink
-              to="/student/blog"
-              icon={<FaPen />}
-              label="Blog"
-              isActive={isActive}
-            />
-            <SidebarLink
-              to="/student/resources"
-              icon={<FaFolderOpen />}
-              label="Resources"
-              isActive={isActive}
-            />
+            {studentSideLinks.map((li, i) => (
+              <SidebarLink
+                key={i}
+                to={"/student" + li.link}
+                icon={<li.icon />}
+                label={li.label}
+                isActive={isActive}
+              />
+            ))}
           </nav>
         </div>
       </aside>
@@ -104,18 +83,5 @@ const Aside = () => {
     </>
   );
 };
-
-// eslint-disable-next-line react/prop-types
-const SidebarLink = ({ to, icon, label, isActive }) => (
-  <Link
-    to={to}
-    className={`flex items-center py-3 px-4 rounded-lg transition duration-200 ${isActive(
-      to
-    )}`}
-  >
-    <span className="text-blue-600 mr-3">{icon}</span>
-    {label}
-  </Link>
-);
 
 export default Aside;

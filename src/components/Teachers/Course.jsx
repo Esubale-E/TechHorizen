@@ -6,18 +6,11 @@ import {
   FaUsers,
   FaPlusCircle,
 } from "react-icons/fa";
-import courses from "../../services/coursesT"; // Assuming this is the course data source
-import AddCourse from "./AddCourse";
-import { useState } from "react";
+import courses from "../../services/coursesT";
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const TeachersCourse = ({ currentTeacherName }) => {
-  const [ addCourse, setAddCourse ] = useState(false);
-
-  const handleAddCourse = () => {
-    setAddCourse(false);
-  };
   // Filter courses by current teacher
   const filteredCourses = courses.filter(
     (course) => course.author === currentTeacherName
@@ -30,22 +23,20 @@ const TeachersCourse = ({ currentTeacherName }) => {
         <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
           Your Courses
         </h2>
-        <span
-          onClick={() => setAddCourse(true)}
+        <Link
+          to={"/teacher/addcourse"}
           className="absolute top-0 right-12 flex justify-center items-center gap-2 text-text bg-blue-400 rounded-2xl py-3 px-7 cursor-pointer hover:bg-blue-500 "
         >
           <FaPlusCircle />
           Add Course
-        </span>
+        </Link>
       </div>
-      {addCourse && <AddCourse onAddCourse={handleAddCourse} onClose={()=>setAddCourse(false)}/>}
-
       {/* Courses Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredCourses.length > 0 ? (
           filteredCourses.map((course, index) => (
             <Link
-              to={'/teacher/coursedetail'}
+              to={"/teacher/coursedetail"}
               key={index}
               className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 p-4 rounded-lg shadow-md"
             >
