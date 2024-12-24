@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Heading2 } from "./../common/Headings";
 import Input from "./../common/Input";
 import Button from "./../common/Button";
+import courseService from "../../services/course-service";
 
 const AddCourse = () => {
   const [title, setTitle] = useState("");
@@ -22,11 +23,15 @@ const AddCourse = () => {
       description,
       duration,
       prerequisites,
-      author : 'current user '
+      author: [{ _id: "6764193acef513f9119c40d6", name: "current user" }],
     };
-    console.log("New Course Added:", newCourse);
 
-    // Clear the form and close modal
+    courseService
+      .create(newCourse)
+      .then((res) => console.log("data:-", res.data))
+      .catch((err) => console.log("error:-", err.response));
+
+    // Clear the form
     setTitle("");
     setDescription("");
     setDuration("");
@@ -84,10 +89,7 @@ const AddCourse = () => {
         <div>
           <div className="flex items-center space-x-2"></div>
         </div>
-
-        <div>
-          <Button type="submit">Add Course</Button>
-        </div>
+        <Button type="submit">Add Course</Button>
       </form>
     </div>
   );
