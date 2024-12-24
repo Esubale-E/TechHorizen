@@ -4,11 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Heading2 } from "../components/common/Headings";
-import { ErrText, Label } from "./SignUp";
+import { Label } from "./SignUp";
 import { SignButton } from "../components/common/Button";
-import AppLink from "../components/common/AppLink";
+import AppLink, { GoogleLink } from "../components/common/AppLink";
+import { ErrText } from "../components/common/Text";
 
-// Validation schema using Yup
 const validationSchema = yup.object().shape({
   email: yup
     .string()
@@ -39,7 +39,7 @@ const SignIn = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-[400px] bg-white rounded-xl shadow-lg p-6">
-        <Heading2> Sign In to Your Account</Heading2>
+        <Heading2> Sign In</Heading2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -71,6 +71,7 @@ const SignIn = () => {
             {errors.password && <ErrText>{errors.password.message}</ErrText>}
           </div>
           <SignButton label="Sign In" />
+          <GoogleLink />
         </form>
         <p className="mt-4 text-sm text-gray-600 text-center">
           Don’t have an account? <AppLink to="/signup">Sign Up</AppLink>

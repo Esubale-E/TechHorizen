@@ -13,6 +13,15 @@ const Navbar = () => {
       ? "text-blue-400 font-semibold"
       : "hover:text-gray-400";
 
+  const mobileMenu = [
+    { to: "/", text: "Home" },
+    { to: "/about", text: "About" },
+    { to: "/events", text: "Events" },
+    { to: "/blog", text: "Blog" },
+    { to: "/contact", text: "Contact Us" },
+    { to: "/signin", text: "Sign In" },
+  ];
+
   return (
     <nav className="bg-background text-gray-600 p-4 shadow-md fixed w-full z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -57,14 +66,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-gray-700 p-4 mt-2 transition-all duration-300 ease-in-out">
-          {[
-            { to: "/", text: "Home" },
-            { to: "/about", text: "About" },
-            { to: "/events", text: "Events" },
-            { to: "/blog", text: "Blog" },
-            { to: "/contact", text: "Contact Us" },
-            { to: "/signin", text: "Sign In" },
-          ].map(({ to, text }) => (
+          {mobileMenu.map(({ to, text }) => (
             <Link
               key={to}
               to={to}
@@ -84,12 +86,7 @@ export default Navbar;
 
 // eslint-disable-next-line react/prop-types
 const CustomNavLink = ({ to, text, isActive }) => (
-  <a
-    href={to}
-    className={`transition duration-300 ${isActive(
-      to
-    )}  text-text`}
-  >
+  <a href={to} className={`transition duration-300 ${isActive(to)}  text-text`}>
     {text}
   </a>
 );

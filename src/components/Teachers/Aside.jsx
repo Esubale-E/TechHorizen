@@ -45,7 +45,7 @@ const Aside = () => {
         className={`${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 fixed md:relative left-0 top-0 min-w-72 ${
-          sidebarOpen ? "h-full" : "s-screen"
+          sidebarOpen ? "h-full" : "h-screen"
         } bg-white shadow-lg transition-transform duration-300 ease-in-out z-40`}
         aria-hidden={!sidebarOpen}
       >

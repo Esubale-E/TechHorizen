@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TopBar = () => {
   return (
-    <div className="w-full bg-white text-primary p-4 flex items-center justify-between shadow-md">
+    <div className="w-full bg-white text-primary p-4 flex items-center justify-between shadow-md shadow-gray-900">
       <div className="text-2xl font-bold">
         <Link
           to="/teacher"

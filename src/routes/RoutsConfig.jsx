@@ -40,7 +40,7 @@ const RoutesConfig = () => {
           path="/teacher/courses"
           element={<TCourse currentTeacherName={"Dr. Alan Turing"} />}
         />
-        <Route path="/teacher/coursedetail" element={<TCourseDetail />} />
+        <Route path="/teacher/coursedetail/:id" element={<TCourseDetail />} />
         <Route path="/teacher/resources" element={<Resources />} />
         <Route path="/teacher/addcourse" element={<AddCourse />} />
         <Route path="/teacher/blog" element={<Blog />} />

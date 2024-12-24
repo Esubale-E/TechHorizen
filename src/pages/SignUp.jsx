@@ -4,11 +4,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import AppLink from "./../components/common/AppLink";
+import AppLink, { GoogleLink } from "./../components/common/AppLink";
 import { SignButton } from "../components/common/Button";
 import { Heading2 } from "./../components/common/Headings";
 import userService from "../services/user-service";
 import { useNavigate } from "react-router-dom";
+import { LightText, ErrText } from "./../components/common/Text";
 
 // Validation schema using Yup
 const validationSchema = yup.object().shape({
@@ -53,7 +54,7 @@ const SignUp = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-[400px]  mt- bg-white rounded-xl shadow-lg p-6">
-        <Heading2>Create Your Account</Heading2>
+        <Heading2>Sign Up</Heading2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4jk">
           <div>
             <Label hFor="firstName" label={"First Name"} />
@@ -129,23 +130,17 @@ const SignUp = () => {
             )}
           </div>
           <SignButton label={"Sign Up"} />
+          <GoogleLink />
         </form>
-        <AppLink to={"http://localhost:5000/auth/google"}>
-          Sigh Up with Google
-        </AppLink>
-        <p className="mt-4 text-sm text-gray-600 text-center">
+        <LightText>
           Already have an account? <AppLink to="/signin">Sign In</AppLink>
-        </p>
+        </LightText>
       </div>
     </div>
   );
 };
 
 export default SignUp;
-
-export const ErrText = ({ children }) => (
-  <p className="text-red-500 text-sm">{children}</p>
-);
 
 export const Label = ({ hFor, label }) => (
   <label htmlFor={hFor} className="block text-sm text-gray-700 mb-2">

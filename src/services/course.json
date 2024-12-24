@@ -1,0 +1,229 @@
+[
+  {
+    "title": "Introduction to Web Development",
+    "description": "Learn the basics of HTML, CSS, and JavaScript to build your first website.",
+    "prerequisites": "None",
+    "duration": "6 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "HTML Basics",
+        "description": "Understand the structure of web pages using HTML."
+      },
+      {
+        "title": "CSS Essentials",
+        "description": "Learn how to style web pages using CSS."
+      }
+    ],
+    "enrolledStudent": [
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d2",
+        "name": "Jane Smith"
+      },
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d3",
+        "name": "Ali Khan"
+      }
+    ]
+  },
+  {
+    "title": "Advanced JavaScript",
+    "description": "Deep dive into JavaScript with ES6, asynchronous programming, and advanced concepts.",
+    "prerequisites": "Basic JavaScript knowledge",
+    "duration": "8 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "ES6 and Beyond",
+        "description": "Explore modern JavaScript features introduced in ES6."
+      },
+      {
+        "title": "Asynchronous Programming",
+        "description": "Learn about promises, async/await, and event loops."
+      }
+    ],
+    "enrolledStudent": [
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d5",
+        "name": "Michael Johnson"
+      },
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d6",
+        "name": "Emily Davis"
+      }
+    ]
+  },
+  {
+    "title": "Python for Beginners",
+    "description": "Start programming with Python, one of the most beginner-friendly languages.",
+    "prerequisites": "None",
+    "duration": "4 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "Introduction to Python",
+        "description": "Learn Python syntax, variables, and basic concepts."
+      },
+      {
+        "title": "Control Flow in Python",
+        "description": "Understand how to use loops and conditionals."
+      }
+    ],
+    "enrolledStudent": [
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d7",
+        "name": "Sophia Martinez"
+      }
+    ]
+  },
+  {
+    "title": "Data Structures and Algorithms",
+    "description": "Understand the fundamentals of data structures and algorithms for efficient problem-solving.",
+    "prerequisites": "Basic programming knowledge",
+    "duration": "10 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "Introduction to Algorithms",
+        "description": "Learn what algorithms are and how they are analyzed."
+      },
+      {
+        "title": "Sorting Algorithms",
+        "description": "Explore common sorting algorithms like quicksort and mergesort."
+      }
+    ],
+    "enrolledStudent": [
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d8",
+        "name": "Liam Brown"
+      }
+    ]
+  },
+  {
+    "title": "Machine Learning Basics",
+    "description": "Learn the fundamentals of machine learning and how to build simple models.",
+    "prerequisites": "Basic Python knowledge",
+    "duration": "12 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "Introduction to Machine Learning",
+        "description": "Understand the basics of supervised and unsupervised learning."
+      },
+      {
+        "title": "Linear Regression",
+        "description": "Learn how to implement linear regression models."
+      }
+    ],
+    "enrolledStudent": [
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d9",
+        "name": "Ethan Taylor"
+      }
+    ]
+  },
+  {
+    "title": "React for Beginners",
+    "description": "Build dynamic and interactive user interfaces with React.js.",
+    "prerequisites": "Basic JavaScript knowledge",
+    "duration": "8 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "React Components",
+        "description": "Learn how to build and use components in React."
+      },
+      {
+        "title": "State and Props",
+        "description": "Understand how state and props work in React applications."
+      }
+    ],
+    "enrolledStudent": []
+  },
+  {
+    "title": "Introduction to Databases",
+    "description": "Learn how to work with databases using SQL.",
+    "prerequisites": "None",
+    "duration": "6 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "SQL Basics",
+        "description": "Learn how to create, read, update, and delete data using SQL."
+      },
+      {
+        "title": "Database Design",
+        "description": "Understand how to design efficient databases."
+      }
+    ],
+    "enrolledStudent": [
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d10",
+        "name": "Chloe Wilson"
+      }
+    ]
+  },
+  {
+    "title": "Cloud Computing Essentials",
+    "description": "Understand the basics of cloud computing and its applications.",
+    "prerequisites": "None",
+    "duration": "5 weeks",
+    "author": [
+      {
+        "_id": "676a7a6a4795607bde9d34bf",
+        "name": "Dr. Alan Turing"
+      }
+    ],
+    "lesson": [
+      {
+        "title": "Introduction to Cloud Computing",
+        "description": "Learn what cloud computing is and its benefits."
+      },
+      {
+        "title": "Cloud Service Models",
+        "description": "Understand IaaS, PaaS, and SaaS."
+      }
+    ],
+    "enrolledStudent": [
+      {
+        "_id": "64c5e3f812e3c5d5f9b5c6d11",
+        "name": "Oliver Scott"
+      }
+    ]
+  }
+]

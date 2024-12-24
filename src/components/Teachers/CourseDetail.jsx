@@ -1,52 +1,63 @@
-import PropTypes from "prop-types";
-import { FaClock, FaUsers, FaBook } from "react-icons/fa";
-import courses from "../../services/coursesT";
-import { useState } from "react";
+import { FaClock, FaUsers, FaBook, FaBookOpen } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import AddLesson from "./AddLesson";
+import courseService from "../../services/course-service";
+import { useLocation } from "react-router-dom";
+import { Heading2, Heading3 } from "../common/Headings";
+import { AppText, LightText } from "../common/Text";
 
-const TeacherCourseDetail = ({ course = courses[3] }) => {
-  const {
-    name = "Unknown Course",
-    duration = "N/A",
-    enrolledStudents = [],
-  } = course;
+const TeacherCourseDetail = () => {
+  const l = useLocation();
+  const id = l.pathname.slice(-24);
+
+  const [course, setCourse] = useState();
+  const [error, setError] = useState();
 
   const [showAddLesson, setShowAddLesson] = useState(false);
 
-  return (
-    <div className="m-6 p-6 w-full bg-white rounded-lg shadow-lg">
-      {/* Header */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
-        {name} - Course Details
-      </h2>
+  useEffect(() => {
+    courseService
+      .getOne(id)
+      .then((res) => {
+        console.log(res.data);
+        setCourse(res.data);
+      })
+      .catch((err) => setError(err.messge));
+  }, [id]);
 
-      {/* Course Header */}
-      <div className="mb-4">
-        <div className="flex items-center mb-2">
-          <FaBook className="text-blue-600 mr-2" aria-label="Book Icon" />
-          <h4 className="text-xl font-semibold text-gray-800">{name}</h4>
+  if (error) return <p>{error}</p>;
+  if (course)
+    return (
+      <div className="m-6 p-6 w-full bg-white rounded-lg shadow-lg ">
+        <div className="flex items-center justify-center mb-2">
+          <Heading2>{course?.title}</Heading2>
         </div>
-        <p className="text-gray-700 mb-2">
-          <FaClock
-            className="inline text-gray-600 mr-2"
-            aria-label="Clock Icon"
+        <Heading3>
+          <FaBook
+            size={24}
+            className="text-blue-500"
+            aria-label=" inline Book Icon"
           />
-          Duration: {duration}
-        </p>
-      </div>
-
-      {/* Enrolled Students */}
-      <div className="mt-6">
-        <div className="flex items-center mb-2">
-          <FaUsers className="text-gray-600 mr-2" aria-label="Users Icon" />
-          <span className="text-gray-700 font-semibold">
-            Students Enrolled: {enrolledStudents.length}
-          </span>
-        </div>
+          {course.title}
+        </Heading3>
+        {/* Course Details */}
+        <AppText>{course.description}</AppText>
+        <LightText>
+          <FaClock className="inline text-darkaccent mx-2" />
+          Duration : {course.duration}
+        </LightText>
+        <LightText>
+          <FaBookOpen className="inline text-darkaccent mx-2" />
+          prerequisites : {course.prerequisites}
+        </LightText>
+        <LightText>
+          <FaUsers className="inline text-darkaccent mx-2" />
+          Students Enrolled : {course.enrolledStudent.length}
+        </LightText>
 
         <div className="space-y-2">
-          {enrolledStudents.length > 0 ? (
-            enrolledStudents.map((student, index) => (
+          {course?.enrolledStudent.length > 0 ? (
+            course?.enrolledStudent.map((student, index) => (
               <div key={index} className="flex justify-between text-gray-700">
                 <span>{student.name}</span>
               </div>
@@ -55,32 +66,19 @@ const TeacherCourseDetail = ({ course = courses[3] }) => {
             <p className="text-gray-500 italic">No students enrolled yet.</p>
           )}
         </div>
-      </div>
 
-      {/* Button to Add Lesson */}
-      <div className="mt-4">
-        <button
-          onClick={() => setShowAddLesson(true)}
-          className="w-full mt-4 text-white bg-primary px-4 py-2 rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200"
-        >
-          Add Lesson
-        </button>
+        {/* Button to Add Lesson */}
+        <div className="mt-4">
+          <button
+            onClick={() => setShowAddLesson(true)}
+            className="w-full mt-4 text-white bg-primary px-4 py-2 rounded-lg shadow-md hover:bg-primary-dark transition-all duration-200"
+          >
+            Add Lesson
+          </button>
+        </div>
+        {showAddLesson && <AddLesson onClose={() => setShowAddLesson(false)} />}
       </div>
-      {showAddLesson && <AddLesson onClose={()=>setShowAddLesson(false)} />}
-    </div>
-  );
-};
-
-TeacherCourseDetail.propTypes = {
-  course: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    enrolledStudents: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  }),
+    );
 };
 
 export default TeacherCourseDetail;
