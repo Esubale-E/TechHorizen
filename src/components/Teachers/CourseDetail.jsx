@@ -5,6 +5,7 @@ import courseService from "../../services/course-service";
 import { useLocation } from "react-router-dom";
 import { Heading2, Heading3 } from "../common/Headings";
 import { AppText, LightText } from "../common/Text";
+import LessonCards from "./LessonCards";
 
 const TeacherCourseDetail = () => {
   const l = useLocation();
@@ -36,7 +37,7 @@ const TeacherCourseDetail = () => {
         setCourse(res.data);
       })
       .catch((err) => setError(err.messge));
-  }, [id]);
+  }, [id, course]);
 
   if (error) return <p>{error}</p>;
   if (course)
@@ -68,17 +69,9 @@ const TeacherCourseDetail = () => {
           Students Enrolled : {course.enrolledStudent.length}
         </LightText>
 
-        <div className="space-y-2">
-          {course?.enrolledStudent.length > 0 ? (
-            course?.enrolledStudent.map((student, index) => (
-              <div key={index} className="flex justify-between text-gray-700">
-                <span>{student.name}</span>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500 italic">No students enrolled yet.</p>
-          )}
-        </div>
+        {course.lesson.map((lesson, i) => (
+          <LessonCards key={i} lesson={lesson} />
+        ))}
 
         {/* Button to Add Lesson */}
         <div className="mt-4">
