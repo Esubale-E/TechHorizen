@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import PropTypes from "prop-types";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import { Heading2 } from "../common/Headings";
@@ -8,32 +8,31 @@ import { FaTimes } from "react-icons/fa";
 const AddLesson = ({ onAddLesson, onClose }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [resources, setResources] = useState([]);
+  const [file, setFile] = useState(null); // Single file
 
-  const handleResourceChange = (e) => {
-    setResources([...e.target.files]);
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]); // Store the single selected file
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !description) {
-      alert("Please fill in all required fields!");
+    if (!title || !description || !file) {
+      alert("Please fill in all required fields and upload a file!");
       return;
     }
 
-    const newLesson = {
-      title,
-      description,
-      resources,
-    };
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("file", file); // Use "file" to match backend field name
 
-    onAddLesson(newLesson);
+    onAddLesson(formData);
 
     // Clear the form
     setTitle("");
     setDescription("");
-    setResources([]);
+    setFile(null);
     onClose();
   };
 
@@ -49,18 +48,13 @@ const AddLesson = ({ onAddLesson, onClose }) => {
         <Heading2>Add New Lesson</Heading2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Lesson Title */}
           <Input
             type="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter lesson title"
-            required
           />
-
-          {/* Lesson Description */}
           <div>
             <label
               htmlFor="description"
@@ -72,19 +66,18 @@ const AddLesson = ({ onAddLesson, onClose }) => {
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500"
               placeholder="Enter lesson description"
               rows="4"
               required
             />
           </div>
           <Input
-            label="Resourse (optional)"
+            label="Resource (required)"
             type="file"
-            id="resources"
-            multiple
-            onChange={handleResourceChange}
-            className="block w-full text-gray-700 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            id="file"
+            onChange={handleFileChange}
+            required
           />
 
           {/* Submit Button */}
@@ -95,12 +88,6 @@ const AddLesson = ({ onAddLesson, onClose }) => {
       </div>
     </div>
   );
-};
-
-AddLesson.propTypes = {
-  onAddLesson: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
 };
 
 export default AddLesson;

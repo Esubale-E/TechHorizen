@@ -1,4 +1,5 @@
-import httpService from "./http-service";
+import createHttpService from "./http-service";
 
-const create = () => httpService("api/courses");
-export default create();
+const courseService = createHttpService("api/courses");
+
+export default courseService;

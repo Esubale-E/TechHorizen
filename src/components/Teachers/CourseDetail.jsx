@@ -15,11 +15,24 @@ const TeacherCourseDetail = () => {
 
   const [showAddLesson, setShowAddLesson] = useState(false);
 
+  const handleAddLesson = async (formData) => {
+    try {
+      console.log("file upload began");
+      const response = await courseService.updateWithFile(id, formData);
+
+      console.log("Lesson added successfully:", response.data);
+
+      // Update your UI or state with the new course data
+      // setCourse(response.data);
+    } catch (err) {
+      console.error("Failed to add lesson:", err);
+    }
+  };
+
   useEffect(() => {
     courseService
       .getOne(id)
       .then((res) => {
-        console.log(res.data);
         setCourse(res.data);
       })
       .catch((err) => setError(err.messge));
@@ -76,7 +89,12 @@ const TeacherCourseDetail = () => {
             Add Lesson
           </button>
         </div>
-        {showAddLesson && <AddLesson onClose={() => setShowAddLesson(false)} />}
+        {showAddLesson && (
+          <AddLesson
+            onClose={() => setShowAddLesson(false)}
+            onAddLesson={handleAddLesson}
+          />
+        )}
       </div>
     );
 };

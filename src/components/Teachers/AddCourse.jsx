@@ -9,8 +9,8 @@ const AddCourse = () => {
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
   const [prerequisites, setPrerequisites] = useState("");
-
-  const handleSubmit = (e) => {
+  
+  const createCourse = (e) => {
     e.preventDefault();
 
     if (!title || !duration) {
@@ -42,7 +42,7 @@ const AddCourse = () => {
     <div className="bg-white w-full p-6 rounded-lg shadow-lg">
       <Heading2>Add New Course</Heading2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={createCourse} className="space-y-4">
         <Input
           label="Course Title"
           id="title"
