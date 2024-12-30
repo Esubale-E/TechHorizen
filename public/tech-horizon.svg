@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-12 h-12">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 230" class="w-12 h-12">
 	<!-- Outer Circle -->
 	<circle cx="100" cy="100" r="95" fill="#003366" stroke="#00B0FF" stroke-width="4" />
 	<!-- Inner Circle -->
@@ -26,7 +26,7 @@
 	<line x1="165" y1="100" x2="115" y2="100" stroke="#00FF7F" stroke-width="2" />
 	<line x1="100" y1="115" x2="100" y2="165" stroke="#00B8D4" stroke-width="2" />
 	<!-- Text -->
-	<text x="100" y="190" fill="#00B0FF" font-size="14" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle">
+	<text x="100" y="220" fill="#00B0FF" font-size="24" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle">
 		TechHorizon
 	</text>
 </svg>

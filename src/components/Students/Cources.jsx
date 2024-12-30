@@ -1,26 +1,31 @@
 import { useEffect, useState } from "react";
-import { FaCheckCircle, FaClock, FaBook } from "react-icons/fa";
+import { FaCheckCircle, FaClock, FaBook, FaTimes } from "react-icons/fa";
 import courseService from "../../services/course-service";
+import CoursePreview from "./CoursePreview";
 
 const Courses = () => {
   const [filter, setFilter] = useState("All");
   const [courses, setCourses] = useState();
   const [error, setError] = useState();
-
-  // const filteredCourses =
-  //   filter === "All"
-  //     ? courses
-  //     : courses.filter((course) => course.status === filter);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   useEffect(() => {
     courseService
       .getAll()
       .then((res) => setCourses(res.data))
       .catch((err) => setError(err));
-  });
+  }, []);
 
   const handleEnroll = () => {
-    alert("you have enrolled successfuly");
+    alert("You have enrolled successfully");
+  };
+
+  const openModal = (course) => {
+    setSelectedCourse(course);
+  };
+
+  const closeModal = () => {
+    setSelectedCourse(null);
   };
 
   if (error) return <div>{error.message}</div>;
@@ -93,13 +98,19 @@ const Courses = () => {
                   Progress: {course.progress}
                 </div>
 
-                {/* Enroll Button */}
-                <div className="mt-4">
+                {/* Buttons */}
+                <div className="mt-4 flex gap-2">
                   <button
                     className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
-                    onClick={() => handleEnroll(course.id)} // Assuming handleEnroll is a function to handle enrollment
+                    onClick={() => handleEnroll(course.id)}
                   >
                     Enroll
+                  </button>
+                  <button
+                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                    onClick={() => openModal(course)}
+                  >
+                    View Detail
                   </button>
                 </div>
               </div>
@@ -110,6 +121,24 @@ const Courses = () => {
             </p>
           )}
         </div>
+
+        {/* Modal */}
+        {selectedCourse && (
+          <div
+            onClick={(e) => closeModal(e)}
+            className="my-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          >
+            <div className="bg-white w-full md:max-w-xl max-w-4xl rounded-3xl py-4 px-8 h-[80vh] overflow-y-auto shadow-lg">
+              <button
+                className="my-overlay  cursor-pointer  float-right"
+                onClick={closeModal}
+              >
+                <FaTimes size={32} className=" text-red-800" />
+              </button>
+              <CoursePreview courseId={selectedCourse._id} />
+            </div>
+          </div>
+        )}
       </div>
     );
 };
