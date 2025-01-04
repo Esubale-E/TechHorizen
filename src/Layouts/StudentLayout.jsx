@@ -8,10 +8,10 @@ const StudentLayout = () => {
   const [showProfile, setShowProfile] = useState(false);
 
   return (
-    <div className="grid grid-cols-2">
-      <Topbar showProfile={setShowProfile} className='' />
+    <div className="flex flex-col min-h-screen">
+      <Topbar showProfile={setShowProfile} className="" />
       {showProfile && <ProfileDetail />}
-      <div className="flex flex-1 bg-gradient-to-r from-blue-100 to-gray-100" >
+      <div className="flex flex-1 bg-gradient-to-r from-blue-100 to-gray-100">
         <Aside />
         <Outlet />
       </div>
