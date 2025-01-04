@@ -15,7 +15,6 @@ import { AppText } from "../common/Text";
 // ];
 
 const LessonCards = ({ lesson: { title, description, file } }) => {
-  console.log(file);
   return (
     <div className="m-6 p-6 w-full bg-white rounded-lg shadow-lg ">
       <div className="flex items-center justify-center mb-2">
