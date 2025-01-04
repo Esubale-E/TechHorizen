@@ -22,15 +22,20 @@ class HttpService {
   }
 
   update(id, entity) {
-    return apiClient.put(`${this.endpoint}/${id}`, entity); // Fixed URL construction
+    return apiClient.put(`${this.endpoint}/${id}`, entity);
   }
 
+  createWithFile(formData) {
+    return apiClient.post(`${this.endpoint}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
   updateWithFile(id, formData) {
-    // Additional method for handling file uploads
     return apiClient.put(`${this.endpoint}/${id}/lesson`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
   }
+
 }
 
 const createHttpService = (endpoint) => new HttpService(endpoint);

@@ -9,10 +9,11 @@ import Dashboard from "../components/Students/Dashboard";
 import Resources from "../components/Students/Resources";
 import Courses from "../components/Students/Cources";
 import Events from "../components/Students/Events";
-import Blog from "../components/Students/Blog";
+import Blog from "../components/Blog";
 import TCourse from "../components/Teachers/Course";
 import TCourseDetail from "../components/Teachers/CourseDetail";
 import AddCourse from "../components/Teachers/AddCourse";
+import AddBlog from "../components/Teachers/AddBlog";
 
 const RoutesConfig = () => {
   return (
@@ -44,6 +45,7 @@ const RoutesConfig = () => {
         <Route path="/teacher/resources" element={<Resources />} />
         <Route path="/teacher/addcourse" element={<AddCourse />} />
         <Route path="/teacher/blog" element={<Blog />} />
+        <Route path="/teacher/addblog" element={<AddBlog />} />
       </Route>
     </Routes>
   );
