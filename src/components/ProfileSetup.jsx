@@ -5,7 +5,9 @@ import Button from "./common/Button";
 import Input from "./common/Input";
 import userService from "../services/user-service";
 import { useLocation } from "react-router-dom";
-import { ErrText } from "./common/Text";
+import SelectInput from "./common/SelectInput";
+import colleges from "./../services/profileSetupData.js";
+import { useEffect, useState } from "react";
 
 const profileSchema = yup.object().shape({
   phone: yup
@@ -25,11 +27,12 @@ const profileSchema = yup.object().shape({
 });
 
 const ProfileSetup = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const searchParams = new URLSearchParams(useLocation().search);
   const userId = searchParams.get("userId");
 
-  console.log("Extracted userId:", userId);
+  const [selectedCollege, setSelectedCollege] = useState(null);
+  const [selectedDepartment, setSelectedDepartment] = useState(null);
+  const [yearOptions, setYearOptions] = useState([]);
 
   const {
     register,
@@ -42,7 +45,7 @@ const ProfileSetup = () => {
       phone: "",
       college: "",
       department: "",
-      year: 1,
+      year: "1",
       birthDate: "",
     },
   });
@@ -53,10 +56,36 @@ const ProfileSetup = () => {
     userService
       .update(userId, data)
       .then((res) => console.log(res.data))
-      .catch((err) => console.log(err.messsage));
+      .catch((err) => console.log(err.message));
 
     reset();
   };
+
+  // Handling change event for college selection
+  const handleCollegeChange = (event) => {
+    const selected = colleges.find(
+      (college) => college.value === event.target.value
+    );
+    setSelectedCollege(selected);
+
+    // Reset department and year when college is changed
+    setSelectedDepartment(null);
+    setYearOptions([]); // Reset year options
+  };
+  const handleDepartmentChange = (event) => {
+    const currentDepartment = selectedCollege?.options?.find(
+      (dept) => dept.value === event.target.value
+    );
+    setSelectedDepartment(currentDepartment);
+    console.log("currentDepartment", currentDepartment);
+
+    // If department has specific years, update year options
+    setYearOptions(currentDepartment ? currentDepartment.options : []);
+  };
+
+  useEffect(() => {
+    console.log("reload", yearOptions);
+  }, [selectedCollege, selectedDepartment, yearOptions]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -65,57 +94,33 @@ const ProfileSetup = () => {
           Profile Setup
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            label="Phone"
-            type="text"
-            {...register("phone")}
-            placeholder="Enter phone number"
-            aria-invalid={!!errors.phone}
-            aria-describedby="phone-error"
-            errorMessage={errors.phone?.message}
-          />
-          <Input
+          <SelectInput
             label="College"
-            type="text"
+            name="college"
             {...register("college")}
-            placeholder="Enter college"
-            aria-invalid={!!errors.college}
-            aria-describedby="college-error"
+            options={colleges}
+            value={selectedCollege?.value || ""}
+            onChange={handleCollegeChange}
             errorMessage={errors.college?.message}
           />
-          <Input
+          <SelectInput
             label="Department"
-            type="text"
+            name="department"
             {...register("department")}
-            placeholder="Enter department"
-            aria-invalid={!!errors.department}
-            aria-describedby="department-error"
+            options={selectedCollege?.options || []}
+            value={selectedDepartment?.value || ""}
+            onChange={handleDepartmentChange}
             errorMessage={errors.department?.message}
           />
-          <div className="mb-4">
-            <label className="block text-sm text-gray-700 mb-2" htmlFor="year">
-              Year
-            </label>
-            <select
-              {...register("year")}
-              id="year"
-              name="year"
-              className="w-full py-1 px-3 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-darkaccent hover:ring-2 hover:ring-darkaccent shadow-sm transition-all duration-300 ease-in-out transform"
-              aria-invalid={!!errors.year}
-              aria-describedby="year-error"
-            >
-              <option value="">Select Year</option>
-              <option value="1">1st Year</option>
-              <option value="2">2nd Year</option>
-              <option value="3">3rd Year</option>
-              <option value="4">4th Year</option>
-              <option value="5">5th Year</option>
-              <option value="5">6th Year</option>
-              <option value="5">7th Year</option>
-            </select>
-            {errors.year && <ErrText>{errors.year.message}</ErrText>}
-          </div>
+          <SelectInput
+            label="Year"
+            name="year"
+            {...register("year")}
+            options={yearOptions}
+            errorMessage={errors.year?.message}
+          />
 
+          {/* Birth Date Input */}
           <Input
             label="Birth Date"
             type="date"
@@ -124,6 +129,7 @@ const ProfileSetup = () => {
             aria-describedby="birthDate-error"
             errorMessage={errors.birthDate?.message}
           />
+
           <div className="flex justify-end my-4">
             <Button type="submit">Save Profile</Button>
           </div>
@@ -134,5 +140,3 @@ const ProfileSetup = () => {
 };
 
 export default ProfileSetup;
-
-

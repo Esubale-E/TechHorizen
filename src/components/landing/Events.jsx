@@ -1,15 +1,33 @@
 /* eslint-disable react/prop-types */
 import { Heading2, Heading3 } from "./../common/Headings";
-import { latestEvents } from "../../services/events";
 import Text from "./../common/Text";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import eventService from "./../../services/event-service";
 
 const Event = () => {
+  const [events, setEvents] = useState();
+  const [error, setError] = useState();
+  const [isLoadding, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    eventService
+      .getAll()
+      .then((res) => {
+        setEvents(res.data.slice(0, 4));
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
+  });
+
+  if (error) return <p> {error}</p>;
+
+  if (isLoadding) return <p>Loadding...</p>;
   return (
-    <section
-      id="events"
-      className="bg-background py-16 px-4"
-    >
+    <section id="events" className="bg-background py-16 px-4">
       <div className="max-w-6xl mx-auto text-center">
         {/* Section Header */}
         <Heading2>Upcoming Events</Heading2>
@@ -20,7 +38,7 @@ const Event = () => {
 
         {/* Event List */}
         <div className="grid grid-cols-2 gap-4">
-          {latestEvents.map((event, i) => (
+          {events.map((event, i) => (
             <EventCard key={i} event={event} />
           ))}
         </div>
