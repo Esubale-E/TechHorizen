@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,9 +6,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AppLink, { GoogleLink } from "./../components/common/AppLink";
 import { SignButton } from "../components/common/Button";
 import { Heading2 } from "./../components/common/Headings";
+import Input from "../components/common/Input";
 import userService from "../services/user-service";
-import { useNavigate } from "react-router-dom";
-import { LightText, ErrText } from "./../components/common/Text";
+import { LightText } from "./../components/common/Text";
+import { replace, useNavigate } from "react-router-dom";
 
 // Validation schema using Yup
 const validationSchema = yup.object().shape({
@@ -30,12 +30,9 @@ const validationSchema = yup.object().shape({
 });
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const inputstyle =
-    "w-full py-1 px-3 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105";
+  const toProfileDetail = useNavigate();
 
   const {
     register,
@@ -46,57 +43,57 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data) => {
-    const response = await userService.create(data);
-    console.log(response.data);
-    navigate("/student");
+    userService
+      .create({ ...data, authType: "regular" })
+      .then((res) => {
+        toProfileDetail("/profilesetup", replace);
+        console.log("Account Created ", res.data);
+      })
+      .catch((err) => console.log("Account Not Created ", err));
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="w-[400px]  mt- bg-white rounded-xl shadow-lg p-6">
+      <div className="w-[400px] mt- bg-white rounded-xl shadow-lg p-6">
         <Heading2>Sign Up</Heading2>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4jk">
-          <div>
-            <Label hFor="firstName" label={"First Name"} />
-            <input
-              id="firstName"
-              {...register("firstName")}
-              type="text"
-              className={inputstyle}
-              placeholder="Enter your first name"
-            />
-            {errors.firstName && <ErrText>{errors.firstName.message}</ErrText>}
-          </div>
-          <div>
-            <Label hFor="lastName" label={"Last Name"} />
-            <input
-              id="lastName"
-              {...register("lastName")}
-              type="text"
-              className={inputstyle}
-              placeholder="Enter your last name"
-            />
-            {errors.lastName && <ErrText>{errors.lastName.message}</ErrText>}
-          </div>
-          <div>
-            <Label hFor="email" label={"Email"} />
-            <input
-              id="email"
-              {...register("email")}
-              type="email"
-              className={inputstyle}
-              placeholder="Enter your email"
-            />
-            {errors.email && <ErrText>{errors.email.message}</ErrText>}
-          </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* First Name Field */}
+          <Input
+            label="First Name"
+            name="firstName"
+            placeholder="Enter your first name"
+            {...register("firstName")}
+            errorMessage={errors.firstName?.message}
+          />
+
+          {/* Last Name Field */}
+          <Input
+            label="Last Name"
+            name="lastName"
+            placeholder="Enter your last name"
+            {...register("lastName")}
+            errorMessage={errors.lastName?.message}
+          />
+
+          {/* Email Field */}
+          <Input
+            label="Email"
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            {...register("email")}
+            errorMessage={errors.email?.message}
+          />
+
+          {/* Password Field */}
           <div className="relative">
-            <Label hFor="password" label="Password" />
-            <input
-              id="password"
-              {...register("password")}
+            <Input
+              label="Password"
               type={showPassword ? "text" : "password"}
-              className={inputstyle}
+              name="password"
               placeholder="Enter your password"
+              {...register("password")}
+              errorMessage={errors.password?.message}
             />
             <div
               className="absolute right-3 top-9 cursor-pointer"
@@ -104,16 +101,17 @@ const SignUp = () => {
             >
               {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
             </div>
-            {errors.password && <ErrText>{errors.password.message}</ErrText>}
           </div>
+
+          {/* Confirm Password Field */}
           <div className="relative">
-            <Label hFor="confirmPassword" label="Confirm Password" />
-            <input
-              id="confirmPassword"
-              {...register("confirmPassword")}
+            <Input
+              label="Confirm Password"
               type={showConfirmPassword ? "text" : "password"}
-              className={inputstyle}
+              name="confirmPassword"
               placeholder="Re-enter your password"
+              {...register("confirmPassword")}
+              errorMessage={errors.confirmPassword?.message}
             />
             <div
               className="absolute right-3 top-9 cursor-pointer"
@@ -125,15 +123,14 @@ const SignUp = () => {
                 <FaEye size={20} />
               )}
             </div>
-            {errors.confirmPassword && (
-              <ErrText> {errors.confirmPassword.message}</ErrText>
-            )}
           </div>
-          <SignButton label={"Sign Up"} />
+
+          {/* Submit Button */}
+          <SignButton label="Sign Up" />
           <GoogleLink />
         </form>
         <LightText>
-          Already have an account? <AppLink to="/signin">Sign In</AppLink>
+          Already have an account? <AppLink to="/login">Log In</AppLink>
         </LightText>
       </div>
     </div>
@@ -141,9 +138,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-export const Label = ({ hFor, label }) => (
-  <label htmlFor={hFor} className="block text-sm text-gray-700 mb-2">
-    {label}
-  </label>
-);

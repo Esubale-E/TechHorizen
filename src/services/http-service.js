@@ -36,6 +36,13 @@ class HttpService {
     });
   }
 
+  login(userData) {
+    return apiClient.post(`${this.endpoint}/login`, userData);
+  }
+
+  logout() {
+    return apiClient.post(`${this.endpoint}/logout`);
+  }
 }
 
 const createHttpService = (endpoint) => new HttpService(endpoint);

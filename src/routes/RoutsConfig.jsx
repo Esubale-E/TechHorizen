@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import SignUp from "../pages/SignUp";
-import SignIn from "../pages/SignIn";
+import LogIn from "../pages/LogIn";
 import LandingPage from "../pages/LandingPage";
 import MainLayout from "../layouts/MainLayout";
 import StudentLayout from "../Layouts/StudentLayout";
@@ -15,6 +15,7 @@ import TCourseDetail from "../components/Teachers/CourseDetail";
 import AddCourse from "../components/Teachers/AddCourse";
 import AddBlog from "../components/Teachers/AddBlog";
 import AddEvent from "./../components/Teachers/AddEvent";
+import ProfileSetup from "../components/ProfileSetup";
 
 const RoutesConfig = () => {
   return (
@@ -23,7 +24,8 @@ const RoutesConfig = () => {
       <Route element={<MainLayout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/profilesetup" element={<ProfileSetup />} />
       </Route>
 
       {/* Student Dashboard Navigation */}

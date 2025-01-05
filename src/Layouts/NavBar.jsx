@@ -19,7 +19,7 @@ const Navbar = () => {
     { to: "/events", text: "Events" },
     { to: "/blog", text: "Blog" },
     { to: "/contact", text: "Contact Us" },
-    { to: "/signin", text: "Sign In" },
+    { to: "/signup", text: "Sign Up" },
   ];
 
   return (
@@ -44,10 +44,10 @@ const Navbar = () => {
           <CustomNavLink to="#blog" text="Blog" isActive={isActive} />
           <CustomNavLink to="#contact" text="Contact" isActive={isActive} />
           <Link
-            to="signin"
+            to="login"
             className="transition hover:text-gray-400 duration-300 text-text"
           >
-            Sign In
+            Log In
           </Link>
         </div>
 

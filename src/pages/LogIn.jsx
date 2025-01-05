@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Heading2 } from "../components/common/Headings";
-import { Label } from "./SignUp";
 import { SignButton } from "../components/common/Button";
 import AppLink, { GoogleLink } from "../components/common/AppLink";
-import { ErrText } from "../components/common/Text";
+import Input from "../components/common/Input";
+import userService from "../services/user-service";
+import { replace, useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/authContext";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -20,8 +22,9 @@ const validationSchema = yup.object().shape({
     .required("Password is required"),
 });
 
-const SignIn = () => {
+const LogIn = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { user, dispach } = useContext(AuthContext);
 
   const {
     register,
@@ -31,36 +34,49 @@ const SignIn = () => {
     resolver: yupResolver(validationSchema),
   });
 
+  const navigateToStudent = useNavigate();
+
   const onSubmit = (data) => {
-    alert("Sign-in successful!");
-    console.log(data);
+    console.log("user data", data);
+    userService
+      .login(data)
+      .then((res) => {
+        dispach({ type: "LOGIN", user: res.data });
+        navigateToStudent("/student", replace);
+      })
+      .catch((err) => console.log(err));
+    console.log("on submit data", data);
   };
+
+  useEffect(() => {
+    console.log("Updated user state:", user);
+  }, [user]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-[400px] bg-white rounded-xl shadow-lg p-6">
-        <Heading2> Sign In</Heading2>
+        <Heading2>Log In</Heading2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <Label hFor="email" label=" Email" />
-            <input
-              id="email"
-              {...register("email")}
-              type="email"
-              className="w-full py-2 px-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
-            />
-            {errors.email && <ErrText>{errors.email.message}</ErrText>}
-          </div>
+          {/* Email Field */}
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            {...register("email")}
+            errorMessage={errors.email?.message}
+            className={errors.email ? "border-red-500" : ""}
+          />
+
+          {/* Password Field */}
           <div className="relative">
-            <Label hFor="password" label="Password" />
-            <input
-              id="password"
-              {...register("password")}
+            <Input
+              label="Password"
               type={showPassword ? "text" : "password"}
-              className="w-full py-2 px-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
+              {...register("password")}
+              errorMessage={errors.password?.message}
+              className={errors.password ? "border-red-500" : ""}
             />
             <div
               className="absolute right-3 top-9 cursor-pointer"
@@ -68,9 +84,10 @@ const SignIn = () => {
             >
               {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
             </div>
-            {errors.password && <ErrText>{errors.password.message}</ErrText>}
           </div>
-          <SignButton label="Sign In" />
+
+          {/* Submit Button */}
+          <SignButton label="Log In" />
           <GoogleLink />
         </form>
         <p className="mt-4 text-sm text-gray-600 text-center">
@@ -81,4 +98,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default LogIn;
