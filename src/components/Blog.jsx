@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { FaSearch, FaFilter, FaPen } from "react-icons/fa";
-// import blogs from "../services/blog";
 import BlogCard from "./BlogCard";
 import { Heading2 } from "./common/Headings";
 import AppLink from "./common/AppLink";
@@ -9,6 +8,8 @@ import blogService from "../services/blog-service";
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoadding, setIsLoadding] = useState(true);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,11 +41,14 @@ const Blogs = () => {
       .getAll()
       .then((res) => {
         setBlogs(res.data);
+        setIsLoadding(false);
       })
       .catch((err) => {
         setError(err.message);
       });
   }, []);
+
+  if (isLoadding) return <div>Loading...</div>;
 
   if (error) return <div className="text-red-500">{error}</div>;
 

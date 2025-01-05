@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* eslint-disable react/prop-types */
 import { FaUser } from "react-icons/fa";
 import studentd from "../../services/studentData";
 
@@ -81,21 +81,4 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
 
 
 export default StudentProfile;
-
-// Prop Validation
-StudentProfile.propTypes = {
-  studentData: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    profilePicture: PropTypes.string.isRequired,
-    department: PropTypes.string.isRequired,
-    college: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    birthDate: PropTypes.string.isRequired, // Use ISO format for dates
-    password: PropTypes.string.isRequired, // Should be encrypted in production
-  }).isRequired,
-};
-
 export { StudentProfile };

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FaBook } from "react-icons/fa";
-import { Heading2, Heading3 } from "../common/Headings";
-import { AppText } from "../common/Text";
+import { Heading2, Heading3 } from "./common/Headings";
+import { AppText } from "./common/Text";
 
 // const lesson = [
 //   {

@@ -8,12 +8,13 @@ import TeachersLayout from "../Layouts/TeachersLayout";
 import Dashboard from "../components/Students/Dashboard";
 import Resources from "../components/Students/Resources";
 import Courses from "../components/Students/Cources";
-import Events from "../components/Students/Events";
+import Events from "../components/Events";
 import Blog from "../components/Blog";
-import TCourse from "../components/Teachers/Course";
+import TCourse from "../components/Course";
 import TCourseDetail from "../components/Teachers/CourseDetail";
 import AddCourse from "../components/Teachers/AddCourse";
 import AddBlog from "../components/Teachers/AddBlog";
+import AddEvent from "./../components/Teachers/AddEvent";
 
 const RoutesConfig = () => {
   return (
@@ -37,10 +38,8 @@ const RoutesConfig = () => {
       <Route element={<TeachersLayout />}>
         <Route path="/teacher" element={<Dashboard />} />
         <Route path="/teacher/events" element={<Events />} />
-        <Route
-          path="/teacher/courses"
-          element={<TCourse currentTeacherName={"Dr. Alan Turing"} />}
-        />
+        <Route path="/teacher/addevent" element={<AddEvent />} />
+        <Route path="/teacher/courses" element={<TCourse />} />
         <Route path="/teacher/coursedetail/:id" element={<TCourseDetail />} />
         <Route path="/teacher/resources" element={<Resources />} />
         <Route path="/teacher/addcourse" element={<AddCourse />} />

@@ -1,8 +1,7 @@
 import { FaPlusCircle } from "react-icons/fa";
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import courseService from "../../services/course-service";
+import courseService from "../services/course-service";
 import CourseCard from "./CourseCard";
 
 const Course = () => {

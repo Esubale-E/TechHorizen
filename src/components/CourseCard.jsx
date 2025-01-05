@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { FaBookOpen, FaClock, FaEdit, FaUser, FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Heading3 } from "../common/Headings";
-import { AppText, LightText } from "../common/Text";
+import { Heading3 } from "./common/Headings";
+import { AppText, LightText } from "./common/Text";
 
 const CourseCard = ({ course }) => {
   return (

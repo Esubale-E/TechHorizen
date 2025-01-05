@@ -23,6 +23,11 @@ const sideLinks = [
     label: "Event",
   },
   {
+    link: "/addEvent",
+    icon: FaPlusCircle,
+    label: "Add Event",
+  },
+  {
     link: "/resources",
     icon: FaFileAlt,
     label: "Resources",

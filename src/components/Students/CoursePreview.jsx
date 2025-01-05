@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import courseService from "../../services/course-service";
 import { Heading2, Heading3 } from "../common/Headings";
 import { AppText, LightText } from "../common/Text";
-import LessonCards from "../Teachers/LessonCards";
+import LessonCards from "../LessonCards";
 
 const CoursePreview = ({ courseId }) => {
   const id = courseId;

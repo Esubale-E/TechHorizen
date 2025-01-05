@@ -2,15 +2,39 @@
 import { Heading2, Heading3 } from "../common/Headings";
 import Text from "../common/Text";
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
-import { latestBlogs } from "./../../services/blog";
 import TextHighlight from "./../common/TextHighlight";
+import { useEffect, useState } from "react";
+import blogService from "../../services/blog-service";
 
 const BlogSection = () => {
+  const [blog, setBlog] = useState([]);
+  const [error, setError] = useState(null);
+
+  const trim = () =>
+    blog
+      .sort((blog) => {
+        blog.date < 1 ? 1 : -1;
+        blog.date > 1 ? -1 : 1;
+      })
+      .slice(0, 3);
+
+  const latestBlogs = trim();
+
+  useEffect(() => {
+    blogService
+      .getAll()
+      .then((res) => {
+        setBlog(res.data);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }, []);
+
+  if (error) return <p>{error}</p>;
+
   return (
-    <section
-      id="blog"
-      className="bg-background py-12 px-6"
-    >
+    <section id="blog" className="bg-background py-12 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -41,7 +65,7 @@ const BlogCard = ({ blog }) => (
 
     <div className="text-darkaccent text-sm flex items-center mb-2">
       <FaUser className="mr-2" />
-      <TextHighlight>{blog.author}</TextHighlight>
+      <TextHighlight>{blog.author.name}</TextHighlight>
       <span className="mx-2">|</span>
       <FaCalendarAlt className="mr-2" />
       <TextHighlight>{blog.date}</TextHighlight>

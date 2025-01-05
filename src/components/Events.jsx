@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // Calendar styling
 import {
@@ -7,10 +7,13 @@ import {
   FaSearch,
   FaFilter,
 } from "react-icons/fa";
-import events from "../../services/events"; // Assume events have a "category" field
-import { Heading2, Heading3 } from "./../common/Headings";
+import { Heading2, Heading3 } from "./common/Headings";
+import eventService from "../services/event-service";
 
 const Events = () => {
+  const [events, setEvents] = useState([]);
+  const [error, setError] = useState(null);
+
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -40,6 +43,17 @@ const Events = () => {
       selectedCategory === "All" || event.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  useEffect(() => {
+    eventService
+      .getAll()
+      .then((res) => {
+        setEvents(res.data);
+      })
+      .catch((err) => setError(err));
+  }, []);
+
+  if (error) return <p>hey ther</p>;
 
   return (
     <div className="p-6 w-full bg-gradient-to-b from-blue-100 via-white to-blue-50 rounded-lg shadow-xl">
