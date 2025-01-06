@@ -54,6 +54,7 @@ const ProfileSetup = () => {
     console.log(data);
 
     userService
+
       .update(userId, data)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.message));
@@ -85,7 +86,8 @@ const ProfileSetup = () => {
 
   useEffect(() => {
     console.log("reload", yearOptions);
-  }, [selectedCollege, selectedDepartment, yearOptions]);
+    console.log("Form errors:", errors);
+  }, [selectedCollege, selectedDepartment, yearOptions, errors]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -119,7 +121,15 @@ const ProfileSetup = () => {
             options={yearOptions}
             errorMessage={errors.year?.message}
           />
-
+          <Input
+            label="Phone"
+            name="phone"
+            type="text"
+            {...register("phone")}
+            aria-invalid={!!errors.phone}
+            aria-describedby="phone-error"
+            errorMessage={errors.phone?.message}
+          />
           {/* Birth Date Input */}
           <Input
             label="Birth Date"
