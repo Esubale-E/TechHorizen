@@ -1,12 +1,12 @@
 const studyYears = [
   { value: "", label: "Select Year" },
-  { value: "1", label: "1st Year" },
-  { value: "2", label: "2nd Year" },
-  { value: "3", label: "3rd Year" },
-  { value: "4", label: "4th Year" },
-  { value: "5", label: "5th Year" },
-  { value: "6", label: "6th Year" },
-  { value: "7", label: "7th Year" },
+  { value: "1st Year", label: "1st Year" },
+  { value: "2nd Year", label: "2nd Year" },
+  { value: "3rd Year", label: "3rd Year" },
+  { value: "4th Year", label: "4th Year" },
+  { value: "5th Year", label: "5th Year" },
+  { value: "6th Year", label: "6th Year" },
+  { value: "7th Year", label: "7th Year" },
 ];
 
 const sliceYears = (maxYear) => studyYears.slice(0, maxYear);
@@ -21,19 +21,22 @@ const colleges = [
       {
         value: "computer science",
         label: "Computer Science",
-        options: sliceYears(4),
+        yearOption: sliceYears(5),
       },
       {
         value: "software engneering",
         label: "Software Engneering",
+        yearOption: sliceYears(6),
       },
       {
         value: "information technology",
         label: "Information Technology",
+        yearOption: sliceYears(5),
       },
       {
         value: "information system",
         label: "Information System",
+        yearOption: sliceYears(5),
       },
     ],
   },

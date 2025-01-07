@@ -16,6 +16,7 @@ import AddCourse from "../components/Teachers/AddCourse";
 import AddBlog from "../components/Teachers/AddBlog";
 import AddEvent from "./../components/Teachers/AddEvent";
 import ProfileSetup from "../components/ProfileSetup";
+import GoogleLogin from "../pages/GoogleLogin";
 
 const RoutesConfig = () => {
   return (
@@ -25,6 +26,7 @@ const RoutesConfig = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/googlelogin" element={<GoogleLogin />} />
         <Route path="/profilesetup" element={<ProfileSetup />} />
       </Route>
 

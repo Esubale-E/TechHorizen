@@ -32,6 +32,7 @@ const validationSchema = yup.object().shape({
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
   const toProfileDetail = useNavigate();
 
   const {
@@ -46,10 +47,11 @@ const SignUp = () => {
     userService
       .create({ ...data, authType: "regular" })
       .then((res) => {
-        toProfileDetail("/profilesetup", replace);
         console.log("Account Created ", res.data);
+        toProfileDetail(`/profilesetup/?userid=${res.data._id}`, replace);
       })
       .catch((err) => console.log("Account Not Created ", err));
+    
   };
 
   return (

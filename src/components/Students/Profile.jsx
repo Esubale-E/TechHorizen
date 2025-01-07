@@ -1,16 +1,31 @@
-/* eslint-disable react/prop-types */
 import { FaUser } from "react-icons/fa";
-import studentd from "../../services/studentData";
+import { useContext } from "react";
+import AuthContext from "./../../contexts/authContext";
+import { Heading3 } from "../common/Headings";
 
-const StudentProfile = ({ studentData: student = studentd[1] }) => {
-  const formattedDate = new Date(student.birthDate).toLocaleDateString(
-    "en-US",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }
-  );
+const StudentProfile = () => {
+  const { state } = useContext(AuthContext);
+  const student = state.user;
+
+  if (!student) return <div>Loadding ...</div>;
+
+  const {
+    firstName,
+    lastName,
+    year,
+    profilePicture,
+    birthDate,
+    college,
+    department,
+    email,
+    phone,
+  } = student;
+
+  const formattedDate = new Date(birthDate).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <div className=" absolute top-10 right-4 bg-background text-text pb-2 flex items-center justify-center">
@@ -20,18 +35,18 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
           <div className="w-32 h-32 rounded-full overflow-hidden shadow-md mb-4">
             {<FaUser size={130} /> || (
               <img
-                src={student.profilePicture}
-                alt={`${student.name}'s profile`}
+                src={profilePicture}
+                alt={`${firstName}'s profile`}
                 className="w-full h-full object-cover"
               />
             )}
           </div>
           <div className="ms-8">
             <h2 className="text-2xl font-bold text-primary mb-2">
-              {student.name}
+              {firstName} {lastName}
             </h2>
             <p className="text-lg text-secondary ">
-              {student.department}, {student.year} Year
+              {department}, {year} Year
             </p>
           </div>
         </div>
@@ -40,17 +55,12 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
         <div className="space-y-6">
           {/* Personal Details */}
           <div>
-            <h3 className="text-1xl font-semibold text-primary mb-4">
-              Personal Details
-            </h3>
+            <Heading3>Personal Details</Heading3>
             <p className="text-sm">
-              <span className="font-bold">ID:</span> {student.id}
+              <span className="font-bold">Email:</span> {email}
             </p>
             <p className="text-sm">
-              <span className="font-bold">Email:</span> {student.email}
-            </p>
-            <p className="text-sm">
-              <span className="font-bold">Phone:</span> {student.phone}
+              <span className="font-bold">Phone:</span> {phone}
             </p>
             <p className="text-sm">
               <span className="font-bold">Birth Date:</span> {formattedDate}
@@ -59,18 +69,17 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
 
           {/* Academic Information */}
           <div>
-            <h3 className="text-2xl font-semibold text-primary mb-4">
+            <Heading3 className="text-2xl font-semibold text-primary mb-4">
               Academic Information
-            </h3>
+            </Heading3>
             <p>
-              <span className="font-bold">Department:</span>{" "}
-              {student.department}
+              <span className="font-bold">Department:</span> {department}
             </p>
             <p>
-              <span className="font-bold">College:</span> {student.college}
+              <span className="font-bold">College:</span> {college}
             </p>
             <p>
-              <span className="font-bold">Year:</span> {student.year}
+              <span className="font-bold">Year:</span> {year}
             </p>
           </div>
         </div>
@@ -78,7 +87,6 @@ const StudentProfile = ({ studentData: student = studentd[1] }) => {
     </div>
   );
 };
-
 
 export default StudentProfile;
 export { StudentProfile };

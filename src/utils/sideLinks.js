@@ -39,7 +39,7 @@ const sideLinks = [
   },
 ];
 
-const studentSideLinks = sideLinks.filter((sl) => sl.label !== "Add Course");
+const studentSideLinks = sideLinks.filter((sl) => sl.label !== "Add Course" && sl.label !== "Add Event");
 
 export default sideLinks;
 export { studentSideLinks };

@@ -1,11 +1,11 @@
-const authReducer = (user = null, action) => {
+const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      return action.user; // Update state with the logged-in user object
+      return { ...state, user: action.user };
     case "LOGOUT":
-      return null; // Clear state on logout
+      return { ...state, user: null };
     default:
-      return user; // Return the current state for unmatched actions
+      return state;
   }
 };
 
