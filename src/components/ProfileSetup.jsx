@@ -4,10 +4,11 @@ import * as yup from "yup";
 import Button from "./common/Button";
 import Input from "./common/Input";
 import userService from "../services/user-service";
-import { useLocation } from "react-router-dom";
+import { replace, useLocation, useNavigate } from "react-router-dom";
 import SelectInput from "./common/SelectInput";
 import colleges from "./../services/profileSetupData.js";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../contexts/authContext.js";
 
 const profileSchema = yup.object().shape({
   phone: yup
@@ -27,12 +28,14 @@ const profileSchema = yup.object().shape({
 });
 
 const ProfileSetup = () => {
-  const searchParams = new URLSearchParams(useLocation().search);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
   const userId = searchParams.get("userId");
 
   const [selectedCollege, setSelectedCollege] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [yearOptions, setYearOptions] = useState([]);
+  const { dispatch } = useContext(AuthContext);
 
   const {
     register,
@@ -42,7 +45,7 @@ const ProfileSetup = () => {
   } = useForm({
     resolver: yupResolver(profileSchema),
     defaultValues: {
-      phone: "",
+      phone: "+251",
       college: "",
       department: "",
       year: "1",
@@ -50,44 +53,38 @@ const ProfileSetup = () => {
     },
   });
 
+  const navigateToStudent = useNavigate();
+
   const onSubmit = (data) => {
-    console.log(data);
-
     userService
-
       .update(userId, data)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err.message));
-
-    reset();
+      .then((res) => {
+        reset();
+        setSelectedCollege(null);
+        setSelectedDepartment(null);
+        setYearOptions([]);
+        dispatch({ type: "LOGIN", user: res.data });
+        navigateToStudent("/student", replace);
+      })
+      .catch(() => alert("An error occurred while updating the profile."));
   };
 
-  // Handling change event for college selection
   const handleCollegeChange = (event) => {
     const selected = colleges.find(
       (college) => college.value === event.target.value
     );
     setSelectedCollege(selected);
-
-    // Reset department and year when college is changed
     setSelectedDepartment(null);
-    setYearOptions([]); // Reset year options
+    setYearOptions([]);
   };
+
   const handleDepartmentChange = (event) => {
     const currentDepartment = selectedCollege?.options?.find(
       (dept) => dept.value === event.target.value
     );
     setSelectedDepartment(currentDepartment);
-    console.log("currentDepartment", currentDepartment);
-
-    // If department has specific years, update year options
-    setYearOptions(currentDepartment ? currentDepartment.options : []);
+    setYearOptions(currentDepartment?.yearOption || []);
   };
-
-  useEffect(() => {
-    console.log("reload", yearOptions);
-    console.log("Form errors:", errors);
-  }, [selectedCollege, selectedDepartment, yearOptions, errors]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -126,20 +123,15 @@ const ProfileSetup = () => {
             name="phone"
             type="text"
             {...register("phone")}
-            aria-invalid={!!errors.phone}
-            aria-describedby="phone-error"
             errorMessage={errors.phone?.message}
           />
-          {/* Birth Date Input */}
           <Input
             label="Birth Date"
+            name="birthDate"
             type="date"
             {...register("birthDate")}
-            aria-invalid={!!errors.birthDate}
-            aria-describedby="birthDate-error"
             errorMessage={errors.birthDate?.message}
           />
-
           <div className="flex justify-end my-4">
             <Button type="submit">Save Profile</Button>
           </div>

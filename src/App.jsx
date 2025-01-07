@@ -1,18 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
 import RoutesConfig from "./routes/RoutsConfig";
-import AuthContext from "./contexts/authContext";
-import authReducer from "./reducers/authReducer";
-import { useReducer } from "react";
+import AuthProvider from "./provider/AuthProvider";
 
 const App = () => {
-  const [user, dispach] = useReducer(authReducer, {});
-
   return (
-    <BrowserRouter>
-      <AuthContext.Provider value={{ user, dispach }}>
+    <AuthProvider>
+      <BrowserRouter>
         <RoutesConfig />
-      </AuthContext.Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 
