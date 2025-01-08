@@ -28,7 +28,7 @@ const StudentProfile = () => {
   });
 
   return (
-    <div className=" absolute top-10 right-4 bg-background text-text pb-2 flex items-center justify-center">
+    <div className=" absolute top-10 right-4 bg-background text-text pb-2 flex items-center justify-center z-50">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
         {/* Profile Picture and Name */}
         <div className="flex items-center justify-around flex-col mb-8">
@@ -62,9 +62,11 @@ const StudentProfile = () => {
             <p className="text-sm">
               <span className="font-bold">Phone:</span> {phone}
             </p>
-            <p className="text-sm">
-              <span className="font-bold">Birth Date:</span> {formattedDate}
-            </p>
+            {birthDate && (
+              <p className="text-sm">
+                <span className="font-bold">Birth Date:</span> {formattedDate}
+              </p>
+            )}
           </div>
 
           {/* Academic Information */}
@@ -78,9 +80,11 @@ const StudentProfile = () => {
             <p>
               <span className="font-bold">College:</span> {college}
             </p>
-            <p>
-              <span className="font-bold">Year:</span> {year}
-            </p>
+            {year && (
+              <p>
+                <span className="font-bold">Year:</span> {year}
+              </p>
+            )}
           </div>
         </div>
       </div>

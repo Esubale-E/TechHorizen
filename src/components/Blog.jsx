@@ -4,11 +4,14 @@ import BlogCard from "./BlogCard";
 import { Heading2 } from "./common/Headings";
 import AppLink from "./common/AppLink";
 import blogService from "../services/blog-service";
+import BlogModal from "./BlogModal";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
   const [isLoadding, setIsLoadding] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalBlog, setModalBlog] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
@@ -45,15 +48,22 @@ const Blogs = () => {
       })
       .catch((err) => {
         setError(err.message);
+        setIsLoadding(false);
       });
   }, []);
+
+  const handleReadMore = (blog) => {
+    setOpenModal(true);
+    setModalBlog(blog);
+  };
+  const handleClose = () => setOpenModal(false);
 
   if (isLoadding) return <div>Loading...</div>;
 
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className="p-6 w-full bg-gray-100 rounded-lg shadow-lg">
+    <div className="p-6 mt-14 w-full bg-gray-100 rounded-lg shadow-lg">
       <Heading2> Blog Section</Heading2>
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
         <div className="relative w-full md:w-1/3">
@@ -94,7 +104,11 @@ const Blogs = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedBlogs.length > 0 ? (
           displayedBlogs.map((blog, index) => (
-            <BlogCard key={index} blog={blog} />
+            <BlogCard
+              key={index}
+              blog={blog}
+              onReadMore={() => handleReadMore(blog)}
+            />
           ))
         ) : (
           <p className="text-gray-600 text-center col-span-3">
@@ -102,6 +116,9 @@ const Blogs = () => {
           </p>
         )}
       </div>
+
+      {/* blog modal // detail view */}
+      {openModal && <BlogModal blog={modalBlog} onClose={handleClose} />}
 
       {/* Pagination */}
       {totalPages > 1 && (

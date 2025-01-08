@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import Heading1 from "../common/Headings";
 import TextHighlight from "../common/TextHighlight";
+import { useContext } from "react";
+import AuthContext from "./../../contexts/authContext";
 
 const Hero = () => {
-  return (
+  const { state, dispatch } = useContext(AuthContext);
+  console.log(state.user);
+  if (state.user.role !== "student")
+    dispatch({ type: "LOGIN", user: { role: "student" } });
+
+  return ( 
     <section
       id="hero"
       className="relative bg-cover bg-center text-white h-screen flex items-center justify-center py-16 px-4 bg-[url('/hero-bg.jpg')] "

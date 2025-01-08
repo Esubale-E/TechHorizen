@@ -33,13 +33,20 @@ const sideLinks = [
     label: "Resources",
   },
   {
-    link: "/blog",
+    link: "/blogs",
     icon: FaPen,
     label: "Blog",
   },
+  {
+    link: "/addblog",
+    icon: FaPlusCircle,
+    label: "Add Blog",
+  },
 ];
 
-const studentSideLinks = sideLinks.filter((sl) => sl.label !== "Add Course" && sl.label !== "Add Event");
+const studentSideLinks = sideLinks.filter(
+  (sl) => sl.label !== "Add Course" && sl.label !== "Add Event"
+);
 
 export default sideLinks;
 export { studentSideLinks };

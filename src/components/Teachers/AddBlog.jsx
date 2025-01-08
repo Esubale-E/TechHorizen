@@ -1,8 +1,11 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import blogService from "../../services/blog-service";
+import AuthContext from "./../../contexts/authContext";
 
 const AddBlog = () => {
   const imageRef = useRef();
+  const [textRow, setTextRow] = useState(3);
+  const { state } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -10,7 +13,7 @@ const AddBlog = () => {
     tag: "",
     date: new Date().toISOString(),
     author: {
-      _id: "6764ac8c000180d3bd86c8c8",
+      _id: state.user._id,
     },
     image: null,
   });
@@ -41,6 +44,7 @@ const AddBlog = () => {
         .then((res) => {
           console.log("New blog created:", res.data);
           setFormData({
+            ...formData,
             title: "",
             category: "",
             detail: "",
@@ -121,10 +125,12 @@ const AddBlog = () => {
           name="detail"
           value={formData.detail}
           onChange={handleChange}
+          onFocus={() => setTextRow(6)}
           required
           minLength="10"
+          rows={textRow}
           className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-none"
-        ></textarea>
+        />
       </div>
 
       {/* Tag Field */}

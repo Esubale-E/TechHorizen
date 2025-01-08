@@ -5,11 +5,20 @@ import { Heading3 } from "./common/Headings";
 import Text from "./common/Text";
 import Button from "./common/Button";
 
-const BlogCard = ({ blog: { title, image, author, date, description } }) => {
-  const img =
-    // eslint-disable-next-line no-constant-binary-expression
-    `http://localhost:5000/${image.filename}` ||
-    `https://via.placeholder.com/300?text=${title}`;
+const BlogCard = ({
+  blog: {
+    title,
+    image: { filename },
+    author,
+    date,
+    detail,
+  },
+  onReadMore,
+}) => {
+  const img = filename
+    ? `http://localhost:5000/${filename}`
+    : `https://via.placeholder.com/300?text=${title}`;
+
   return (
     <div className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-white p-4 rounded-lg shadow-md">
       {/* Blog Image */}
@@ -37,12 +46,10 @@ const BlogCard = ({ blog: { title, image, author, date, description } }) => {
       </div>
 
       {/* Blog Description */}
-      <Text>{description}</Text>
+      <Text>{detail.slice(0, 50) + "..."}</Text>
 
       {/* Read More Button */}
-      <Button onClick={() => alert(`Reading more about: ${title}`)}>
-        Read More
-      </Button>
+      <Button onClick={onReadMore}>Read More</Button>
     </div>
   );
 };

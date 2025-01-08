@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Heading2 } from "./../common/Headings";
 import Input from "./../common/Input";
 import Button from "./../common/Button";
 import courseService from "../../services/course-service";
+import AuthContext from "../../contexts/authContext";
 
 const AddCourse = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
   const [prerequisites, setPrerequisites] = useState("");
-  
+
+  const { state } = useContext(AuthContext);
+
   const createCourse = (e) => {
     e.preventDefault();
 
@@ -23,19 +26,25 @@ const AddCourse = () => {
       description,
       duration,
       prerequisites,
-      author: [{ _id: "6764193acef513f9119c40d6", name: "current user" }],
+      author: [
+        {
+          _id: state.user._id,
+          name: `${state.user.firstName} ${state.user.lastName}`,
+        },
+      ],
     };
-
+    console.log();
     courseService
       .create(newCourse)
-      .then((res) => console.log("data:-", res.data))
+      .then((res) => {
+        console.log("data:-", res.data);
+        // Clear the form
+        setTitle("");
+        setDescription("");
+        setDuration("");
+        setPrerequisites("");
+      })
       .catch((err) => console.log("error:-", err.response));
-
-    // Clear the form
-    setTitle("");
-    setDescription("");
-    setDuration("");
-    setPrerequisites("");
   };
 
   return (

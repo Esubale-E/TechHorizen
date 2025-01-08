@@ -23,8 +23,7 @@ const TeacherCourseDetail = () => {
 
       console.log("Lesson added successfully:", response.data);
 
-      // Update your UI or state with the new course data
-      // setCourse(response.data);
+      setCourse(response.data);
     } catch (err) {
       console.error("Failed to add lesson:", err);
     }

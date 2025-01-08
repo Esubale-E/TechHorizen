@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Input from "./../common/Input";
 import Button from "./../common/Button";
 import eventService from "../../services/event-service";
+import AuthContext from "../../contexts/authContext";
+import { Heading2 } from "../common/Headings";
 
 const AddEvent = () => {
+  const { state } = useContext(AuthContext);
+
   const [eventData, setEventData] = useState({
     title: "",
     date: "",
@@ -11,7 +15,8 @@ const AddEvent = () => {
     description: "",
     category: "",
     author: {
-      _id: "6764ac8c000180d3bd86c8c8",
+      _id: state.user._id,
+      name: `${state.user.firstName} ${state.user.lastName}`,
     },
   });
 
@@ -46,10 +51,8 @@ const AddEvent = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-11/12 max-w-md">
-      <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-        Add New Event
-      </h2>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-11/12 md:w-full mx-16">
+      <Heading2>Add New Event</Heading2>
       <form onSubmit={handleSubmit}>
         <Input
           type="text"

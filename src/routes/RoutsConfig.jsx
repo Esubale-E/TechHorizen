@@ -46,7 +46,7 @@ const RoutesConfig = () => {
         <Route path="/student/events" element={<Events />} />
         <Route path="/student/courses" element={<Courses />} />
         <Route path="/student/resources" element={<Resources />} />
-        <Route path="/student/blog" element={<Blog />} />
+        <Route path="/student/blogs" element={<Blog />} />
       </Route>
 
       <Route element={<TeachersLayout />}>
@@ -57,7 +57,7 @@ const RoutesConfig = () => {
         <Route path="/teacher/coursedetail/:id" element={<TCourseDetail />} />
         <Route path="/teacher/resources" element={<Resources />} />
         <Route path="/teacher/addcourse" element={<AddCourse />} />
-        <Route path="/teacher/blog" element={<Blog />} />
+        <Route path="/teacher/blogs" element={<Blog />} />
         <Route path="/teacher/addblog" element={<AddBlog />} />
       </Route>
     </Routes>

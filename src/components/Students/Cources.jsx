@@ -36,12 +36,7 @@ const Courses = () => {
 
   if (courses)
     return (
-      <div className="p-6 w-full bg-white rounded-lg shadow-lg">
-        {/* Header */}
-        <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
-          Your Courses
-        </h2>
-
+      <div className="p-6 w-full mt-14 bg-white rounded-lg shadow-lg">
         {/* Filter Section */}
         <div className="flex justify-center gap-4 mb-8">
           {["All", "Active", "Completed"].map((status) => (
