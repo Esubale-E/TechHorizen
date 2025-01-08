@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Button from "./common/Button";
-import Input from "./common/Input";
-import userService from "../services/user-service";
+import Button from "./common/Button.jsx";
+import Input from "./common/Input.jsx";
+import userService from "../services/user-service.js";
 import { replace, useLocation, useNavigate } from "react-router-dom";
-import SelectInput from "./common/SelectInput";
-import colleges from "./../services/profileSetupData.js";
+import SelectInput from "./common/SelectInput.jsx";
+import colleges from "../services/profileSetupData.js";
 import { useContext, useState } from "react";
 import AuthContext from "../contexts/authContext.js";
 

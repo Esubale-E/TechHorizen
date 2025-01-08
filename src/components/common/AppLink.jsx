@@ -15,9 +15,12 @@ const AppLink = ({ children, to }) => {
 
 const GoogleLink = () => {
   return (
-    <div className='flex items-center justify-center'>
+    <div className=" ms-5 w-full py-2 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 ease-in-out transform hover:scale-105">
       <AppLink to={"http://localhost:5000/auth/google"}>
-        <img src={googleIcon} alt="google icon" className="h-12 " />
+        <div className="flex items-center justify-center">
+          <img src={googleIcon} alt="google icon" className="h-10  " />{" "}
+          <p className="text-nowrap  text-white  text-xl">Continue</p>
+        </div>
       </AppLink>
     </div>
   );

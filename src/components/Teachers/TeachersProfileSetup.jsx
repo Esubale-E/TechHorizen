@@ -1,3 +1,4 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -7,7 +8,6 @@ import userService from "../../services/user-service.js";
 import { replace, useLocation, useNavigate } from "react-router-dom";
 import SelectInput from "../common/SelectInput.jsx";
 import colleges from "../../services/profileSetupData.js";
-import { useContext, useState } from "react";
 import AuthContext from "../../contexts/authContext.js";
 
 const profileSchema = yup.object().shape({
@@ -52,12 +52,12 @@ const ProfileSetup = () => {
     userService
       .update(userId, data)
       .then((res) => {
-        reset();
-        setSelectedCollege(null);
-        setSelectedDepartment(null);
+
         dispatch({ type: "LOGIN", user: res.data });
         if (res.data.role === "teacher") navigateToStudent("/teacher");
-        else navigateToStudent("/student", replace);
+        else navigateToStudent("/student", replace);        reset();
+        setSelectedCollege(null);
+        setSelectedDepartment(null);
       })
       .catch(() => alert("An error occurred while updating the profile."));
   };

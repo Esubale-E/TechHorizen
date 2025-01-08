@@ -4,7 +4,7 @@ import Aside from "../components/Teachers/Aside";
 
 const TeachersLayout = () => {
   return (
-    <div >
+    <div>
       <TopBar />
       <div className="flex flex-1 bg-gradient-to-r from-blue-100 to-gray-100 ">
         <Aside />

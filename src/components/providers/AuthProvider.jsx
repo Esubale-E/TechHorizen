@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useReducer, useEffect } from "react";
-import AuthContext from "../contexts/authContext";
-import authReducer from "./../reducers/authReducer";
+import AuthContext from "../../contexts/authContext";
+import authReducer from "../../reducers/authReducer";
 
 // Load initial state from localStorage
 const getInitialState = () => {

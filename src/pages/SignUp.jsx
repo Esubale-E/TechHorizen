@@ -68,7 +68,7 @@ const SignUp = () => {
           });
       })
       .catch((err) => {
-        console.error("Account Not Created ", err.data);
+        console.error("Account Not Created ", err);
         setGeneralError("Failed to create account. Please try again.");
       })
       .finally(() => setIsSubmitting(false));

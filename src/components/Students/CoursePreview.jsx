@@ -1,34 +1,40 @@
-/* eslint-disable react/prop-types */
 import { FaClock, FaUsers, FaBook, FaBookOpen } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import courseService from "../../services/course-service";
 import { Heading2, Heading3 } from "../common/Headings";
 import { AppText, LightText } from "../common/Text";
 import LessonCards from "../LessonCards";
+import PropTypes from "prop-types";
 
 const CoursePreview = ({ courseId }) => {
   const id = courseId;
 
   const [course, setCourse] = useState();
   const [error, setError] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     courseService
       .getOne(id)
       .then((res) => {
         setCourse(res.data);
+        setIsLoading(false);
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
   }, [id]);
 
   if (error)
     return (
       <p className="text-red-600 text-center font-semibold py-4">{error}</p>
     );
+  if (isLoading) <p>Loadding...</p>;
 
   if (course)
     return (
-      <div className="m-6 p-8 bg-gradient-to-br from-white via-blue-50 to-gray-100 rounded-3xl shadow-2xl transition-all">
+      <>
         {/* Header Section */}
         <div className="text-center mb-10">
           <Heading2 className="text-4xl font-extrabold text-blue-700 mb-2">
@@ -81,17 +87,24 @@ const CoursePreview = ({ courseId }) => {
             Lessons
           </Heading3>
           <div className="space-y-4">
-            {course.lesson.map((lesson, i) => (
+            {course.lesson.length > 0 ? (
               <LessonCards
-                key={i}
-                lesson={lesson}
+                lesson={course.lesson[0]}
                 className="p-6 bg-white rounded-lg shadow-lg border hover:shadow-2xl hover:bg-blue-50 transition-transform transform hover:-translate-y-1"
               />
-            ))}
+            ) : (
+              <p className="text-gray-600 italic text-center">
+                No lessons available yet.
+              </p>
+            )}
           </div>
         </div>
-      </div>
+      </>
     );
 };
 
 export default CoursePreview;
+
+CoursePreview.propTypes = {
+  courseId: PropTypes.string.isRequired,
+};

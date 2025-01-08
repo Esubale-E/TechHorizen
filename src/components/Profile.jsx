@@ -1,7 +1,7 @@
 import { FaUser } from "react-icons/fa";
 import { useContext } from "react";
-import AuthContext from "./../../contexts/authContext";
-import { Heading3 } from "../common/Headings";
+import AuthContext from "../contexts/authContext";
+import { Heading3 } from "./common/Headings";
 
 const StudentProfile = () => {
   const { state } = useContext(AuthContext);

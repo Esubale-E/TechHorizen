@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FaUserAlt, FaCog } from "react-icons/fa";
-import Profile from "./Profile";
+import Profile from "./../Profile";
 import Setting from "./Setting";
 import { PureButton } from "../common/Button";
 
