@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import SignUp from "../pages/SignUp";
 import LogIn from "../pages/LogIn";
 import LandingPage from "../pages/LandingPage";
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../Layouts/MainLayout";
 import StudentLayout from "../Layouts/StudentLayout";
 import TeachersLayout from "../Layouts/TeachersLayout";
 import Dashboard from "../components/Students/Dashboard";
@@ -17,6 +17,9 @@ import AddBlog from "../components/Teachers/AddBlog";
 import AddEvent from "./../components/Teachers/AddEvent";
 import ProfileSetup from "../components/ProfileSetup";
 import GoogleLogin from "../pages/GoogleLogin";
+import TeachersLandingPage from "./../components/Teachers/landing";
+import TeachersProfileSetup from "../components/Teachers/TeachersProfileSetup";
+import JoinLayout from "../Layouts/JoinLayout";
 
 const RoutesConfig = () => {
   return (
@@ -24,10 +27,17 @@ const RoutesConfig = () => {
       {/* Main Navigation */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/googlelogin" element={<GoogleLogin />} />
-        <Route path="/profilesetup" element={<ProfileSetup />} />
+        <Route path="/home" element={<TeachersLandingPage />} />
+      </Route>
+      <Route path="/join" element={<JoinLayout />}>
+        <Route path="/join/signup" element={<SignUp />} />
+        <Route path="/join/login" element={<LogIn />} />
+        <Route path="/join/googlelogin" element={<GoogleLogin />} />
+        <Route path="/join/profilesetup" element={<ProfileSetup />} />
+        <Route
+          path="/join/teacherprofilesetup"
+          element={<TeachersProfileSetup />}
+        />
       </Route>
 
       {/* Student Dashboard Navigation */}

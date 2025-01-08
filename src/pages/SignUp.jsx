@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,9 +9,9 @@ import { Heading2 } from "./../components/common/Headings";
 import Input from "../components/common/Input";
 import userService from "../services/user-service";
 import { LightText } from "./../components/common/Text";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/authContext";
 
-// Validation schema using Yup
 const validationSchema = yup.object().shape({
   firstName: yup.string().required("First name is required"),
   lastName: yup.string().required("Last name is required"),
@@ -32,8 +32,10 @@ const validationSchema = yup.object().shape({
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
-  const toProfileDetail = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [generalError, setGeneralError] = useState(null);
+  const { state, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -44,22 +46,42 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setGeneralError(null);
+
     userService
-      .create({ ...data, authType: "regular" })
+      .create({
+        ...data,
+        authType: "regular",
+        role: state?.user?.role === "teacher" ? "teacher" : "student",
+      })
       .then((res) => {
         console.log("Account Created ", res.data);
-        toProfileDetail(`/profilesetup/?userid=${res.data._id}`, replace);
+        dispatch({ type: "LOGIN", user: res.data });
+        if (state.user.role === "teacher")
+          navigate(`/join/teacherprofilesetup/?userid=${res.data._id}`, {
+            replace: true,
+          });
+        else
+          navigate(`/join/profilesetup/?userid=${res.data._id}`, {
+            replace: true,
+          });
       })
-      .catch((err) => console.log("Account Not Created ", err));
-    
+      .catch((err) => {
+        console.error("Account Not Created ", err.data);
+        setGeneralError("Failed to create account. Please try again.");
+      })
+      .finally(() => setIsSubmitting(false));
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="w-[400px] mt- bg-white rounded-xl shadow-lg p-6">
+      <div className="max-w-sm w-full bg-white rounded-xl shadow-lg p-6">
         <Heading2>Sign Up</Heading2>
+        {generalError && (
+          <p className="text-red-600 text-center">{generalError}</p>
+        )}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* First Name Field */}
           <Input
             label="First Name"
             name="firstName"
@@ -67,8 +89,6 @@ const SignUp = () => {
             {...register("firstName")}
             errorMessage={errors.firstName?.message}
           />
-
-          {/* Last Name Field */}
           <Input
             label="Last Name"
             name="lastName"
@@ -76,8 +96,6 @@ const SignUp = () => {
             {...register("lastName")}
             errorMessage={errors.lastName?.message}
           />
-
-          {/* Email Field */}
           <Input
             label="Email"
             type="email"
@@ -86,8 +104,6 @@ const SignUp = () => {
             {...register("email")}
             errorMessage={errors.email?.message}
           />
-
-          {/* Password Field */}
           <div className="relative">
             <Input
               label="Password"
@@ -100,12 +116,11 @@ const SignUp = () => {
             <div
               className="absolute right-3 top-9 cursor-pointer"
               onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
             </div>
           </div>
-
-          {/* Confirm Password Field */}
           <div className="relative">
             <Input
               label="Confirm Password"
@@ -118,6 +133,9 @@ const SignUp = () => {
             <div
               className="absolute right-3 top-9 cursor-pointer"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              aria-label={
+                showConfirmPassword ? "Hide password" : "Show password"
+              }
             >
               {showConfirmPassword ? (
                 <FaEyeSlash size={20} />
@@ -126,13 +144,13 @@ const SignUp = () => {
               )}
             </div>
           </div>
-
-          {/* Submit Button */}
-          <SignButton label="Sign Up" />
-          <GoogleLink />
+          <div className="flex justify-between">
+            <SignButton label="Sign Up" disabled={isSubmitting} />
+            <GoogleLink />
+          </div>
         </form>
         <LightText>
-          Already have an account? <AppLink to="/login">Log In</AppLink>
+          Already have an account? <AppLink to="/join/login">Log In</AppLink>
         </LightText>
       </div>
     </div>

@@ -23,19 +23,22 @@ const Hero = () => {
           and tech enthusiasts passionate about exploring the ever-evolving
           world of technology. Join us to connect, learn, and collaborate as we
           shape the future of tech...
-          <a
-            href="#about"
-            className="inline-block text-accent hover:underline"
-          >
+          <a href="#about" className="inline-block text-accent hover:underline">
             Learn More
           </a>
         </p>
         <div className="mt-8">
           <Link
-            to="#join"
+            to="/join/signup"
             className="bg-accent text-white px-6 py-3 text-xl font-semibold rounded-lg hover:bg-accent transition duration-300"
           >
             Join Us
+          </Link>
+          <Link
+            to="/home"
+            className="bg-darkaccent text-white px-6 py-3 text-xl font-semibold rounded-lg hover:bg-highlight transition duration-300 ms-4"
+          >
+            Join as a Teacher
           </Link>
         </div>
       </div>

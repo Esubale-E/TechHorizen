@@ -9,7 +9,11 @@ const Heading = ({ children }) => {
 };
 
 const Heading2 = ({ children }) => {
-  return <h2 className="text-4xl font-bold text-primary mb-8">{children}</h2>;
+  return (
+    <h2 className="text-4xl font-bold text-center text-primary mb-3">
+      {children}
+    </h2>
+  );
 };
 
 const Heading3 = ({ children }) => {

@@ -31,6 +31,7 @@ const ProfileSetup = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const userId = searchParams.get("userId");
+  console.log(userId )
 
   const [selectedCollege, setSelectedCollege] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);

@@ -29,8 +29,18 @@ const SignButton = ({ label }) => (
       background: "linear-gradient(135deg, #6a11cb, #2575fc)",
       border: "none",
     }}
-  >{label}
+  >
+    {label}
+  </button>
+);
+
+const SettingButton = ({ children, onClick }) => (
+  <button
+    onClick={onClick}
+    className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200 w-full"
+  >
+    {children}
   </button>
 );
 export default Button;
-export { PureButton, SignButton };
+export { PureButton, SignButton, SettingButton };

@@ -6,19 +6,18 @@ import userService from "../services/user-service";
 const GoogleLogin = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const userId = searchParams.get("userId");
+  const userId = searchParams.get("userid");
 
-  const { state, dispatch } = useContext(AuthContext); // Corrected 'dispach' to 'dispatch'
+  const { state, dispatch } = useContext(AuthContext);
   const navigateToStudent = useNavigate();
 
   useEffect(() => {
-    // Fetch user data only if userId exists
     if (userId) {
       userService
         .getOne(userId)
         .then((res) => {
           dispatch({ type: "LOGIN", user: res.data });
-          navigateToStudent("/student", { replace: true }); // Use replace as an option
+          navigateToStudent("/student", { replace: true });
         })
         .catch((err) => console.error("Failed to fetch user data:", err));
     }

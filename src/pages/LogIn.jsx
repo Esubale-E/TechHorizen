@@ -37,7 +37,7 @@ const LogIn = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const navigateToStudent = useNavigate();
+  const navigateTo = useNavigate();
 
   const onSubmit = (data) => {
     setIsLoading(true);
@@ -45,7 +45,8 @@ const LogIn = () => {
       .login(data)
       .then((res) => {
         dispatch({ type: "LOGIN", user: res.data });
-        navigateToStudent("/student", { replace: true });
+        if (res.data.college) navigateTo("/student", { replace: true });
+        else navigateTo(`/profilesetup/?userid=${res.data._id}`);
       })
       .catch((err) => {
         console.log(err);
@@ -89,15 +90,16 @@ const LogIn = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
-          <SignButton
-            label={isLoading ? "Logging In..." : "Log In"}
-            disabled={isLoading}
-          />
-          <GoogleLink />
+          <div className="flex">
+            <SignButton
+              label={isLoading ? "Logging In..." : "Log In"}
+              disabled={isLoading}
+            />
+            <GoogleLink />
+          </div>
         </form>
         <p className="mt-4 text-sm text-gray-600 text-center">
-          Don’t have an account? <AppLink to="/signup">Sign Up</AppLink>
+          Don’t have an account? <AppLink to="/join/signup">Sign Up</AppLink>
         </p>
       </div>
     </div>
