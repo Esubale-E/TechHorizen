@@ -45,8 +45,13 @@ const LogIn = () => {
       .login(data)
       .then((res) => {
         dispatch({ type: "LOGIN", user: res.data });
-        if (res.data.college) navigateTo("/student", { replace: true });
-        else navigateTo(`/profilesetup/?userid=${res.data._id}`);
+        if (res.data.college) {
+          if (res.data.role === "student")
+            navigateTo("/student", { replace: true });
+          else navigateTo("/teacher", { replace: true });
+        } else {
+          navigateTo(`/profilesetup/?userid=${res.data._id}`);
+        }
       })
       .catch((err) => {
         console.log(err);

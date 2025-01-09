@@ -3,6 +3,7 @@ import { FaCheckCircle, FaClock, FaBook, FaTimes } from "react-icons/fa";
 import courseService from "../../services/course-service";
 import CoursePreview from "./CoursePreview";
 import AuthContext from "../../contexts/authContext";
+import userService from "./../../services/user-service";
 
 const Courses = () => {
   const [filter, setFilter] = useState("All");
@@ -11,17 +12,31 @@ const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const { state } = useContext(AuthContext);
 
+  console.log("courses");
+
   useEffect(() => {
     courseService
       .getAll()
-      .then((res) => setCourses(res.data))
-      .catch((err) => setError(err));
+      .then((res) => {
+        setCourses(res.data);
+        console.log("response courses", res.data);
+      })
+      .catch((err) => {
+        setError(err);
+        console.log("Error course ", err);
+      });
   }, []);
 
   const handleEnroll = (courseid) => {
     console.log(courseid, state.user._id);
 
-    alert("You have enrolled successfully");
+    userService
+      .enroll(state.user._id, {
+        id: courseid,
+        name: `${state.user.firstName} ${state.user.lastName}`,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err.response.data));
   };
 
   const openModal = (course) => {

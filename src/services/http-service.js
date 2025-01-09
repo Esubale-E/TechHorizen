@@ -25,6 +25,10 @@ class HttpService {
     return apiClient.put(`${this.endpoint}/${id}`, entity);
   }
 
+  enroll(id, entity) {
+    return apiClient.put(`${this.endpoint}/${id}/enroll`, entity);
+  }
+
   createWithFile(formData) {
     return apiClient.post(`${this.endpoint}`, formData, {
       headers: { "Content-Type": "multipart/form-data" },

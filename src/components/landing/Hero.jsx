@@ -6,11 +6,11 @@ import AuthContext from "./../../contexts/authContext";
 
 const Hero = () => {
   const { state, dispatch } = useContext(AuthContext);
-  console.log(state.user);
-  if (state.user.role !== "student")
-    dispatch({ type: "LOGIN", user: { role: "student" } });
+  if (state?.user)
+    if (state.user.role !== "student")
+      dispatch({ type: "LOGIN", user: { role: "student" } });
 
-  return ( 
+  return (
     <section
       id="hero"
       className="relative bg-cover bg-center text-white h-screen flex items-center justify-center py-16 px-4 bg-[url('/hero-bg.jpg')] "
