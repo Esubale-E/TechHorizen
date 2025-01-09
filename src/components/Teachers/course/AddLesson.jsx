@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import Button from "../common/Button";
-import Input from "../common/Input";
-import { Heading2 } from "../common/Headings";
+import Button from "../../common/Button";
+import Input from "../../common/Input";
+import { Heading2 } from "../../common/Headings";
 import { FaTimes } from "react-icons/fa";
 
 const AddLesson = ({ onAddLesson, onClose }) => {

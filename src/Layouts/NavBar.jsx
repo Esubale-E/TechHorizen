@@ -39,10 +39,10 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-8">
           <CustomNavLink to="#" text="Home" isActive={isActive} />
           <CustomNavLink to="#about" text="About" isActive={isActive} />
-          <CustomNavLink to="#events" text="Events" isActive={isActive} />
           <CustomNavLink to="#features" text="Features" isActive={isActive} />
+          <CustomNavLink to="#events" text="Events" isActive={isActive} />
           <CustomNavLink to="#blog" text="Blog" isActive={isActive} />
-          <CustomNavLink to="#contact" text="Contact" isActive={isActive} />
+          <CustomNavLink to="#contactus" text="Contact Us" isActive={isActive} />
           <Link
             to="join/login"
             className="transition hover:text-gray-400 duration-300 text-text"

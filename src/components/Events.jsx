@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // Calendar styling
-import {
-  FaCalendarAlt,
-  FaMapMarkerAlt,
-  FaSearch,
-  FaFilter,
-} from "react-icons/fa";
+import { FaSearch, FaFilter } from "react-icons/fa";
 import { Heading2, Heading3 } from "./common/Headings";
 import eventService from "../services/event-service";
+import EventCard from "./EventCard";
+import Text from "./common/Text";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -104,77 +101,29 @@ const Events = () => {
 
         {/* Events Section */}
         <div className="bg-blue-50 p-6 rounded-lg shadow-md">
-          <Heading3 className="text-blue-700">
-            Events on {selectedDate.toDateString()}
-          </Heading3>
+          <Heading3>Events on {selectedDate.toDateString()}</Heading3>
           {filteredEvents.length > 0 ? (
             <div className="space-y-6 mt-4">
               {filteredEvents.map((event, index) => (
-                <div
-                  key={index}
-                  className="transition-all transform hover:scale-105 hover:shadow-lg bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500"
-                >
-                  <div className="flex items-center mb-3">
-                    <FaCalendarAlt className="text-blue-600 mr-3" />
-                    <h4 className="text-lg font-semibold text-gray-800">
-                      {event.title}
-                    </h4>
-                  </div>
-                  <div className="flex items-center mb-2">
-                    <FaMapMarkerAlt className="text-gray-500 mr-2" />
-                    <span className="text-gray-600">{event.location}</span>
-                  </div>
-                  <p className="text-gray-700">{event.description}</p>
-                  <div className="text-sm text-blue-600 font-medium mt-2">
-                    Date: {new Date(event.date).toDateString()}
-                  </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Category: {event.category}
-                  </div>
-                </div>
+                <EventCard key={index} event={event} />
               ))}
             </div>
           ) : (
-            <p className="text-gray-600 mt-4">
-              No events match your search or category.
-            </p>
+            <Text>No events match your search or category.</Text>
           )}
         </div>
       </div>
 
       {/* All Events Section */}
       <div className="mt-10 bg-blue-50 p-6 rounded-lg shadow-md">
-        <Heading3 className="text-blue-700 mb-4">All Upcoming Events</Heading3>
+        <Heading3>All Upcoming Events</Heading3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {allFilteredEvents.length > 0 ? (
             allFilteredEvents.map((event, index) => (
-              <div
-                key={index}
-                className="transition-all transform hover:scale-105 hover:shadow-xl bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-400"
-              >
-                <div className="flex items-center mb-3">
-                  <FaCalendarAlt className="text-blue-600 mr-3" />
-                  <h4 className="text-lg font-semibold text-gray-800">
-                    {event.title}
-                  </h4>
-                </div>
-                <div className="flex items-center mb-2">
-                  <FaMapMarkerAlt className="text-gray-500 mr-2" />
-                  <span className="text-gray-600">{event.location}</span>
-                </div>
-                <p className="text-gray-700">{event.description}</p>
-                <div className="text-sm text-blue-600 font-medium mt-2">
-                  Date: {new Date(event.date).toDateString()}
-                </div>
-                <div className="text-xs text-gray-500 mt-1">
-                  Category: {event.category}
-                </div>
-              </div>
+              <EventCard key={index} event={event} />
             ))
           ) : (
-            <p className="text-gray-600">
-              No events match your search or category.
-            </p>
+            <Text>No events match your search or category.</Text>
           )}
         </div>
       </div>

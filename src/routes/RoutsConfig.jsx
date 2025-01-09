@@ -11,8 +11,8 @@ import Courses from "../components/Students/Cources";
 import Events from "../components/Events";
 import Blog from "../components/Blog";
 import TCourse from "../components/Course";
-import TCourseDetail from "../components/Teachers/CourseDetail";
-import AddCourse from "../components/Teachers/AddCourse";
+import TCourseDetail from "../components/Teachers/course/CourseDetail";
+import AddCourse from "../components/Teachers/course/AddCourse";
 import AddBlog from "../components/Teachers/AddBlog";
 import AddEvent from "./../components/Teachers/AddEvent";
 import ProfileSetup from "../components/ProfileSetup";
@@ -47,6 +47,7 @@ const RoutesConfig = () => {
         <Route path="/student/courses" element={<Courses />} />
         <Route path="/student/resources" element={<Resources />} />
         <Route path="/student/blogs" element={<Blog />} />
+        <Route path="/student/addblog" element={<AddBlog />} />
       </Route>
 
       <Route element={<TeachersLayout />}>

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { Heading2 } from "./../common/Headings";
-import Input from "./../common/Input";
-import Button from "./../common/Button";
-import courseService from "../../services/course-service";
-import AuthContext from "../../contexts/authContext";
+import { Heading2 } from "../../common/Headings";
+import Input from "../../common/Input";
+import Button from "../../common/Button";
+import courseService from "../../../services/course-service";
+import AuthContext from "../../../contexts/authContext";
 
 const AddCourse = () => {
   const [title, setTitle] = useState("");
