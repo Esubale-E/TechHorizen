@@ -30,8 +30,8 @@ const profileSchema = yup.object().shape({
 const ProfileSetup = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const userId = searchParams.get("userId");
-  console.log(userId )
+  const userId = searchParams.get("userid");
+  console.log(userId);
 
   const [selectedCollege, setSelectedCollege] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
