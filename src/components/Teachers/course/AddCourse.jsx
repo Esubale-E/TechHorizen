@@ -33,7 +33,7 @@ const AddCourse = () => {
         },
       ],
     };
-    console.log();
+    
     courseService
       .create(newCourse)
       .then((res) => {

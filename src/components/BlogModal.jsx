@@ -21,15 +21,15 @@ const BlogModal = ({
       }}
       className="my-overlay fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
     >
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-4/5 h-4/5">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-4/5 h-4/5  overflow-hidden overflow-y-scroll">
         {/* Blog Image */}
-        <div className="flex gap-6 ">
-          <div className="flex-col w-full max-w-lg gap-5">
+        <div className="flex flex-col md:flex-row gap-6 ">
+          <div className="flex-col w-full max-w-lg  max-h-lg gap-5">
             <Heading2>{title}</Heading2>
             <img
               src={img}
               alt={title}
-              className="w-full object-cover rounded-lg mb-4"
+              className="w-full max-h-96 object-cover rounded-lg mb-4"
             />{" "}
             <div className="text-gray-600 text-md flex items-center mb-2">
               <FaUser className="mr-2" />

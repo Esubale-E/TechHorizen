@@ -80,7 +80,7 @@ const AddResource = () => {
         }
         formData.append("url", data.url);
       }
-
+      
       const response = await resourceService.createWithFile(formData);
       console.log(response.data);
       setMessage("Resource uploaded successfully!");
