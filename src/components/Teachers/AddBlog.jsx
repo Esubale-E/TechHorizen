@@ -1,6 +1,9 @@
 import { useContext, useRef, useState } from "react";
 import blogService from "../../services/blog-service";
 import AuthContext from "./../../contexts/authContext";
+import Input from "../common/Input";
+import Button from "../common/Button";
+import { Heading2 } from "../common/Headings";
 
 const AddBlog = () => {
   const imageRef = useRef();
@@ -68,50 +71,27 @@ const AddBlog = () => {
       onSubmit={handleSubmit}
       className="w-full mx-auto md:my-5 md:mx-10 p-6 bg-white rounded-lg shadow-md flex flex-col gap-4"
     >
-      <h1 className="text-2xl font-bold text-center text-gray-800">
-        Create a New Blog Post
-      </h1>
+      <Heading2>Create a New Blog Post</Heading2>
 
       {/* Title Field */}
-      <div>
-        <label
-          htmlFor="title"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Title:
-        </label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-          minLength="3"
-          className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
+      <Input
+        id="title"
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+        minLength="3"
+        required
+      />
 
       {/* Category Field */}
-      <div>
-        <label
-          htmlFor="category"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Category:
-        </label>
-        <input
-          type="text"
-          id="category"
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          required
-          minLength="3"
-          className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-
+      <Input
+        id="category"
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+        minLength="3"
+        required
+      />
       {/* Detail Field */}
       <div>
         <label
@@ -129,54 +109,28 @@ const AddBlog = () => {
           required
           minLength="10"
           rows={textRow}
-          className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-none"
+          className="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 resize-none"
         />
       </div>
-
       {/* Tag Field */}
-      <div>
-        <label
-          htmlFor="tag"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Tag:
-        </label>
-        <input
-          type="text"
-          id="tag"
-          name="tag"
-          value={formData.tag}
-          onChange={handleChange}
-          className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-
+      <Input
+        type="text"
+        id="tag"
+        name="tag"
+        value={formData.tag}
+        onChange={handleChange}
+      />
       {/* Image Upload */}
-      <div>
-        <label
-          htmlFor="image"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Upload Image:
-        </label>
-        <input
-          ref={imageRef}
-          type="file"
-          id="image"
-          name="image"
-          accept="image/*"
-          onChange={handleChange}
-          className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-
+      <Input
+        ref={imageRef}
+        type="file"
+        id="image"
+        name="image"
+        accept="image/*"
+        onChange={handleChange}
+      />
       {/* Submit Button */}
-      <button
-        type="submit"
-        className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
-      >
-        Submit
-      </button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };

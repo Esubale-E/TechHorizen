@@ -55,7 +55,6 @@ const AddEvent = () => {
       <Heading2>Add New Event</Heading2>
       <form onSubmit={handleSubmit}>
         <Input
-          type="text"
           id="title"
           name="title"
           value={eventData.title}
@@ -72,16 +71,14 @@ const AddEvent = () => {
           required
         />
         <Input
-          type="text"
           id="location"
           name="location"
           value={eventData.location}
           onChange={handleChange}
           required
           placeholder="Enter event location"
-        />{" "}
+        />
         <Input
-          type="text"
           id="category"
           name="category"
           value={eventData.category}

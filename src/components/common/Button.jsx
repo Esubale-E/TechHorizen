@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 
-const Button = ({ children,onClick }) => {
+const Button = ({ children, onClick,type }) => {
   return (
     <button
       onClick={onClick}
       className="w-full py-3 text-lg font-semibold text-white bg-blue-500 rounded-xl hover:bg-blue-600 transition-all duration-300 ease-in-out transform hover:scale-105 "
-      type="submit"
+      type={type || "submit"}
     >
       {children}
     </button>

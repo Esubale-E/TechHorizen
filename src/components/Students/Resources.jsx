@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaBookOpen,
   FaExternalLinkAlt,
@@ -6,6 +6,7 @@ import {
   FaFilter,
 } from "react-icons/fa";
 import resources from "../../services/resource";
+import resourceService from "../../services/resource-service";
 
 const Resources = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,6 +27,16 @@ const Resources = () => {
     "Data Science",
     "Version Control",
   ];
+
+  useEffect(() => {
+    resourceService
+      .getAll()
+      .then((res) =>{
+        alert("success response",)
+        console.log(res.data )}
+      )
+      .catch((err) => alert("error response", err.message));
+  });
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">

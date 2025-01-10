@@ -3,8 +3,9 @@ import SignUp from "../pages/SignUp";
 import LogIn from "../pages/LogIn";
 import LandingPage from "../pages/LandingPage";
 import MainLayout from "../Layouts/MainLayout";
-import StudentLayout from "../Layouts/StudentLayout";
+import JoinLayout from "../Layouts/JoinLayout";
 import TeachersLayout from "../Layouts/TeachersLayout";
+import StudentLayout from "../Layouts/StudentLayout";
 import Dashboard from "../components/Students/Dashboard";
 import Resources from "../components/Students/Resources";
 import Courses from "../components/Students/Cources";
@@ -12,14 +13,14 @@ import Events from "../components/Events";
 import Blog from "../components/Blog";
 import TCourse from "../components/Course";
 import TCourseDetail from "../components/Teachers/course/CourseDetail";
+import AddResourse from "./../components/Teachers/AddResourse";
 import AddCourse from "../components/Teachers/course/AddCourse";
-import AddBlog from "../components/Teachers/AddBlog";
 import AddEvent from "./../components/Teachers/AddEvent";
+import AddBlog from "../components/Teachers/AddBlog";
 import ProfileSetup from "../components/ProfileSetup";
 import GoogleLogin from "../pages/GoogleLogin";
 import TeachersLandingPage from "./../components/Teachers/landing";
 import TeachersProfileSetup from "../components/Teachers/TeachersProfileSetup";
-import JoinLayout from "../Layouts/JoinLayout";
 
 const RoutesConfig = () => {
   return (
@@ -57,6 +58,7 @@ const RoutesConfig = () => {
         <Route path="/teacher/courses" element={<TCourse />} />
         <Route path="/teacher/coursedetail/:id" element={<TCourseDetail />} />
         <Route path="/teacher/resources" element={<Resources />} />
+        <Route path="/teacher/addresource" element={<AddResourse />} />
         <Route path="/teacher/addcourse" element={<AddCourse />} />
         <Route path="/teacher/blogs" element={<Blog />} />
         <Route path="/teacher/addblog" element={<AddBlog />} />
