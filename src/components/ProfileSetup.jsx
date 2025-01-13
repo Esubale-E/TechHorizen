@@ -4,7 +4,7 @@ import * as yup from "yup";
 import Button from "./common/Button.jsx";
 import Input from "./common/Input.jsx";
 import userService from "../services/user-service.js";
-import { replace, useLocation, useNavigate } from "react-router-dom";
+import { replace, useNavigate } from "react-router-dom";
 import SelectInput from "./common/SelectInput.jsx";
 import colleges from "../services/profileSetupData.js";
 import { useContext, useState } from "react";
@@ -28,15 +28,10 @@ const profileSchema = yup.object().shape({
 });
 
 const ProfileSetup = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const userId = searchParams.get("userid");
-  console.log(userId);
-
   const [selectedCollege, setSelectedCollege] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [yearOptions, setYearOptions] = useState([]);
-  const { dispatch } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
 
   const {
     register,
@@ -58,7 +53,7 @@ const ProfileSetup = () => {
 
   const onSubmit = (data) => {
     userService
-      .update(userId, data)
+      .update(state.user._id, data)
       .then((res) => {
         reset();
         setSelectedCollege(null);

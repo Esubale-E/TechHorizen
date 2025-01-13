@@ -6,6 +6,8 @@ const resourceTypeOptions = [
 
 const categoryOptions = [
   { value: "Programming", label: "Programming" },
+  { value: "UI/UX Design", label: "UI/UX Design" },
+  { value: "Version Contro", label: "Version Contro" },
   { value: "Web Development", label: "Web Development" },
   { value: "Data Science", label: "Data Science" },
   { value: "Artificial Intelligence", label: "Artificial Intelligence" },

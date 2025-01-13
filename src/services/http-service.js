@@ -30,7 +30,7 @@ class HttpService {
   }
 
   createWithFile(formData) {
-    return apiClient.post(`${this.endpoint}`, formData, {
+    return apiClient.post(`${this.endpoint}/file`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
   }

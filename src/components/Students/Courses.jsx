@@ -3,7 +3,7 @@ import { FaCheckCircle, FaClock, FaBook, FaTimes } from "react-icons/fa";
 import courseService from "../../services/course-service";
 import CoursePreview from "./CoursePreview";
 import AuthContext from "../../contexts/authContext";
-import userService from "./../../services/user-service";
+import userService from "../../services/user-service";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);

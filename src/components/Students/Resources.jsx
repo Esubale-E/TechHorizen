@@ -5,12 +5,30 @@ import {
   FaSearch,
   FaFilter,
 } from "react-icons/fa";
-import resources from "../../services/resource";
 import resourceService from "../../services/resource-service";
+import { AppText } from "../common/Text";
+import { Heading2 } from "../common/Headings";
 
 const Resources = () => {
+  const [resources, setResources] = useState();
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
+
+  const type = ["All", "file", "video", "link"];
+
+  useEffect(() => {
+    resourceService
+      .getAll()
+      .then((res) => setResources(res.data))
+      .catch((err) => setError(err.message))
+      .finally(() => setIsLoading(false));
+  }, [filter]);
+
+  if (error) return <AppText>{error}</AppText>;
+
+  if (isLoading) return <AppText>Loadding...</AppText>;
 
   const filteredResources = resources.filter((resource) => {
     const matchesCategory = filter === "All" || resource.category === filter;
@@ -20,30 +38,10 @@ const Resources = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const categories = [
-    "All",
-    "Web Development",
-    "UI/UX Design",
-    "Data Science",
-    "Version Control",
-  ];
-
-  useEffect(() => {
-    resourceService
-      .getAll()
-      .then((res) =>{
-        alert("success response",)
-        console.log(res.data )}
-      )
-      .catch((err) => alert("error response", err.message));
-  });
-
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
       {/* Header */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-800 text-center">
-        Resources
-      </h2>
+      <Heading2>Resources</Heading2>
 
       {/* Search and Filter Section */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
@@ -66,7 +64,7 @@ const Resources = () => {
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           >
-            {categories.map((category) => (
+            {type.map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>

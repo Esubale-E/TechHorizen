@@ -8,7 +8,7 @@ import TeachersLayout from "../Layouts/TeachersLayout";
 import StudentLayout from "../Layouts/StudentLayout";
 import Dashboard from "../components/Students/Dashboard";
 import Resources from "../components/Students/Resources";
-import Courses from "../components/Students/Cources";
+import Courses from "../components/Students/Courses";
 import Events from "../components/Events";
 import Blog from "../components/Blog";
 import TCourse from "../components/Course";
