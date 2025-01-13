@@ -100,17 +100,19 @@ const Events = () => {
         </div>
 
         {/* Events Section */}
-        <div className="bg-blue-50 p-6 rounded-lg shadow-md">
+        <div className="">
           <Heading3>Events on {selectedDate.toDateString()}</Heading3>
-          {filteredEvents.length > 0 ? (
-            <div className="space-y-6 mt-4">
-              {filteredEvents.map((event, index) => (
-                <EventCard key={index} event={event} />
-              ))}
-            </div>
-          ) : (
-            <Text>No events match your search or category.</Text>
-          )}
+          <div className="bg-blue-50 p-6 rounded-lg shadow-md max-h-80 overflow-scroll bg-gradient-to-b from-transparent to-gray-100 scrollbar-hidden">
+            {filteredEvents.length > 0 ? (
+              <div className="space-y-6 mt-4 ">
+                {filteredEvents.map((event, index) => (
+                  <EventCard key={index} event={event} />
+                ))}
+              </div>
+            ) : (
+              <Text>No events match your search or category.</Text>
+            )}
+          </div>
         </div>
       </div>
 
