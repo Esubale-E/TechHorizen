@@ -16,7 +16,7 @@ const AddEvent = () => {
     category: "",
     author: {
       _id: state.user._id,
-      name: `${state.user.firstName} ${state.user.lastName}`,
+      // name: `${state.user.firstName} ${state.user.lastName}`,
     },
   });
 
