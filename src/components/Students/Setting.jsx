@@ -7,16 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const Setting = ({ profile }) => {
-  const { state, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const navigateTo = useNavigate();
 
   const handleLogOut = () => {
     userService
       .logout()
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
         dispatch({ type: "LOGOUT" });
-        console.log(state.user);
         navigateTo("/");
       })
       .catch((err) => console.log(err));
@@ -24,9 +22,9 @@ const Setting = ({ profile }) => {
 
   return (
     <div className="absolute right-0 bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-50">
-      <SettingButton>
+      <SettingButton onClick={() => navigateTo("/profilesetup")}>
         <FaCog className="mr-2" />
-        Account Settings
+        Profile Setup
       </SettingButton>
       <SettingButton onClick={profile}>
         <FaUserAlt className="mr-2" />

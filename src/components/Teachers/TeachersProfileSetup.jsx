@@ -14,10 +14,7 @@ const profileSchema = yup.object().shape({
   phone: yup
     .string()
     .required("Phone number is required")
-    .matches(
-      /^(?:\+251|0)\d{9}$/,
-      "Phone number must be a valid Ethiopian phone number"
-    ),
+    .matches(/^\d{9}$/, "Phone number must be a valid Ethiopian phone number"),
   college: yup.string().required("College is required"),
   department: yup.string().required("Department is required"),
 });
@@ -40,7 +37,7 @@ const ProfileSetup = () => {
   } = useForm({
     resolver: yupResolver(profileSchema),
     defaultValues: {
-      phone: "+251",
+      phone: "",
       college: "",
       department: "",
     },
@@ -49,13 +46,15 @@ const ProfileSetup = () => {
   const navigateToStudent = useNavigate();
 
   const onSubmit = (data) => {
+    const phoneWithCountryCode = `+251${data.phone}`;
+    const updatedData = { ...data, phone: phoneWithCountryCode };
     userService
-      .update(userId, data)
+      .update(userId, updatedData)
       .then((res) => {
-
         dispatch({ type: "LOGIN", user: res.data });
         if (res.data.role === "teacher") navigateToStudent("/teacher");
-        else navigateToStudent("/student", replace);        reset();
+        else navigateToStudent("/student", replace);
+        reset();
         setSelectedCollege(null);
         setSelectedDepartment(null);
       })
@@ -102,13 +101,24 @@ const ProfileSetup = () => {
             onChange={handleDepartmentChange}
             errorMessage={errors.department?.message}
           />
-          <Input
-            label="Phone"
-            name="phone"
-            type="text"
-            {...register("phone")}
-            errorMessage={errors.phone?.message}
-          />
+          <div className="flex items-center space-x-2">
+            <Input
+              label="Country Code"
+              name="countryCode"
+              type="text"
+              value="+251"
+              readOnly
+              className="w-20 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 border border-gray-300 dark:border-gray-600"
+            />
+            <Input
+              label="Phone"
+              name="phone"
+              type="text"
+              {...register("phone")}
+              placeholder="Enter phone number"
+              errorMessage={errors.phone?.message}
+            />
+          </div>
           <div className="flex justify-end my-4">
             <Button type="submit">Save Profile</Button>
           </div>

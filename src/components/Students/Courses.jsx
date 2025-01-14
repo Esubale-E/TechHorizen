@@ -11,6 +11,8 @@ const Courses = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState("All");
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isEnrolled, setIsEnrolled] = useState(false);
+  const [enrollmentError, setEnrollmentError] = useState(null);
   const { state } = useContext(AuthContext);
 
   useEffect(() => {
@@ -26,14 +28,20 @@ const Courses = () => {
       });
   }, []);
 
-  const handleEnroll = (courseId) => {
-    userService
-      .enroll(state.user._id, {
+  const handleEnroll = async (courseId) => {
+    try {
+      const userData = {
         id: courseId,
         name: `${state.user.firstName} ${state.user.lastName}`,
-      })
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err.response?.data));
+      };
+      await userService.enroll(state.user._id, userData);
+      setIsEnrolled(true);
+      setEnrollmentError(null);
+    } catch (err) {
+      console.log(err);
+      setIsEnrolled(false);
+      setEnrollmentError("Failed to enroll. Try again later.");
+    }
   };
 
   const openModal = (course) => {
@@ -45,12 +53,7 @@ const Courses = () => {
   };
 
   const filteredCourses = useMemo(() => {
-    if (filter === "Active") {
-      return courses.filter((course) =>
-        course.enrolledStudent.some((s) => s._id === state.user._id)
-      );
-    }
-    if (filter === "Completed") {
+    if (filter === "Enrolled") {
       return courses.filter((course) =>
         course.enrolledStudent.some((s) => s._id === state.user._id)
       );
@@ -72,7 +75,7 @@ const Courses = () => {
     <div className="p-6 w-full mt-14 bg-white rounded-lg shadow-lg">
       {/* Filter Section */}
       <div className="flex justify-center gap-4 mb-8">
-        {["All", "Active", "Completed"].map((status) => (
+        {["All", "Enrolled"].map((status) => (
           <button
             key={status}
             className={`px-4 py-2 rounded-lg text-white font-semibold shadow-md transition-all duration-200 ${
@@ -87,66 +90,105 @@ const Courses = () => {
         ))}
       </div>
 
+      {/* Confirmation Card */}
+      {isEnrolled && (
+        <div className="p-4 mb-6 bg-green-100 text-green-800 rounded-lg shadow-md">
+          <h4 className="text-lg font-semibold">Enrollment Successful!</h4>
+          <p>You have successfully enrolled in the course.</p>
+        </div>
+      )}
+
+      {enrollmentError && (
+        <div className="p-4 mb-6 bg-red-100 text-red-800 rounded-lg shadow-md">
+          <h4 className="text-lg font-semibold">Enrollment Failed</h4>
+          <p>{enrollmentError}</p>
+        </div>
+      )}
+
       {/* Courses Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredCourses.length > 0 ? (
-          filteredCourses.map((course) => (
-            <div
-              key={course._id}
-              className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 p-4 rounded-lg shadow-md"
-            >
-              {/* Course Header */}
-              <div className="flex items-center mb-2">
-                <FaBook className="text-blue-600 mr-2" />
-                <h4 className="text-xl font-semibold text-gray-800">
-                  {course.title}
-                </h4>
-              </div>
+          filteredCourses.map((course) => {
+            const isEnrolled = course.enrolledStudent.some(
+              (student) => student?._id === state.user._id
+            );
+            return (
+              <div
+                key={course._id}
+                className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 p-4 rounded-lg shadow-md"
+              >
+                {/* Course Header */}
+                <div className="flex items-center mb-2">
+                  <FaBook className="text-blue-600 mr-2" />
+                  <h4 className="text-xl font-semibold text-gray-800">
+                    {course.title}
+                  </h4>
+                </div>
 
-              {/* Course Details */}
-              <p className="text-gray-700 mb-2">
-                <FaClock className="inline text-gray-600 mr-2" />
-                Duration: {course.duration}
-              </p>
-              <p className="text-gray-700 mb-4">
-                <FaCheckCircle
-                  className={`inline ${
-                    course.status === "Completed"
-                      ? "text-green-500"
-                      : "text-yellow-500"
-                  } mr-2`}
-                />
-                Status: {course.status}
-              </p>
+                {/* Course Details */}
+                <p className="text-gray-700 mb-2">
+                  <FaClock className="inline text-gray-600 mr-2" />
+                  Duration: {course.duration}
+                </p>
+                <p className="text-gray-700 mb-4">
+                  <FaCheckCircle
+                    className={`inline ${
+                      course.status === "Completed"
+                        ? "text-green-500"
+                        : "text-yellow-500"
+                    } mr-2`}
+                  />
+                  Status: {course.status}
+                </p>
 
-              {/* Progress Bar */}
-              <div className="bg-gray-300 rounded-full h-3 w-full mb-2">
-                <div
-                  className="bg-blue-600 h-3 rounded-full"
-                  style={{ width: course.progress || 50 }}
-                ></div>
-              </div>
-              <div className="text-sm text-gray-600">
-                Progress: {course.progress}
-              </div>
+                {/* Progress Bar */}
+                <div className="bg-gray-300 rounded-full h-3 w-full mb-2">
+                  <div
+                    className="bg-blue-600 h-3 rounded-full"
+                    style={{ width: course.progress || 50 }}
+                  ></div>
+                </div>
+                <div className="text-sm text-gray-600">
+                  Progress: {course.progress}
+                </div>
 
-              {/* Buttons */}
-              <div className="mt-4 flex gap-2">
-                <button
-                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
-                  onClick={() => handleEnroll(course._id)}
-                >
-                  Enroll
-                </button>
-                <button
-                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
-                  onClick={() => openModal(course)}
-                >
-                  View Detail
-                </button>
+                {/* Buttons */}
+                <div className="mt-4 flex gap-2">
+                  {isEnrolled ? (
+                    <>
+                      <button
+                        className="px-6 py-2 bg-gray-500 text-white rounded-lg cursor-not-allowed"
+                        disabled
+                      >
+                        Enrolled
+                      </button>
+                      <button
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                        onClick={() => openModal(course)}
+                      >
+                        View Detail
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                        onClick={() => handleEnroll(course._id)}
+                      >
+                        Enroll
+                      </button>
+                      <button
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                        onClick={() => openModal(course)}
+                      >
+                        PreView course
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         ) : (
           <p className="text-gray-600 text-center col-span-3">
             No courses available for the selected filter.
