@@ -16,7 +16,7 @@ const AddResource = () => {
   const { state } = useContext(AuthContext);
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
-    resourceType: "File",
+    type: "File",
     title: "",
     description: "",
     category: "",
@@ -29,7 +29,7 @@ const AddResource = () => {
 
   const resetForm = () => {
     setData({
-      resourceType: "File",
+      type: "",
       title: "",
       description: "",
       category: "",
@@ -53,44 +53,65 @@ const AddResource = () => {
     e.preventDefault();
     setMessage("Uploading...");
 
-    try {
-      const formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("description", data.description);
-      formData.append("category", data.category);
-      formData.append("type", data.resourceType);
-      formData.append(
-        "author",
-        JSON.stringify({
-          _id: state.user._id,
-          name: `${state.user.firstName} ${state.user.lastName}`,
-        })
-      );
+    console.log(data.type);
 
-      if (data.resourceType === "File" || data.resourceType === "Video") {
-        if (!data.file) {
-          setMessage("Please select a file to upload.");
-          return;
-        }
-        formData.append("file", data.file);
-      } else if (data.resourceType === "Link") {
-        if (!data.url) {
-          setMessage("Please provide a valid URL.");
-          return;
-        }
-        formData.append("url", data.url);
-      }
-      
-      const response = await resourceService.createWithFile(formData);
-      console.log(response.data);
-      setMessage("Resource uploaded successfully!");
-      resetForm();
-    } catch (err) {
-      console.error("Error uploading resource", err);
-      setMessage(
-        err.response?.data?.message || "Failed to upload the resource."
-      );
+    if (data.type === "Link") {
+      const { type, title, description, category, url, author } = data;
+      const upload = { type, title, description, category, url, author };
+      resourceService
+        .create(upload)
+        .then(() => {
+          setMessage("Resource uploaded successfully!");
+          resetForm();
+        })
+        .catch((err) => {
+          console.error("Error uploading resource", err);
+          setMessage(
+            err.response?.data?.message || "Failed to upload the resource."
+          );
+        });
+      return;
     }
+
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("category", data.category);
+    formData.append("type", data.type);
+    formData.append(
+      "author",
+      JSON.stringify({
+        _id: state.user._id,
+        name: `${state.user.firstName} ${state.user.lastName}`,
+      })
+    );
+
+    if (data.type === "File" || data.type === "Video") {
+      if (!data.file) {
+        setMessage("Please select a file to upload.");
+        return;
+      }
+      formData.append("file", data.file);
+    } else if (data.type === "Link") {
+      if (!data.url) {
+        setMessage("Please provide a valid URL.");
+        return;
+      }
+      formData.append("url", data.url);
+    }
+
+    resourceService
+      .createWithFile(formData)
+      .then(() => {
+        setMessage("Resource uploaded successfully!");
+        resetForm();
+      })
+      .catch((err) => {
+        console.error("Error uploading resource", err);
+        setMessage(
+          err.response?.data?.message || "Failed to upload the resource."
+        );
+      });
   };
 
   return (
@@ -109,9 +130,9 @@ const AddResource = () => {
         {/* Resource Type */}
         <SelectInput
           label="Resource Type"
-          id="resourceType"
-          name="resourceType"
-          value={data.resourceType}
+          id="type"
+          name="type"
+          value={data.type}
           onChange={handleChange}
           options={resourceTypeOptions}
         />
@@ -147,7 +168,7 @@ const AddResource = () => {
         />
 
         {/* File Input or URL */}
-        {(data.resourceType === "File" || data.resourceType === "Video") && (
+        {(data.type === "File" || data.type === "Video") && (
           <Input
             id="file"
             name="file"
@@ -157,7 +178,7 @@ const AddResource = () => {
             onChange={handleChange}
           />
         )}
-        {data.resourceType === "Link" && (
+        {data.type === "Link" && (
           <Input
             id="url"
             name="url"

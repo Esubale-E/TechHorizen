@@ -110,7 +110,7 @@ const Courses = () => {
         {filteredCourses.length > 0 ? (
           filteredCourses.map((course) => {
             const isEnrolled = course.enrolledStudent.some(
-              (student) => student._id === state.user._id
+              (student) => student?._id === state.user._id
             );
             return (
               <div
@@ -155,26 +155,36 @@ const Courses = () => {
                 {/* Buttons */}
                 <div className="mt-4 flex gap-2">
                   {isEnrolled ? (
-                    <button
-                      className="px-6 py-2 bg-gray-500 text-white rounded-lg cursor-not-allowed"
-                      disabled
-                    >
-                      Enrolled
-                    </button>
+                    <>
+                      <button
+                        className="px-6 py-2 bg-gray-500 text-white rounded-lg cursor-not-allowed"
+                        disabled
+                      >
+                        Enrolled
+                      </button>
+                      <button
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                        onClick={() => openModal(course)}
+                      >
+                        View Detail
+                      </button>
+                    </>
                   ) : (
-                    <button
-                      className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
-                      onClick={() => handleEnroll(course._id)}
-                    >
-                      Enroll
-                    </button>
+                    <>
+                      <button
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                        onClick={() => handleEnroll(course._id)}
+                      >
+                        Enroll
+                      </button>
+                      <button
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                        onClick={() => openModal(course)}
+                      >
+                        PreView course
+                      </button>
+                    </>
                   )}
-                  <button
-                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
-                    onClick={() => openModal(course)}
-                  >
-                    View Detail
-                  </button>
                 </div>
               </div>
             );
