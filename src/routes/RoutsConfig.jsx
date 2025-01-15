@@ -6,6 +6,7 @@ import MainLayout from "../Layouts/MainLayout";
 import JoinLayout from "../Layouts/JoinLayout";
 import TeachersLayout from "../Layouts/TeachersLayout";
 import StudentLayout from "../Layouts/StudentLayout";
+
 import Dashboard from "../components/Students/Dashboard";
 import Resources from "../components/Students/Resources";
 import Courses from "../components/Students/Cources";
@@ -21,6 +22,7 @@ import ProfileSetup from "../components/ProfileSetup";
 import GoogleLogin from "../pages/GoogleLogin";
 import TeachersLandingPage from "./../components/Teachers/landing";
 import TeachersProfileSetup from "../components/Teachers/TeachersProfileSetup";
+import Adminlayout from "../Layouts/AdminLayout";
 
 const RoutesConfig = () => {
   return (
@@ -62,6 +64,18 @@ const RoutesConfig = () => {
         <Route path="/teacher/addcourse" element={<AddCourse />} />
         <Route path="/teacher/blogs" element={<Blog />} />
         <Route path="/teacher/addblog" element={<AddBlog />} />
+      </Route>
+      <Route element={<Adminlayout />}>
+        <Route path="/Admin" element={<Dashboard />} />
+        <Route path="/Admin/events" element={<Events />} />
+        <Route path="/Admin/addevent" element={<AddEvent />} />
+        <Route path="/Admin/courses" element={<TCourse />} />
+        <Route path="/Admin/coursedetail/:id" element={<TCourseDetail />} />
+        <Route path="/Admin/resources" element={<Resources />} />
+        <Route path="/Admin/addresource" element={<AddResourse />} />
+
+        <Route path="/Admin/blogs" element={<Blog />} />
+        <Route path="/Admin/addblog" element={<AddBlog />} />
       </Route>
     </Routes>
   );
