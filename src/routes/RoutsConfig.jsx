@@ -24,6 +24,7 @@ import TeachersLandingPage from "./../components/Teachers/landing";
 import TeachersProfileSetup from "../components/Teachers/TeachersProfileSetup";
 import Adminlayout from "../Layouts/AdminLayout";
 import StudentCourseDetail from "../components/Students/StudentCourseDetail";
+import Users from "./../components/Admin/component/Users";
 
 const RoutesConfig = () => {
   return (
@@ -78,6 +79,7 @@ const RoutesConfig = () => {
         <Route path="/Admin/coursedetail/:id" element={<TCourseDetail />} />
         <Route path="/Admin/resources" element={<Resources />} />
         <Route path="/Admin/addresource" element={<AddResourse />} />
+        <Route path="/Admin/users" element={<Users />} />
 
         <Route path="/Admin/blogs" element={<Blog />} />
         <Route path="/Admin/addblog" element={<AddBlog />} />

@@ -4,6 +4,7 @@ import {
   FaFileAlt,
   FaPen,
   FaPlusCircle,
+  FaUser,
 } from "react-icons/fa";
 
 const sideLinks = [
@@ -26,7 +27,10 @@ const studentsSideLinks = [
   { link: "/addblog", icon: FaPlusCircle, label: "Add Blog" },
 ];
 
-const adminsSideLinks = [...sideLinks];
+const adminsSideLinks = [
+  { link: "/users", icon: FaUser, label: "Users" },
+  ...sideLinks,
+];
 
 export default sideLinks;
 export { studentsSideLinks, teachersSideLinks, adminsSideLinks };
