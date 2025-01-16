@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState, useMemo } from "react";
-import { FaCheckCircle, FaClock, FaBook, FaTimes } from "react-icons/fa";
+import { FaCheckCircle, FaClock, FaBook } from "react-icons/fa";
 import courseService from "../../services/course-service";
 import CoursePreview from "./CoursePreview";
 import AuthContext from "../../contexts/authContext";
 import userService from "../../services/user-service";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
+  const navigateTo = useNavigate();
   const [courses, setCourses] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -164,9 +166,9 @@ const Courses = () => {
                       </button>
                       <button
                         className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
-                        onClick={() => openModal(course)}
+                        onClick={() => navigateTo(`coursedetail/${course._id}`)}
                       >
-                        View Detail
+                        Continue
                       </button>
                     </>
                   ) : (
@@ -198,20 +200,7 @@ const Courses = () => {
 
       {/* Modal */}
       {selectedCourse && (
-        <div
-          onClick={closeModal}
-          className="my-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-        >
-          <div className="bg-white w-full md:max-w-xl max-w-4xl rounded-3xl py-4 px-8 h-[80vh] overflow-y-auto scrollbar-hidden shadow-lg">
-            <button
-              className="my-overlay cursor-pointer float-right"
-              onClick={closeModal}
-            >
-              <FaTimes size={32} className="text-red-800" />
-            </button>
-            <CoursePreview courseId={selectedCourse._id} />
-          </div>
-        </div>
+        <CoursePreview courseId={selectedCourse._id} onClose={closeModal} />
       )}
     </div>
   );

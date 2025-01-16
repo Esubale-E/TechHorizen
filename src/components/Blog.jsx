@@ -10,12 +10,13 @@ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
   const [isLoadding, setIsLoadding] = useState(true);
-  const [openModal, setOpenModal] = useState(false);
-  const [modalBlog, setModalBlog] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [openModal, setOpenModal] = useState(false);
+  const [index, setIndex] = useState(null);
 
   const blogsPerPage = 3;
   const filteredBlogs = blogs.filter((blog) => {
@@ -52,18 +53,50 @@ const Blogs = () => {
       });
   }, []);
 
-  const handleReadMore = (blog) => {
+  const handleReadMore = (index) => {
     setOpenModal(true);
-    setModalBlog(blog);
+    setIndex(index);
   };
   const handleClose = () => setOpenModal(false);
+  const updateIndex = (i) => {
+    // when last page last post reached  && next clicked reset => to the first page
+    if (currentPage === totalPages && index === blogsPerPage - 1 && i > 1) {
+      setCurrentPage(1);
+      setIndex(0);
+      return;
+    }
+    // when first page first post reached  && previous clicked => reset to the last page last post
+    if (currentPage === 1 && index === 0 && i < 0) {
+      setCurrentPage(totalPages);
+      setIndex(blogsPerPage - 1);
+      return;
+    }
+
+    // when current page last post reached go to next page
+    if (displayedBlogs.length - 1 === index && i > 0) {
+      setCurrentPage(() => currentPage + 1);
+      setIndex(0);
+      return;
+    }
+
+    // when current page first post reached go to previous page
+    if (index === 0 && i < 0) {
+      setCurrentPage(() => currentPage - 1);
+      setIndex(0);
+      return;
+    }
+
+    let newIndex = index + i;
+
+    setIndex(newIndex);
+  };
 
   if (isLoadding) return <div>Loading...</div>;
 
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className="p-6 mt-14 w-full bg-gray-100 rounded-lg shadow-lg">
+    <div className="p-6 w-full bg-background rounded-lg shadow-lg">
       <Heading2> Blog Section</Heading2>
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
         <div className="relative w-full md:w-1/3">
@@ -76,7 +109,6 @@ const Blogs = () => {
           />
           <FaSearch className="absolute right-3 top-3 text-gray-500" />
         </div>
-
         <div className="relative">
           <select
             className="px-4 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-300 focus:outline-none shadow-sm"
@@ -107,7 +139,7 @@ const Blogs = () => {
             <BlogCard
               key={index}
               blog={blog}
-              onReadMore={() => handleReadMore(blog)}
+              onReadMore={() => handleReadMore(index)}
             />
           ))
         ) : (
@@ -118,7 +150,14 @@ const Blogs = () => {
       </div>
 
       {/* blog modal // detail view */}
-      {openModal && <BlogModal blog={modalBlog} onClose={handleClose} />}
+      {openModal && (
+        <BlogModal
+          blog={displayedBlogs[index]}
+          onClose={handleClose}
+          onNext={() => updateIndex(+1)}
+          onPrevious={() => updateIndex(-1)}
+        />
+      )}
 
       {/* Pagination */}
       {totalPages > 1 && (

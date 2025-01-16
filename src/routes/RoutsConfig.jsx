@@ -23,6 +23,7 @@ import GoogleLogin from "../pages/GoogleLogin";
 import TeachersLandingPage from "./../components/Teachers/landing";
 import TeachersProfileSetup from "../components/Teachers/TeachersProfileSetup";
 import Adminlayout from "../Layouts/AdminLayout";
+import StudentCourseDetail from "../components/Students/StudentCourseDetail";
 
 const RoutesConfig = () => {
   return (
@@ -48,6 +49,10 @@ const RoutesConfig = () => {
         <Route path="/student" element={<Dashboard />} />
         <Route path="/student/events" element={<Events />} />
         <Route path="/student/courses" element={<Courses />} />
+        <Route
+          path="/student/courses/coursedetail/:id"
+          element={<StudentCourseDetail />}
+        />
         <Route path="/student/resources" element={<Resources />} />
         <Route path="/student/blogs" element={<Blog />} />
         <Route path="/student/addblog" element={<AddBlog />} />

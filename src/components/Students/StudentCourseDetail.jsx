@@ -1,10 +1,10 @@
 import { FaClock, FaUsers, FaBook, FaBookOpen } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import courseService from "../../../services/course-service";
 import { useLocation } from "react-router-dom";
-import { Heading2, Heading3 } from "../../common/Headings";
-import { AppText, LightText } from "../../common/Text";
-import LessonCards from "../../LessonCards";
+import { Heading2, Heading3 } from "../common/Headings";
+import { AppText, LightText } from "../common/Text";
+import LessonCards from "./../LessonCards";
+import courseService from "./../../services/course-service";
 
 const StudentCourseDetail = () => {
   const location = useLocation();

@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 
-import { FaCalendarAlt, FaTimes, FaUser } from "react-icons/fa";
+import {
+  FaCalendarAlt,
+  FaChevronCircleLeft,
+  FaChevronCircleRight,
+  FaTimes,
+  FaUser,
+} from "react-icons/fa";
 import { Heading2, Heading3 } from "./common/Headings";
 import Text from "./common/Text";
 import { PureButton } from "./common/Button";
@@ -8,6 +14,8 @@ import { PureButton } from "./common/Button";
 const BlogModal = ({
   blog: { title, image, author, date, detail },
   onClose,
+  onNext,
+  onPrevious,
 }) => {
   const img = image.filename
     ? `http://localhost:5000/${image.filename}`
@@ -22,8 +30,8 @@ const BlogModal = ({
       className="my-overlay fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
     >
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-4/5 h-4/5  overflow-hidden overflow-y-scroll">
-        {/* Blog Image */}
         <div className="flex flex-col md:flex-row gap-6 ">
+        {/* Blog header */}
           <div className="flex-col w-full max-w-lg  max-h-lg gap-5">
             <Heading2>{title}</Heading2>
             <img
@@ -44,16 +52,28 @@ const BlogModal = ({
                 })}
             </div>
           </div>
-          <div className="flex-col max-w-lg">
+            {/* Blog detail */}
+          <div className="flex-col overflow-y-scroll max-w-lg">
             <Heading3>{title}</Heading3>
-            {/* Blog Metadata */}
 
             <Text>{detail}</Text>
           </div>
         </div>
 
-        {/* Read More Button */}
-        <span className="absolute top-3 right-3 ">
+        <span className="absolute top-2/4 left-3.5">
+          <PureButton onClick={onPrevious}>
+            <FaChevronCircleLeft size={32} color="#0037fc" />
+          </PureButton>
+        </span>
+
+        <span className="absolute top-2/4 right-3 hover:text-white ">
+          <PureButton onClick={onNext}>
+            <FaChevronCircleRight size={32} color="#0037fc" />
+          </PureButton>
+        </span>
+
+        {/* close Button */}
+        <span className="absolute top-3 right-3 hover:text-white ">
           <PureButton onClick={onClose}>
             {<FaTimes size={32} color="#fff" />}
           </PureButton>

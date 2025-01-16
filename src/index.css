@@ -26,7 +26,6 @@ html {
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: #8e44ad #f3f3f3; /* Thumb and track colors */
 }
-
 .scrollbar-custom::-webkit-scrollbar {
   width: 10px; /* Scrollbar width */
   height: 10px; /* Horizontal scrollbar height */

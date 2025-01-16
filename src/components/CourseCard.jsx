@@ -6,7 +6,7 @@ import { AppText, LightText } from "./common/Text";
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 p-4 rounded-lg shadow-md">
+    <div className="transition-transform transform hover:scale-105 hover:shadow-2xl bg-gradient-to-r from-blue-50 via-blue-100  to-blue-200 p-4 rounded-lg shadow-md">
       {/* Course Header */}
       <div className="flex items-center justify-between mb-4">
         <Heading3>{course.title}</Heading3>
