@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { FaUserAlt, FaCog } from "react-icons/fa";
 import Profile from "./../Profile";
-import Setting from "./Setting";
+import Setting from "./../Students/Setting";
 import { PureButton } from "../common/Button";
 
 const Topbar = () => {
@@ -47,7 +47,7 @@ const Topbar = () => {
         Tech Horizon
       </div>
       <div className="text-xl md:text-2xl font-bold text-secondary">
-        Student Dashboard
+        Admin Dashboard
       </div>
       <div className="flex items-center space-x-6">
         <div className="" ref={profileRef}>

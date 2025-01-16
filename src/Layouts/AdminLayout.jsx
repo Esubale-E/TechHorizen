@@ -1,11 +1,8 @@
 import { Outlet } from "react-router-dom";
-import TopBar from "../components/Teachers/TopBar";
-import Aside from "../components/Teachers/Aside";
-import LogIn from "../pages/LogIn";
+import TopBar from './../components/Admin/Topbar'
+import Aside from "../components/Admin/Aside";
 
 const Adminlayout = () => {
-  const isLogged = true;
-  if (isLogged) return <LogIn />;
   return (
     <div>
       <TopBar />

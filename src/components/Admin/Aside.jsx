@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { studentSideLinks } from "../../utils/sideLinks";
+import { adminsSideLinks } from "../../utils/sideLinks";
 import SidebarLink from "../common/SideBarLink";
 const Aside = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -46,16 +46,16 @@ const Aside = () => {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 fixed md:relative left-0 top-0 w-72 ${
           sidebarOpen ? "h-full" : "s-screen"
-        } bg-white shadow-lg transition-transform duration-300 ease-in-out mt-16 z-40`}
+        } bg-white shadow-lg transition-transform duration-300 ease-in-out mt-12 z-40`}
         aria-hidden={!sidebarOpen}
       >
         <div className="p-6 text-gray-700">
           {/* Menu Items */}
           <nav className="space-y-4">
-            {studentSideLinks.map((li, i) => (
+            {adminsSideLinks.map((li, i) => (
               <SidebarLink
                 key={i}
-                to={"/student" + li.link}
+                to={"/Admin" + li.link}
                 icon={<li.icon />}
                 label={li.label}
                 isActive={isActive}

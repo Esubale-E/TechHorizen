@@ -7,54 +7,26 @@ import {
 } from "react-icons/fa";
 
 const sideLinks = [
-  {
-    link: "/courses",
-    icon: FaBookOpen,
-    label: "Courses",
-  },
-  {
-    link: "/addcourse",
-    icon: FaPlusCircle,
-    label: "Add Course",
-  },
-  {
-    link: "/events",
-    icon: FaCalendarAlt,
-    label: "Event",
-  },
-  {
-    link: "/addEvent",
-    icon: FaPlusCircle,
-    label: "Add Event",
-  },
-  {
-    link: "/resources",
-    icon: FaFileAlt,
-    label: "Resources",
-  },
-  {
-    link: "/addresource",
-    icon: FaPlusCircle,
-    label: "Add Resource",
-  },
-  {
-    link: "/blogs",
-    icon: FaPen,
-    label: "Blog",
-  },
-  {
-    link: "/addblog",
-    icon: FaPlusCircle,
-    label: "Add Blog",
-  },
+  { link: "/courses", icon: FaBookOpen, label: "Courses" },
+  { link: "/events", icon: FaCalendarAlt, label: "Event" },
+  { link: "/resources", icon: FaFileAlt, label: "Resources" },
+  { link: "/blogs", icon: FaPen, label: "Blog" },
 ];
 
-const studentSideLinks = sideLinks.filter(
-  (sl) =>
-    sl.label !== "Add Course" &&
-    sl.label !== "Add Event" &&
-    sl.label !== "Add Resource"
-);
+const teachersSideLinks = [
+  ...sideLinks,
+  { link: "/addcourse", icon: FaPlusCircle, label: "Add Course" },
+  { link: "/addEvent", icon: FaPlusCircle, label: "Add Event" },
+  { link: "/addresource", icon: FaPlusCircle, label: "Add Resource" },
+  { link: "/addblog", icon: FaPlusCircle, label: "Add Blog" },
+];
+
+const studentsSideLinks = [
+  ...sideLinks,
+  { link: "/addblog", icon: FaPlusCircle, label: "Add Blog" },
+];
+
+const adminsSideLinks = [...sideLinks];
 
 export default sideLinks;
-export { studentSideLinks };
+export { studentsSideLinks, teachersSideLinks, adminsSideLinks };

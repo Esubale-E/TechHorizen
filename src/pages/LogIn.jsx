@@ -41,10 +41,14 @@ const LogIn = () => {
 
   const onSubmit = (data) => {
     setIsLoading(true);
+
     userService
-      .login(data)
+      .login({ ...data, email: data.email.toLocaleLowerCase() })
       .then((res) => {
         dispatch({ type: "LOGIN", user: res.data });
+        if (res.data.role === "admin") {
+          return navigateTo("/admin", { replace: true });
+        }
         if (res.data.college) {
           if (res.data.role === "student")
             navigateTo("/student", { replace: true });

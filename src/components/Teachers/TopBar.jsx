@@ -55,7 +55,7 @@ const TopBar = () => {
       </div>
       <Link to="/teacher" className="flex items-center font-bold ">
         <FaChalkboardTeacher size={24} />{" "}
-        <span className="font-bold ms-5 text-lg">Dashboard</span>
+        <span className="font-bold ms-5 text-lg">Teachers Dashboard</span>
       </Link>
       <div className="flex items-center space-x-6">
         {/* Notifications */}

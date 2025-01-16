@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import SidebarLink from "../common/SideBarLink";
-import sideLinks from "../../utils/sideLinks";
+import { teachersSideLinks } from "../../utils/sideLinks";
 
 const Aside = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -52,7 +52,7 @@ const Aside = () => {
         <div className="p-6">
           {/* Menu Items */}
           <nav className="space-y-4">
-            {sideLinks.map((li, i) => (
+            {teachersSideLinks.map((li, i) => (
               <SidebarLink
                 key={i}
                 to={"/teacher" + li.link}

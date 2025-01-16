@@ -52,6 +52,7 @@ const SignUp = () => {
     userService
       .create({
         ...data,
+        email: data.email.toLocaleLowerCase(),
         authType: "regular",
         role: state?.user?.role === "teacher" ? "teacher" : "student",
       })
