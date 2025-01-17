@@ -24,7 +24,9 @@ import TeachersLandingPage from "./../components/Teachers/landing";
 import TeachersProfileSetup from "../components/Teachers/TeachersProfileSetup";
 import Adminlayout from "../Layouts/AdminLayout";
 import StudentCourseDetail from "../components/Students/StudentCourseDetail";
+import AdminCourses from "./../components/Admin/component/Courses";
 import Users from "./../components/Admin/component/Users";
+import ProtectedRoute from "./ProtectedRoute";
 
 const RoutesConfig = () => {
   return (
@@ -46,7 +48,14 @@ const RoutesConfig = () => {
       </Route>
 
       {/* Student Dashboard Navigation */}
-      <Route element={<StudentLayout />}>
+      <Route
+        element={
+          <ProtectedRoute
+            element={<StudentLayout />}
+            allowedRoles={"student"}
+          />
+        }
+      >
         <Route path="/student" element={<Dashboard />} />
         <Route path="/student/events" element={<Events />} />
         <Route path="/student/courses" element={<Courses />} />
@@ -59,7 +68,14 @@ const RoutesConfig = () => {
         <Route path="/student/addblog" element={<AddBlog />} />
       </Route>
 
-      <Route element={<TeachersLayout />}>
+      <Route
+        element={
+          <ProtectedRoute
+            element={<TeachersLayout />}
+            allowedRoles={"teacher"}
+          />
+        }
+      >
         <Route path="/teacher" element={<Dashboard />} />
         <Route path="/teacher/events" element={<Events />} />
         <Route path="/teacher/addevent" element={<AddEvent />} />
@@ -71,17 +87,20 @@ const RoutesConfig = () => {
         <Route path="/teacher/blogs" element={<Blog />} />
         <Route path="/teacher/addblog" element={<AddBlog />} />
       </Route>
-      <Route element={<Adminlayout />}>
-        <Route path="/Admin" element={<Dashboard />} />
-        <Route path="/Admin/events" element={<Events />} />
-        <Route path="/Admin/addevent" element={<AddEvent />} />
-        <Route path="/Admin/courses" element={<TCourse />} />
-        <Route path="/Admin/coursedetail/:id" element={<TCourseDetail />} />
-        <Route path="/Admin/resources" element={<Resources />} />
-        <Route path="/Admin/addresource" element={<AddResourse />} />
-        <Route path="/Admin/users" element={<Users />} />
 
+      <Route
+        element={
+          <ProtectedRoute element={<Adminlayout />} allowedRoles={"admin"} />
+        }
+      >
+        <Route path="/Admin" element={<Dashboard />} />
+        <Route path="/Admin/users" element={<Users />} />
+        <Route path="/Admin/events" element={<Events />} />
+        <Route path="/Admin/resources" element={<Resources />} />
         <Route path="/Admin/blogs" element={<Blog />} />
+        <Route path="/Admin/courses" element={<AdminCourses />} />
+        <Route path="/Admin/addevent" element={<AddEvent />} />
+        <Route path="/Admin/addresource" element={<AddResourse />} />
         <Route path="/Admin/addblog" element={<AddBlog />} />
       </Route>
     </Routes>

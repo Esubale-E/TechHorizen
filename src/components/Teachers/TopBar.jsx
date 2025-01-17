@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FaBell, FaChalkboardTeacher, FaUserAlt } from "react-icons/fa";
+import { FaChalkboardTeacher, FaCog, FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Profile from "./../Profile";
 import { PureButton } from "../common/Button";
@@ -62,11 +62,7 @@ const TopBar = () => {
 
         <div className="relative" ref={notificationRef}>
           <PureButton onClick={() => toggleButtons("setting")}>
-            <FaBell className="text-2xl text-gray-700 " />
-
-            <span className="absolute top-0 right-0 bg-accent text-xs rounded-full px-1">
-              3
-            </span>
+            <FaCog className="text-2xl text-gray-700 " />
           </PureButton>
           {isNotificationOpen && (
             <Setting profile={() => toggleButtons("profile")} />

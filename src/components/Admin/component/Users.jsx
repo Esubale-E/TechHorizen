@@ -111,7 +111,7 @@ import userService from "../../../services/user-service";
 //   },
 // ];
 
-const App = () => {
+const Users = () => {
   const [users, setUsers] = useState(); // Store users dynamically
   const [error, setError] = useState(null); // Store users dynamically
   const [isLoading, setIsLoading] = useState(true); // Store users dynamically
@@ -183,4 +183,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Users;

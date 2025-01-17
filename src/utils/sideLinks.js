@@ -30,6 +30,9 @@ const studentsSideLinks = [
 const adminsSideLinks = [
   { link: "/users", icon: FaUser, label: "Users" },
   ...sideLinks,
+  { link: "/addEvent", icon: FaPlusCircle, label: "Add Event" },
+  { link: "/addresource", icon: FaPlusCircle, label: "Add Resource" },
+  { link: "/addblog", icon: FaPlusCircle, label: "Add Blog" },
 ];
 
 export default sideLinks;

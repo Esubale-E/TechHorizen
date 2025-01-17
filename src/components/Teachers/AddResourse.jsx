@@ -82,7 +82,7 @@ const AddResource = () => {
       "author",
       JSON.stringify({
         _id: state.user._id,
-        name: `${state.user.firstName} ${state.user.lastName}`,
+        // name: `${state.user.firstName} ${state.user.lastName}`,
       })
     );
 

@@ -8,6 +8,7 @@ import {
 import resourceService from "../../services/resource-service";
 import { AppText } from "../common/Text";
 import { Heading2 } from "../common/Headings";
+import capitalize from "../../utils/capitalize";
 
 const Resources = () => {
   const [resources, setResources] = useState();
@@ -16,7 +17,7 @@ const Resources = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
 
-  const type = ["All", "file", "video", "link"];
+  const type = ["All", "File", "Video", "Link"];
 
   useEffect(() => {
     resourceService
@@ -24,14 +25,14 @@ const Resources = () => {
       .then((res) => setResources(res.data))
       .catch((err) => setError(err.message))
       .finally(() => setIsLoading(false));
-  }, [filter]);
+  }, []);
 
   if (error) return <AppText>{error}</AppText>;
 
   if (isLoading) return <AppText>Loadding...</AppText>;
 
   const filteredResources = resources.filter((resource) => {
-    const matchesCategory = filter === "All" || resource.category === filter;
+    const matchesCategory = filter === "All" || resource.type === filter;
     const matchesSearch =
       resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       resource.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -39,7 +40,7 @@ const Resources = () => {
   });
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg">
+    <div className="p-6 w-screen rounded-lg shadow-lg">
       {/* Header */}
       <Heading2>Resources</Heading2>
 
@@ -66,7 +67,7 @@ const Resources = () => {
           >
             {type.map((category) => (
               <option key={category} value={category}>
-                {category}
+                {capitalize(category)}
               </option>
             ))}
           </select>

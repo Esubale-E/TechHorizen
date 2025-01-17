@@ -28,7 +28,7 @@ const Courses = () => {
         setError(err);
         setIsLoading(false);
       });
-  }, []);
+  }, [isEnrolled]);
 
   const handleEnroll = async (courseId) => {
     try {
@@ -155,7 +155,7 @@ const Courses = () => {
                 </div>
 
                 {/* Buttons */}
-                <div className="mt-4 flex gap-2">
+                <div className="mt-4 flex gap-2 justify-between">
                   {isEnrolled ? (
                     <>
                       <button
